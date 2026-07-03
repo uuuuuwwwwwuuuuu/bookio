@@ -1,0 +1,74 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+@mixin variant-base {
+    padding: 1.2rem 1.6rem;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    border: 1px solid transparent;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        filter 0.2s ease;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+@mixin filled-hover {
+    &:hover:not(:disabled) {
+        filter: brightness(0.92);
+    }
+}
+
+.primaryFilled {
+    @include variant-base;
+    @include filled-hover;
+    background-color: var(--color-primary);
+    color: var(--color-text-accent-button);
+}
+
+.primaryOutlined {
+    @include variant-base;
+    background-color: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+
+    &:hover:not(:disabled) {
+        background-color: var(--color-primary);
+        color: var(--color-text-accent-button);
+    }
+}
+
+.outlined {
+    @include variant-base;
+    background-color: transparent;
+    border-color: var(--color-text-main);
+    color: var(--color-text-main);
+
+    &:hover:not(:disabled) {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+}
+
+.cancel {
+    @include variant-base;
+    @include filled-hover;
+    background-color: var(--color-system-red);
+    color: var(--color-text-accent-button);
+}
+
+.approve {
+    @include variant-base;
+    @include filled-hover;
+    background-color: var(--color-system-green);
+    color: var(--color-text-accent-button);
+}

@@ -1,5 +1,5 @@
 {
-    "name": "@pulce/backend",
+    "name": "@bookio/backend",
     "type": "module",
     "scripts": {
         "dev": "tsx watch src/index.ts",

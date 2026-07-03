@@ -1,11 +1,12 @@
 {
-    "name": "pulce",
+    "name": "bookio",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
     "scripts": {
-        "web": "pnpm --filter @pulce/frontend",
-        "backend": "pnpm --filter @pulce/backend",
+        "booking": "pnpm --filter @bookio/booking",
+        "frontend": "pnpm --filter @bookio/frontend",
+        "backend": "pnpm --filter @bookio/backend",
         "db": "pnpm --filter @bookio/db"
     },
     "keywords": [],

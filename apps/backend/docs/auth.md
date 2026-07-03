@@ -6,10 +6,10 @@
 ## Как устроено
 
 1. **`src/auth.ts`** — конфигурация Better Auth:
-   - провайдер: email + password;
-   - БД: PostgreSQL через Drizzle adapter (`@bookio/db`);
-   - таблицы: `users`, `sessions`, `accounts`, `verifications`;
-   - ID генерируются на стороне БД (UUID v7), не Better Auth.
+    - провайдер: email + password;
+    - БД: PostgreSQL через Drizzle adapter (`@bookio/db`);
+    - таблицы: `users`, `sessions`, `accounts`, `verifications`;
+    - ID генерируются на стороне БД (UUID v7), не Better Auth.
 
 2. **`src/index.ts`** — маршрут `POST|GET /api/auth/*` проксирует запросы в `auth.handler()`.  
    Для auth включён CORS с `credentials: true` — клиент должен отправлять cookies.
@@ -21,13 +21,13 @@
 
 Скопируй `.env.example` в `.env`:
 
-| Переменная | Описание |
-|---|---|
-| `DATABASE_URL` | PostgreSQL connection string |
-| `PORT` | Порт сервера (по умолчанию `3001`) |
-| `BETTER_AUTH_SECRET` | Секрет для подписи сессий (≥ 32 символа) |
-| `BETTER_AUTH_URL` | Публичный URL бэкенда, напр. `http://localhost:3001` |
-| `TRUSTED_ORIGINS` | Разрешённые origins через запятую, напр. `http://localhost:3000` |
+| Переменная           | Описание                                                         |
+| -------------------- | ---------------------------------------------------------------- |
+| `DATABASE_URL`       | PostgreSQL connection string                                     |
+| `PORT`               | Порт сервера (по умолчанию `3001`)                               |
+| `BETTER_AUTH_SECRET` | Секрет для подписи сессий (≥ 32 символа)                         |
+| `BETTER_AUTH_URL`    | Публичный URL бэкенда, напр. `http://localhost:3001`             |
+| `TRUSTED_ORIGINS`    | Разрешённые origins через запятую, напр. `http://localhost:3000` |
 
 ## Базовый URL
 
@@ -57,28 +57,28 @@ curl -X POST http://localhost:3001/api/auth/sign-up/email \
   }'
 ```
 
-| Поле | Обязательное | Описание |
-|---|---|---|
-| `name` | да | Имя пользователя |
-| `email` | да | Email |
-| `password` | да | Пароль (мин. 8 символов) |
-| `image` | нет | URL аватара |
-| `callbackURL` | нет | URL редиректа после регистрации |
+| Поле          | Обязательное | Описание                        |
+| ------------- | ------------ | ------------------------------- |
+| `name`        | да           | Имя пользователя                |
+| `email`       | да           | Email                           |
+| `password`    | да           | Пароль (мин. 8 символов)        |
+| `image`       | нет          | URL аватара                     |
+| `callbackURL` | нет          | URL редиректа после регистрации |
 
 Пример ответа (`200`):
 
 ```json
 {
-  "token": "…",
-  "user": {
-    "id": "019…",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "emailVerified": false,
-    "image": null,
-    "createdAt": "2026-07-02T12:00:00.000Z",
-    "updatedAt": "2026-07-02T12:00:00.000Z"
-  }
+    "token": "…",
+    "user": {
+        "id": "019…",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "emailVerified": false,
+        "image": null,
+        "createdAt": "2026-07-02T12:00:00.000Z",
+        "updatedAt": "2026-07-02T12:00:00.000Z"
+    }
 }
 ```
 
@@ -101,28 +101,28 @@ curl -X POST http://localhost:3001/api/auth/sign-in/email \
   }'
 ```
 
-| Поле | Обязательное | Описание |
-|---|---|---|
-| `email` | да | Email |
-| `password` | да | Пароль |
-| `rememberMe` | нет | `true` — сессия сохраняется после закрытия браузера (по умолчанию `true`) |
-| `callbackURL` | нет | URL редиректа после входа |
+| Поле          | Обязательное | Описание                                                                  |
+| ------------- | ------------ | ------------------------------------------------------------------------- |
+| `email`       | да           | Email                                                                     |
+| `password`    | да           | Пароль                                                                    |
+| `rememberMe`  | нет          | `true` — сессия сохраняется после закрытия браузера (по умолчанию `true`) |
+| `callbackURL` | нет          | URL редиректа после входа                                                 |
 
 Пример ответа (`200`):
 
 ```json
 {
-  "redirect": false,
-  "token": "…",
-  "user": {
-    "id": "019…",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "emailVerified": false,
-    "image": null,
-    "createdAt": "2026-07-02T12:00:00.000Z",
-    "updatedAt": "2026-07-02T12:00:00.000Z"
-  }
+    "redirect": false,
+    "token": "…",
+    "user": {
+        "id": "019…",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "emailVerified": false,
+        "image": null,
+        "createdAt": "2026-07-02T12:00:00.000Z",
+        "updatedAt": "2026-07-02T12:00:00.000Z"
+    }
 }
 ```
 
@@ -141,25 +141,25 @@ curl http://localhost:3001/api/auth/get-session \
 
 ```json
 {
-  "session": {
-    "id": "019…",
-    "userId": "019…",
-    "token": "…",
-    "expiresAt": "2026-07-09T12:00:00.000Z",
-    "createdAt": "2026-07-02T12:00:00.000Z",
-    "updatedAt": "2026-07-02T12:00:00.000Z",
-    "ipAddress": "127.0.0.1",
-    "userAgent": "curl/8.x"
-  },
-  "user": {
-    "id": "019…",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "emailVerified": false,
-    "image": null,
-    "createdAt": "2026-07-02T12:00:00.000Z",
-    "updatedAt": "2026-07-02T12:00:00.000Z"
-  }
+    "session": {
+        "id": "019…",
+        "userId": "019…",
+        "token": "…",
+        "expiresAt": "2026-07-09T12:00:00.000Z",
+        "createdAt": "2026-07-02T12:00:00.000Z",
+        "updatedAt": "2026-07-02T12:00:00.000Z",
+        "ipAddress": "127.0.0.1",
+        "userAgent": "curl/8.x"
+    },
+    "user": {
+        "id": "019…",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "emailVerified": false,
+        "image": null,
+        "createdAt": "2026-07-02T12:00:00.000Z",
+        "updatedAt": "2026-07-02T12:00:00.000Z"
+    }
 }
 ```
 
@@ -196,11 +196,11 @@ curl -X POST http://localhost:3001/api/auth/change-password \
   }'
 ```
 
-| Поле | Обязательное | Описание |
-|---|---|---|
-| `currentPassword` | да | Текущий пароль |
-| `newPassword` | да | Новый пароль |
-| `revokeOtherSessions` | нет | Завершить все остальные сессии |
+| Поле                  | Обязательное | Описание                       |
+| --------------------- | ------------ | ------------------------------ |
+| `currentPassword`     | да           | Текущий пароль                 |
+| `newPassword`         | да           | Новый пароль                   |
+| `revokeOtherSessions` | нет          | Завершить все остальные сессии |
 
 ---
 
@@ -212,20 +212,20 @@ curl -X POST http://localhost:3001/api/auth/change-password \
 import { createAuthClient } from 'better-auth/react';
 
 export const authClient = createAuthClient({
-  baseURL: 'http://localhost:3001',
+    baseURL: 'http://localhost:3001',
 });
 
 // Регистрация
 await authClient.signUp.email({
-  name: 'John Doe',
-  email: 'john@example.com',
-  password: 'password1234',
+    name: 'John Doe',
+    email: 'john@example.com',
+    password: 'password1234',
 });
 
 // Вход
 await authClient.signIn.email({
-  email: 'john@example.com',
-  password: 'password1234',
+    email: 'john@example.com',
+    password: 'password1234',
 });
 
 // Текущий пользователь
@@ -244,15 +244,15 @@ Origin фронтенда должен быть в `TRUSTED_ORIGINS`.
 import { auth } from './auth.js';
 
 app.use('/api/protected/*', async (c, next) => {
-  const session = await auth.api.getSession({ headers: c.req.raw.headers });
+    const session = await auth.api.getSession({ headers: c.req.raw.headers });
 
-  if (!session) {
-    return c.json({ error: 'Unauthorized' }, 401);
-  }
+    if (!session) {
+        return c.json({ error: 'Unauthorized' }, 401);
+    }
 
-  c.set('user', session.user);
-  c.set('session', session.session);
-  await next();
+    c.set('user', session.user);
+    c.set('session', session.session);
+    await next();
 });
 ```
 
@@ -261,7 +261,7 @@ app.use('/api/protected/*', async (c, next) => {
 ## Запуск
 
 ```bash
-pnpm --filter @pulce/backend dev
+pnpm --filter @bookio/backend dev
 ```
 
 Сервер стартует на `http://localhost:${PORT}`.

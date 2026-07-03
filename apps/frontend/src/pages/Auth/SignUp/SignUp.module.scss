@@ -1,0 +1,17 @@
+.signUpForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    max-width: 50rem;
+    background-color: var(--color-bg-ui);
+    padding: 2rem;
+    border-radius: 1rem;
+
+    width: 100%;
+
+    h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        text-align: center;
+    }
+}

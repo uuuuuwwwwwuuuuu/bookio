@@ -17,12 +17,14 @@
     "jsx": "react-jsx",
 
     "paths": {
+      "@bookio/backend": ["../backend/src/routes/index.ts"],
       "@assets/*": ["./src/assets/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@lib/*": ["./src/lib/*"],
       "@pages/*": ["./src/pages/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"]
     },
 
     /* Linting */

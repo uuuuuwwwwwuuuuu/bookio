@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, uuid, date, boolean, varchar } from 'drizzle-orm/pg-core';
+import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { v7 as uuidv7 } from 'uuid';
 
 import { users } from './auth.js';
@@ -8,7 +8,8 @@ export const organizations = pgTable('organizations', {
         .primaryKey()
         .$defaultFn(() => uuidv7()),
     name: text('name').notNull(),
-    slug: text('slug').notNull().unique(),
+    password: text('password').notNull(),
+    secretKey: uuid('secret_key').defaultRandom().notNull(),
     createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
 });
 
@@ -18,12 +19,16 @@ export const members = pgTable('members', {
         .$defaultFn(() => uuidv7()),
     organizationId: uuid('organization_id')
         .notNull()
-        .references(() => organizations.id, { onDelete: 'cascade'}),
+        .references(() => organizations.id, { onDelete: 'cascade' }),
     userId: uuid('user_id')
         .notNull()
-        .references(() => users.id, { onDelete: 'cascade'}),
+        .references(() => users.id, { onDelete: 'cascade' }),
     role: text('role', { enum: ['owner', 'admin', 'member'] }).notNull(),
     createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp('updated_at', { withTimezone: true })
+        .defaultNow()
+        .notNull()
+        .$onUpdateFn(() => new Date()),
 });
 
 export type Organization = typeof organizations.$inferSelect;

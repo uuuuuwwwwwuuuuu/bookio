@@ -1,12 +1,22 @@
 import { createRoot } from 'react-dom/client';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './index.css';
-import { AuthLayout } from './layouts/AuthLayout/AuthLayout';
-import { SignUp } from './pages/Auth/SignUp/SignUp';
 import { queryClient } from '@lib/query-client';
 import { Toaster } from 'react-hot-toast';
+import './index.css';
+
+// Auth
+import { AuthLayout } from './layouts/AuthLayout/AuthLayout';
+import { SignUp } from './pages/Auth/SignUp/SignUp';
 import { SignIn } from '@pages/Auth/SignIn/SignIn';
+
+// Organization
+import { OrganizationLayout } from './layouts/OrganizationLayout/OrganizationLayout';
+import { CreateOrganization } from './pages/Organization/CreateOrganization/CreateOrganization';
+import { OrganizationList } from './pages/Organization/OrganizationList/OrganizationList';
+
+// Main
+import { MainLayout } from './layouts/MainLayout/MainLayout';
 
 const router = createBrowserRouter([
     {
@@ -22,6 +32,26 @@ const router = createBrowserRouter([
                 element: <SignIn />,
             },
         ],
+    },
+    {
+        path: '/',
+        element: <MainLayout />,
+        children: [
+            {
+                path: 'organization',
+                element: <OrganizationLayout />,
+                children: [
+                    {
+                        path: 'list',
+                        element: <OrganizationList />,
+                    },
+                    {
+                        path: 'create',
+                        element: <CreateOrganization />,
+                    }
+                ]
+            }
+        ]
     },
 ]);
 

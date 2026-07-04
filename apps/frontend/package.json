@@ -10,11 +10,13 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@bookio/backend": "workspace:*",
         "@bookio/ui": "workspace:*",
         "@tanstack/react-query": "^5.101.2",
         "better-auth": "^1.6.23",
         "clsx": "^2.1.1",
         "date-fns": "^4.4.0",
+        "hono": "^4.12.27",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
         "react-hot-toast": "^2.6.0",

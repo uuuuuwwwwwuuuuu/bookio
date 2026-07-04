@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react';
+import { memo, type ComponentProps } from 'react';
 import styles from './Button.module.scss';
 
 export type ButtonVariant =
@@ -22,7 +22,7 @@ const VARIANT_CLASS: Record<Exclude<ButtonVariant, 'plain'>, string> = {
     approve: styles.approve,
 };
 
-export function Button({ variant = 'plain', className, type = 'button', ...rest }: ButtonProps) {
+function Button({ variant = 'plain', className, type = 'button', ...rest }: ButtonProps) {
     const classes = [
         styles.button,
         variant !== 'plain' ? VARIANT_CLASS[variant] : undefined,
@@ -33,3 +33,5 @@ export function Button({ variant = 'plain', className, type = 'button', ...rest 
 
     return <button type={type} className={classes} {...rest} />;
 }
+
+export default memo(Button);

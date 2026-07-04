@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react';
+import { memo, type ComponentProps } from 'react';
 import styles from './Input.module.scss';
 
 type TextareaProps = {
@@ -13,9 +13,9 @@ type NativeInputProps = {
 
 export type InputProps = TextareaProps | NativeInputProps;
 
-export function Input(props: TextareaProps): React.JSX.Element;
-export function Input(props: NativeInputProps): React.JSX.Element;
-export function Input(props: InputProps): React.JSX.Element {
+function Input(props: TextareaProps): React.JSX.Element;
+function Input(props: NativeInputProps): React.JSX.Element;
+function Input(props: InputProps): React.JSX.Element {
     const classes = [styles.input, props.className].filter(Boolean).join(' ');
 
     if (props.type === 'textarea') {
@@ -26,3 +26,5 @@ export function Input(props: InputProps): React.JSX.Element {
     const { type = 'text', className, ...rest } = props as NativeInputProps;
     return <input type={type} className={classes} {...rest} />;
 }
+
+export default memo(Input);

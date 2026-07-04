@@ -1,15 +1,122 @@
-import type { FC } from 'react';
+import { type FC, type ChangeEvent, type SubmitEvent, useReducer, useCallback } from 'react';
 import { Button, Input } from '@bookio/ui';
 import styles from './SignUp.module.scss';
+import { useSignUp } from '@hooks/auth';
+import { z } from 'zod';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+
+const passwordSchema = z
+    .string()
+    .min(6, { message: 'Password must be at least 8 characters long' })
+    .regex(/[A-Z]/, { message: 'Password must contain at least one uppercase letter' })
+    .regex(/[a-z]/, { message: 'Password must contain at least one lowercase letter' })
+    .regex(/[0-9]/, { message: 'Password must contain at least one number' })
+    .regex(/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/, { message: 'Password must contain at least one special character' });
+
+const signUpSchema = z
+    .object({
+        email: z.email(),
+        password: passwordSchema,
+        confirmPassword: passwordSchema,
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+        message: 'Passwords do not match',
+        path: ['confirmPassword'],
+    });
+
+type SignUpData = z.infer<typeof signUpSchema>;
 
 export const SignUp: FC = () => {
+    const navigate = useNavigate();
+    const [data, setData] = useReducer(
+        (prev: SignUpData, next: Partial<SignUpData>) => {
+            return {
+                ...prev,
+                ...next,
+            };
+        },
+        {
+            email: '',
+            password: '',
+            confirmPassword: '',
+        },
+    );
+
+    const { mutate, isPending} = useSignUp();
+
+    const handleChangeInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        setData({
+            [e.target.name]: e.target.value,
+        });
+    }, [setData]);
+
+    const handleSubmit = (e: SubmitEvent) => {
+        e.preventDefault();
+
+        try {
+            const zodRes = signUpSchema.parse(data);
+
+            mutate(zodRes, {
+                onSuccess: () => {
+                    toast.success('Sign up successful');
+                },
+                onError: (error) => {
+                    toast.error(error.message);
+                },
+            });
+        } catch (error) {
+            if (error instanceof z.ZodError) {
+                const errorsArr = JSON.parse(error.message);
+                toast.error(errorsArr[0].message);
+            }
+        }
+    };
+
+    const handleSignIn = useCallback(() => {
+        navigate('/auth/sign-in');
+    }, [navigate]);
+
     return (
-        <form className={styles.signUpForm}>
-            <h1>Sign Up</h1>
-            <Input type="email" name="email" placeholder="Email" autoComplete="email" />
-            <Input type="password" name="password" placeholder="Password" autoComplete="new-password" />
-            <Button type="submit" variant="primary-outlined" className={styles.submitButton}>
-                Sign Up
+        <form className={styles.signUpForm} onSubmit={handleSubmit}>
+            <h1>Sign up</h1>
+            <Input
+                type="email"
+                name="email"
+                placeholder="Email"
+                autoComplete="email"
+                value={data.email}
+                onChange={handleChangeInput}
+                disabled={isPending}
+            />
+            <Input
+                type="password"
+                name="password"
+                placeholder="Password"
+                autoComplete="new-password"
+                value={data.password}
+                onChange={handleChangeInput}
+                disabled={isPending}
+            />
+            <Input
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                autoComplete="new-password"
+                value={data.confirmPassword}
+                onChange={handleChangeInput}
+                disabled={isPending}
+            />
+            <Button
+                type="submit"
+                variant="primary-filled"
+                className={styles.submitButton}
+                disabled={isPending}
+            >
+                {isPending ? 'Signing up…' : 'Sign Up'}
+            </Button>
+            <Button variant='outlined' onClick={handleSignIn}>
+                Sign in
             </Button>
         </form>
     );

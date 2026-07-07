@@ -9,6 +9,7 @@
     border: 1px solid var(--color-border);
     color: var(--color-text-main);
     cursor: pointer;
+    position: relative;
 
     transition:
         background-color 0.2s ease,
@@ -17,6 +18,32 @@
     &:hover {
         background-color: rgba(255, 255, 255, 0.04);
         border-color: var(--color-primary);
+
+        .actionButtons {
+            opacity: 1;
+        }
+    }
+
+    .actionButtons {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        position: absolute;
+        right: 1.5rem;
+        display: flex;
+        gap: 0.5rem;
+        height: 100%;
+        align-items: center;
+
+        button {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border-radius: 0.8rem;
+        }
     }
 
     img {

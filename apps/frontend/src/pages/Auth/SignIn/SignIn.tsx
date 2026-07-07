@@ -100,7 +100,7 @@ export const SignIn: FC = () => {
             >
                 {isPending ? 'Signing in…' : 'Sign in'}
             </Button>
-            <Button type="link" to="/auth/sign-up" variant="outlined">
+            <Button type="link" to="/auth/sign-up" variant="simple-outlined">
                 Sign Up
             </Button>
         </form>

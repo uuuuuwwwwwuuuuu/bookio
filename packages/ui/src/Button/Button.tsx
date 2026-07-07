@@ -2,14 +2,9 @@ import { memo, type ComponentProps } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Button.module.scss';
 
-export type ButtonVariant =
-    | 'plain'
-    | 'primary-filled'
-    | 'primary-outlined'
-    | 'outlined'
-    | 'clean'
-    | 'cancel'
-    | 'approve';
+export type ButtonColor = 'simple' | 'red' | 'green' | 'primary';
+export type ButtonType = 'clean' | 'filled' | 'outlined';
+export type ButtonVariant = 'plain' | `${ButtonColor}-${ButtonType}`;
 
 type ButtonBaseProps = {
     variant?: ButtonVariant;
@@ -27,12 +22,18 @@ export type ButtonAsLinkProps = ButtonBaseProps & {
 export type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
 
 const VARIANT_CLASS: Record<Exclude<ButtonVariant, 'plain'>, string> = {
+    'simple-clean': styles.simpleClean,
+    'simple-filled': styles.simpleFilled,
+    'simple-outlined': styles.simpleOutlined,
+    'red-clean': styles.redClean,
+    'red-filled': styles.redFilled,
+    'red-outlined': styles.redOutlined,
+    'green-clean': styles.greenClean,
+    'green-filled': styles.greenFilled,
+    'green-outlined': styles.greenOutlined,
+    'primary-clean': styles.primaryClean,
     'primary-filled': styles.primaryFilled,
     'primary-outlined': styles.primaryOutlined,
-    outlined: styles.outlined,
-    clean: styles.clean,
-    cancel: styles.cancel,
-    approve: styles.approve,
 };
 
 function getClasses(variant: ButtonVariant, className?: string) {

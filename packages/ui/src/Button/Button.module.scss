@@ -4,6 +4,29 @@
     justify-content: center;
     cursor: pointer;
     font-family: inherit;
+
+    svg {
+        flex-shrink: 0;
+
+        path,
+        circle,
+        rect,
+        line,
+        polyline,
+        polygon {
+            fill: currentColor;
+            stroke: currentColor;
+        }
+
+        path[fill='none'],
+        circle[fill='none'],
+        rect[fill='none'],
+        line[fill='none'],
+        polyline[fill='none'],
+        polygon[fill='none'] {
+            fill: none;
+        }
+    }
 }
 
 @mixin variant-base {
@@ -29,57 +52,85 @@
     }
 }
 
-.primaryFilled {
-    @include variant-base;
-    @include filled-hover;
-    background-color: var(--color-primary);
-    color: var(--color-text-accent-button);
-}
-
-.primaryOutlined {
-    @include variant-base;
-    background-color: transparent;
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-
-    &:hover:not(:disabled) {
-        background-color: var(--color-primary);
-        color: var(--color-text-accent-button);
-    }
-}
-
-.outlined {
-    @include variant-base;
-    background-color: transparent;
-    border-color: var(--color-text-main);
-    color: var(--color-text-main);
-
-    &:hover:not(:disabled) {
-        background-color: rgba(255, 255, 255, 0.08);
-    }
-}
-
-.clean {
+@mixin clean-variant($color) {
     @include variant-base;
     background-color: transparent;
     border-color: transparent;
-    color: var(--color-text-main);
+    color: $color;
 
     &:hover:not(:disabled) {
-        background-color: rgba(255, 255, 255, 0.08);
+        background-color: color-mix(in srgb, $color 8%, transparent);
     }
 }
 
-.cancel {
+@mixin filled-variant($background-color, $color: var(--color-text-accent-button)) {
     @include variant-base;
     @include filled-hover;
-    background-color: var(--color-system-red);
-    color: var(--color-text-accent-button);
+    background-color: $background-color;
+    color: $color;
 }
 
-.approve {
+@mixin outlined-variant($color, $hover-text: var(--color-text-accent-button)) {
     @include variant-base;
-    @include filled-hover;
-    background-color: var(--color-system-green);
-    color: var(--color-text-accent-button);
+    background-color: transparent;
+    border-color: $color;
+    color: $color;
+
+    &:hover:not(:disabled) {
+        background-color: $color;
+        color: $hover-text;
+    }
+}
+
+.simpleClean {
+    @include clean-variant(var(--color-text-main));
+}
+
+.simpleFilled {
+    @include filled-variant(var(--color-bg-ui), var(--color-text-main));
+    border-color: var(--color-border);
+}
+
+.simpleOutlined {
+    @include outlined-variant(var(--color-text-main), var(--color-text-main));
+
+    &:hover:not(:disabled) {
+        background-color: color-mix(in srgb, var(--color-text-main) 8%, transparent);
+    }
+}
+
+.redClean {
+    @include clean-variant(var(--color-system-red));
+}
+
+.redFilled {
+    @include filled-variant(var(--color-system-red));
+}
+
+.redOutlined {
+    @include outlined-variant(var(--color-system-red));
+}
+
+.greenClean {
+    @include clean-variant(var(--color-system-green));
+}
+
+.greenFilled {
+    @include filled-variant(var(--color-system-green));
+}
+
+.greenOutlined {
+    @include outlined-variant(var(--color-system-green));
+}
+
+.primaryClean {
+    @include clean-variant(var(--color-primary));
+}
+
+.primaryFilled {
+    @include filled-variant(var(--color-primary));
+}
+
+.primaryOutlined {
+    @include outlined-variant(var(--color-primary));
 }

@@ -42,7 +42,7 @@ export const OrganizationHeader: FC = memo(() => {
                     <Button
                         type="link"
                         to="/organization/connect"
-                        variant="clean"
+                        variant="simple-clean"
                         className={styles.button}
                     >
                         <ConnectIcon />
@@ -79,7 +79,7 @@ const DefaultOrganizationHeader: FC<DefaultOrganizationHeaderProps> = ({ onClick
                 <Button
                     type="link"
                     to="/organization/connect"
-                    variant="clean"
+                    variant="simple-clean"
                     className={styles.button}
                 >
                     <ConnectIcon />

@@ -3,7 +3,7 @@ import { createFactory } from 'hono/factory';
 import { zValidator } from '@hono/zod-validator';
 import { db } from '@/db.js';
 import { members, organizations } from '@bookio/db';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
 
 const connectOrganizationSchema = z.object({
@@ -35,7 +35,7 @@ export const connectOrganizationHandler = factory(
         const [member] = await db
             .select()
             .from(members)
-            .where(eq(members.organizationId, organization.id));
+            .where(and(eq(members.organizationId, organization.id), eq(members.userId, userId)));
 
         if (member) {
             return c.json(prepareError('You are already a member of this organization'), 400);

@@ -49,7 +49,6 @@ export const ConnectOrganization: FC = () => {
 
     if (data?.success) {
         navigate('/organization/list', { replace: true });
-        toast.success('Connected to organization successfully');
     }
 
     return (

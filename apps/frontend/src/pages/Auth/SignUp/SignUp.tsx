@@ -43,7 +43,7 @@ export const SignUp: FC = () => {
         },
     );
 
-    const { mutate, isPending } = useSignUp();
+    const { mutateAsync, isPending } = useSignUp();
 
     const handleChangeInput = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
@@ -60,13 +60,10 @@ export const SignUp: FC = () => {
         try {
             const zodRes = signUpSchema.parse(data);
 
-            mutate(zodRes, {
-                onSuccess: () => {
-                    toast.success('Sign up successful');
-                },
-                onError: (error) => {
-                    toast.error(error.message);
-                },
+            toast.promise(mutateAsync(zodRes), {
+                loading: 'Signing up...',
+                success: 'Signed up successfully',
+                error: (error: Error) => error.message
             });
         } catch (error) {
             if (error instanceof z.ZodError) {

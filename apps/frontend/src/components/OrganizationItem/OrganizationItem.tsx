@@ -1,9 +1,10 @@
-import { useCallback, type FC } from 'react';
+import { useCallback, useState, type FC } from 'react';
 import styles from './OrganizationItem.module.scss';
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import { clsx } from 'clsx';
 import PlaceholderImage from '@assets/images/OrganizationPlaceholder.webp';
+import { Dialog } from '@bookio/ui';
 
 import type { OrganizationsResponse } from '@api/organizations/getOrganizationsByUserId';
 import { Button } from '@bookio/ui';
@@ -27,10 +28,20 @@ export const OrganizationItem: FC<OrganizationItemProps> = ({
     role,
 }) => {
     const { mutate: logoutOrganization } = useLogoutOrganization();
+    const [isOpenLogoutDialog, setIsOpenLogoutDialog] = useState(false);
+
+    const handleClickOnTrash = () => {
+        setIsOpenLogoutDialog(true);
+    };
 
     const handleLogoutOrganization = useCallback(() => {
-        // logoutOrganization({ organizationId });
+        logoutOrganization({ organizationId });
+        setIsOpenLogoutDialog(false);
     }, [logoutOrganization, organizationId]);
+
+    const handleCloseLogoutDialog = () => {
+        setIsOpenLogoutDialog(false);
+    };
 
     return (
         <div className={styles.organizationItem}>
@@ -46,10 +57,25 @@ export const OrganizationItem: FC<OrganizationItemProps> = ({
             </div>
 
             <div className={styles.actionButtons}>
-                <Button variant="red-clean" onClick={handleLogoutOrganization}>
+                <Button variant="red-clean" onClick={handleClickOnTrash}>
                     <TrashIcon />
                 </Button>
             </div>
+
+            <Dialog open={isOpenLogoutDialog} onOpenChange={setIsOpenLogoutDialog} closeOnEscape>
+                <Dialog.Title>Are you sure you want to logout from {organizationName}?</Dialog.Title>
+                <Dialog.Description>
+                    This action will logout you from the organization. Organization won't be removed at all.
+                </Dialog.Description>
+                <Dialog.Actions>
+                    <Dialog.Button variant="simple-clean" onClick={handleCloseLogoutDialog}>
+                        Cancel
+                    </Dialog.Button>
+                    <Dialog.Button variant="red-filled" onClick={handleLogoutOrganization}>
+                        Logout
+                    </Dialog.Button>
+                </Dialog.Actions>
+            </Dialog>
         </div>
     );
 };

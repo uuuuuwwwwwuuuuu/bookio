@@ -129,6 +129,9 @@ importers:
       react-router-dom:
         specifier: ^7.18.1
         version: 7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      use-debounce:
+        specifier: ^10.1.1
+        version: 10.1.1(react@19.2.7)
       zod:
         specifier: ^4.4.3
         version: 4.4.3
@@ -215,10 +218,16 @@ importers:
       react:
         specifier: ^19.2.7
         version: 19.2.7
+      react-dom:
+        specifier: ^19.2.7
+        version: 19.2.7(react@19.2.7)
     devDependencies:
       '@types/react':
         specifier: ^19.2.17
         version: 19.2.17
+      '@types/react-dom':
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.17)
       react-router-dom:
         specifier: ^7.18.1
         version: 7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -4932,6 +4941,12 @@ packages:
   url-to-options@1.0.1:
     resolution: {integrity: sha512-0kQLIzG4fdk/G5NONku64rSH/x32NOA39LVQqlK8Le6lvTF6GGRJpqaQFGgU+CLwySIqBSMdwYM0sYcW9f6P4A==}
     engines: {node: '>= 4'}
+
+  use-debounce@10.1.1:
+    resolution: {integrity: sha512-kvds8BHR2k28cFsxW8k3nc/tRga2rs1RHYCqmmGqb90MEeE++oALwzh2COiuBLO1/QXiOuShXoSN2ZpWnMmvuQ==}
+    engines: {node: '>= 16.0.0'}
+    peerDependencies:
+      react: '*'
 
   utf8@2.1.1:
     resolution: {integrity: sha512-FzZp4f0vPa0AfWf+eav6hqZEqbn7TU1my/GUexpF9e0Afe/fnuLQvgdq5KgD3ggUpu3DpwRUGC0iS8q35eVBLQ==}
@@ -10410,6 +10425,10 @@ snapshots:
   url-set-query@1.0.0: {}
 
   url-to-options@1.0.1: {}
+
+  use-debounce@10.1.1(react@19.2.7):
+    dependencies:
+      react: 19.2.7
 
   utf8@2.1.1: {}
 

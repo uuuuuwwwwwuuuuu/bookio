@@ -9,6 +9,7 @@ export const organizations = pgTable('organizations', {
         .$defaultFn(() => uuidv7()),
     name: text('name').notNull(),
     password: text('password').notNull(),
+    slug: text('slug').notNull(),
     secretKey: uuid('secret_key').defaultRandom().notNull(),
     createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
     updatedAt: timestamp('updated_at', { withTimezone: true })

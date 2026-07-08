@@ -56,6 +56,14 @@ export const router = createBrowserRouter([
                                     'CreateOrganization',
                                 ),
                             },
+                            {
+                                path: 'connect',
+                                lazy: lazyRoute(
+                                    () =>
+                                        import('@pages/Organization/ConnectOrganization/ConnectOrganization'),
+                                    'ConnectOrganization',
+                                ),
+                            },
                         ],
                     },
                 ],

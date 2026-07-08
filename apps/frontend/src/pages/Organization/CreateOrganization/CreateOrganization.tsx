@@ -1,6 +1,7 @@
 import { useReducer, type FC, type SubmitEvent, type ChangeEvent, useCallback } from 'react';
 import styles from './CreateOrganization.module.scss';
 import { Button, Input, HiddenField } from '@bookio/ui';
+import { ValidatableInput } from '@components/ValidatableInput/ValidatableInput';
 import {
     useCreateOrganization,
     type CreateOrganizationResponse,
@@ -8,9 +9,12 @@ import {
 import { useSession } from '@api/auth';
 import { z } from 'zod';
 import { toast } from 'react-hot-toast';
+import { type CreateOrganizationRequest } from '@api/organizations/createOrganization';
+import { useIsOrganizationExists } from '@api/organizations/isOrganizationExists';
 
 const formSchema = z.object({
-    name: z.string().min(1).max(255),
+    name: z.string().min(3).max(255),
+    slug: z.string().min(1).max(255),
     password: z
         .string()
         .min(6)
@@ -19,7 +23,7 @@ const formSchema = z.object({
             message:
                 'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character',
         }),
-});
+}) satisfies z.ZodType<Omit<CreateOrganizationRequest, 'userId'>>;
 
 type FormData = z.infer<typeof formSchema>;
 
@@ -28,14 +32,22 @@ export const CreateOrganization: FC = () => {
     const { data: organization, mutate, isPending, isSuccess } = useCreateOrganization();
     const [formData, setFormData] = useReducer(
         (prev: FormData, next: Partial<FormData>) => ({ ...prev, ...next }),
-        { name: '', password: '' },
+        { name: '', slug: '', password: '' },
     );
+    const { exists: slugExists } = useIsOrganizationExists(formData.slug);
+    const slugIsValid = slugExists === undefined ? undefined : !slugExists;
 
     const onSubmitForm = (e: SubmitEvent) => {
         e.preventDefault();
 
         try {
             const result = formSchema.parse(formData);
+
+            if (slugExists === true) {
+                toast.error('Organization slug is already taken');
+                return;
+            }
+
             mutate({ ...result, userId: session!.user.id });
         } catch (error) {
             if (error instanceof z.ZodError) {
@@ -44,12 +56,10 @@ export const CreateOrganization: FC = () => {
         }
     };
 
-    const handleInputChange = useCallback(
-        (e: ChangeEvent<HTMLInputElement>) => {
-            setFormData({ [e.target.name]: e.target.value });
-        },
-        [setFormData],
-    );
+    const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData({ [name]: value });
+    }, []);
 
     if (isSuccess && organization.success) {
         return <SuccessfulOrganizationCreation data={organization.data} />;
@@ -66,8 +76,16 @@ export const CreateOrganization: FC = () => {
                         onChange={handleInputChange}
                         value={formData.name}
                     />
+                    <ValidatableInput
+                        name="slug"
+                        placeholder="Unique organization slug"
+                        onChange={handleInputChange}
+                        value={formData.slug}
+                        isValid={slugIsValid}
+                    />
                     <Input
                         name="password"
+                        type="password"
                         placeholder="Organization password"
                         autoComplete="new-password"
                         onChange={handleInputChange}

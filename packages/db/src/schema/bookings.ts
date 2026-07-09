@@ -15,7 +15,7 @@ import { v7 as uuidv7 } from 'uuid';
 import { organizations } from './organizations.js';
 import { relations } from 'drizzle-orm';
 
-export const fieldTypeEnum = pgEnum('field_type', [
+export const fieldTypeValues = [
     'text',
     'number',
     'file',
@@ -30,6 +30,17 @@ export const fieldTypeEnum = pgEnum('field_type', [
     'radio',
     'textarea',
     'group',
+] as const;
+
+export type FieldType = (typeof fieldTypeValues)[number];
+
+export const fieldTypeEnum = pgEnum('field_type', [...fieldTypeValues]);
+
+export const bookingStatusEnum = pgEnum('booking_status', [
+    'pending',
+    'confirmed',
+    'cancelled_by_user',
+    'cancelled_by_admin'
 ]);
 
 export const bookingForms = pgTable('booking_forms', {
@@ -39,7 +50,9 @@ export const bookingForms = pgTable('booking_forms', {
     organizationId: uuid('organization_id').references(() => organizations.id, {
         onDelete: 'cascade',
     }),
+    isActive: boolean('is_active').notNull().default(true),
     name: text('name').notNull(),
+    totalBookings: integer('total_bookings').notNull().default(0),
     description: text('description'),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true })
@@ -75,6 +88,7 @@ export const bookings = pgTable('bookings', {
     updatedAt: timestamp('updated_at', { withTimezone: true })
         .notNull()
         .$onUpdateFn(() => new Date()),
+    status: bookingStatusEnum('status').notNull().default('pending'),
     data: jsonb('data').notNull(),
 });
 

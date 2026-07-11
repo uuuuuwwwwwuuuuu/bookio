@@ -43,7 +43,7 @@ export const updateBookingFormFieldHandler = factory(
                 .where(eq(bookingFormFields.bookingFormId, bookingFormId));
 
             if (!existingField) {
-                return c.json(prepareError('Field not found'));
+                return c.json(prepareError('Field not found'), 404);
             }
 
             const [updatedField] = await db
@@ -53,12 +53,12 @@ export const updateBookingFormFieldHandler = factory(
                 .returning();
 
             if (!updatedField) {
-                return c.json(prepareError('Failed to update booking form field'));
+                return c.json(prepareError('Failed to update booking form field'), 500);
             }
 
             return c.json(prepareSuccess('Booking form field updated'));
         } catch (error) {
-            return c.json(prepareError('Failed to update booking form field'));
+            return c.json(prepareError('Failed to update booking form field'), 500);
         }
     },
 );

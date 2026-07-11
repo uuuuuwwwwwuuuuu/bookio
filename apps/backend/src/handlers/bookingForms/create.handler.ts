@@ -19,15 +19,28 @@ export const createBookingFormHandler = factory(
         try {
             const { name, description, organizationId } = c.req.valid('json');
 
-            const bookingForm = await db.insert(bookingForms).values({
-                name,
-                description,
-                organizationId,
-            });
+            const existingBookingForm = await db.query.bookingForms.findFirst({
+                where: (bookingForms, { eq }) => eq(bookingForms.name, name),
+                columns: {
+                    id: true
+                }
+            })
+
+            if (existingBookingForm) {
+                return c.json(prepareError('Booking form with this name already exists'), 400);
+            }
+
+            const bookingForm = await db
+                .insert(bookingForms)
+                .values({
+                    name,
+                    description,
+                    organizationId,
+                }).returning();
 
             return c.json(prepareSuccess(bookingForm));
         } catch (error) {
-            return c.json(prepareError('Failed to create booking form'));
+            return c.json(prepareError('Failed to create booking form'), 500);
         }
     },
 );

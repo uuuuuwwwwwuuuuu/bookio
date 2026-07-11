@@ -35,7 +35,7 @@ export const logoutOrganizationHandler = factory(
             }
 
             if (organization.password !== organizationPassword) {
-                return c.json(prepareError('Invalid organization password'), 400);
+                return c.json(prepareError('Invalid organization password'), 401);
             }
 
             const [deletedOrganization] = await db.delete(organizations).where(eq(organizations.id, organizationId)).returning();

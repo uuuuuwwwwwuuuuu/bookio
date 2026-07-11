@@ -34,7 +34,7 @@ export const createBookingFormFieldHandler = factory(
                 );
 
             if (existingField) {
-                return c.json(prepareError('Field with this key already exists'));
+                return c.json(prepareError('Field with this key already exists'), 400);
             }
 
             const [lastOrderField] = await db
@@ -60,12 +60,12 @@ export const createBookingFormFieldHandler = factory(
                 .returning();
 
             if (!newField) {
-                return c.json(prepareError('Failed to create booking form field'));
+                return c.json(prepareError('Failed to create booking form field'), 500);
             }
 
             return c.json(prepareSuccess('Booking form field created'));
         } catch (error) {
-            return c.json(prepareError('Failed to create booking form field'));
+            return c.json(prepareError('Failed to create booking form field'), 500);
         }
     },
 );

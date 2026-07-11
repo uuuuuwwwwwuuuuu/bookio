@@ -61,13 +61,13 @@ export const getOrganizationDataHandler = factory(
                 .where(eq(organizations.id, organizationId));
 
             if (!organization) {
-                c.json(prepareError('Organization not found'), 404);
+                return c.json(prepareError('Organization not found'), 404);
             }
 
             const member = await getMemberByOrgAndUserId(organizationId, userId);
 
             if (!member) {
-                c.json(prepareError('You are not a member of this organization'), 403);
+                return c.json(prepareError('You are not a member of this organization'), 403);
             }
 
             return c.json(prepareSuccess(organization), 200);

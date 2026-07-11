@@ -14,10 +14,7 @@ import TrashIcon from '@assets/icons/trash.svg?react';
 import { useLogoutOrganization } from '@api/organizations/logoutOgranization';
 import { useOnPress } from '@hooks/useOnPress';
 
-const getDialogContent = (
-    organizationName: string,
-    role: OrganizationType['role'],
-) => {
+const getDialogContent = (organizationName: string, role: OrganizationType['role']) => {
     switch (role) {
         case 'owner':
             return {
@@ -59,7 +56,8 @@ export const OrganizationItem: FC<OrganizationItemProps> = ({
     const [isOpenLogoutDialog, setIsOpenLogoutDialog] = useState(false);
     const [organizationPassword, setOrganizationPassword] = useState('');
 
-    const handleClickOnTrash = () => {
+    const handleClickOnTrash = (e: React.MouseEvent) => {
+        e.stopPropagation();
         setIsOpenLogoutDialog(true);
     };
 
@@ -97,67 +95,70 @@ export const OrganizationItem: FC<OrganizationItemProps> = ({
     const { title, description } = getDialogContent(organizationName, role);
 
     const handleClickOnOrganization = useCallback(() => {
+        if (isOpenLogoutDialog) return;
         onClick?.(organizationId);
-    }, [onClick, organizationId]);
+    }, [onClick, organizationId, isOpenLogoutDialog]);
 
     return (
-        <div
-            className={clsx(styles.organizationItem, { [styles.withoutActions]: !showActions })}
-            onClick={handleClickOnOrganization}
-        >
-            <img src={imageUrl || PlaceholderImage} alt={organizationName} />
-            <div className={styles.organizationInfo}>
-                <h3 className={styles.title}>
-                    <span className={styles.titleName}>{organizationName}</span>
-                    <span className={styles.titleSlug}>@{slug}</span>
-                </h3>
-                <div className={styles.organizationAdditionalInfo}>
-                    <div className={clsx(styles.role, { [styles.owner]: role === 'owner' })}>
-                        {role}
+        <>
+            <div
+                className={clsx(styles.organizationItem, { [styles.withoutActions]: !showActions })}
+                onClick={handleClickOnOrganization}
+            >
+                <img src={imageUrl || PlaceholderImage} alt={organizationName} />
+                <div className={styles.organizationInfo}>
+                    <h3 className={styles.title}>
+                        <span className={styles.titleName}>{organizationName}</span>
+                        <span className={styles.titleSlug}>@{slug}</span>
+                    </h3>
+                    <div className={styles.organizationAdditionalInfo}>
+                        <div className={clsx(styles.role, { [styles.owner]: role === 'owner' })}>
+                            {role}
+                        </div>
+                        <span>{format(new Date(createdAt), 'dd/MM/yyyy', { locale: ru })}</span>
                     </div>
-                    <span>{format(new Date(createdAt), 'dd/MM/yyyy', { locale: ru })}</span>
                 </div>
-            </div>
 
-            {showActions && (
-                <>
+                {showActions && (
                     <div className={styles.actionButtons}>
                         <Button variant="red-clean" onClick={handleClickOnTrash}>
                             <TrashIcon />
                         </Button>
                     </div>
+                )}
+            </div>
 
-                    <Dialog
-                        open={isOpenLogoutDialog}
-                        onOpenChange={setIsOpenLogoutDialog}
-                        closeOnEscape
-                        contentClassName={styles.logoutDialog}
-                    >
-                        <Dialog.Title>
-                            <span dangerouslySetInnerHTML={{ __html: title }} />
-                        </Dialog.Title>
-                        <Dialog.Description>
-                            <span dangerouslySetInnerHTML={{ __html: description }} />
-                        </Dialog.Description>
-                        {role === 'owner' && (
-                            <Dialog.Input
-                                type="password"
-                                placeholder="Enter organization password"
-                                value={organizationPassword}
-                                onChange={handleChangeOrganizationPassword}
-                            />
-                        )}
-                        <Dialog.Actions>
-                            <Dialog.Button variant="simple-clean" onClick={handleCloseLogoutDialog}>
-                                Cancel
-                            </Dialog.Button>
-                            <Dialog.Button variant="red-filled" onClick={handleLogoutOrganization}>
-                                Logout
-                            </Dialog.Button>
-                        </Dialog.Actions>
-                    </Dialog>
-                </>
+            {showActions && (
+                <Dialog
+                    open={isOpenLogoutDialog}
+                    onOpenChange={setIsOpenLogoutDialog}
+                    closeOnEscape
+                    contentClassName={styles.logoutDialog}
+                >
+                    <Dialog.Title>
+                        <span dangerouslySetInnerHTML={{ __html: title }} />
+                    </Dialog.Title>
+                    <Dialog.Description>
+                        <span dangerouslySetInnerHTML={{ __html: description }} />
+                    </Dialog.Description>
+                    {role === 'owner' && (
+                        <Dialog.Input
+                            type="password"
+                            placeholder="Enter organization password"
+                            value={organizationPassword}
+                            onChange={handleChangeOrganizationPassword}
+                        />
+                    )}
+                    <Dialog.Actions>
+                        <Dialog.Button variant="simple-clean" onClick={handleCloseLogoutDialog}>
+                            Cancel
+                        </Dialog.Button>
+                        <Dialog.Button variant="red-filled" onClick={handleLogoutOrganization}>
+                            Logout
+                        </Dialog.Button>
+                    </Dialog.Actions>
+                </Dialog>
             )}
-        </div>
+        </>
     );
 };

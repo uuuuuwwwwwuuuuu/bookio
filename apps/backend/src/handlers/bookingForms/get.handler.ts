@@ -2,9 +2,7 @@ import { createFactory } from 'hono/factory';
 import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { db } from '@/db.js';
-import { bookingForms } from '@bookio/db';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
-import { eq } from 'drizzle-orm';
 
 const factory = createFactory().createHandlers;
 
@@ -18,18 +16,17 @@ export const getBookingFormsHandler = factory(
         try {
             const { organizationId } = c.req.valid('query');
 
-            const forms = await db
-                .select()
-                .from(bookingForms)
-                .where(eq(bookingForms.organizationId, organizationId));
+            const forms = await db.query.bookingForms.findMany({
+                where: (bookingForms, { eq }) => eq(bookingForms.organizationId, organizationId),
+            });
 
             if (!forms || forms.length === 0) {
-                return c.json(prepareError('No booking forms found'));
+                return c.json(prepareError('No booking forms found'), 404);
             }
 
             return c.json(prepareSuccess(forms));
         } catch (error) {
-            return c.json(prepareError('Failed to get booking forms'));
+            return c.json(prepareError('Failed to get booking forms'), 500);
         }
     },
 );
@@ -44,18 +41,17 @@ export const getBookingFormHandler = factory(
         try {
             const { bookingFormId } = c.req.valid('query');
 
-            const [form] = await db
-                .select()
-                .from(bookingForms)
-                .where(eq(bookingForms.id, bookingFormId));
+            const form = await db.query.bookingForms.findFirst({
+                where: (bookingForms, { eq }) => eq(bookingForms.id, bookingFormId),
+            });
 
             if (!form) {
-                return c.json(prepareError('Booking form not found'));
+                return c.json(prepareError('Booking form not found'), 404);
             }
 
             return c.json(prepareSuccess(form));
         } catch (error) {
-            return c.json(prepareError('Failed to get booking form'));
+            return c.json(prepareError('Failed to get booking form'), 500);
         }
     },
 );
@@ -68,9 +64,22 @@ export const getBookingFormWithFieldsHandler = factory(
 
             const form = await db.query.bookingForms.findFirst({
                 where: (bookingForms, { eq }) => eq(bookingForms.id, bookingFormId),
-            })
+                with: {
+                    fields: {
+                        with: {
+                            childFields: true,
+                        },
+                    },
+                },
+            });
+
+            if (!form) {
+                return c.json(prepareError('Booking form not found'), 404);
+            }
+
+            return c.json(prepareSuccess(form));
         } catch (error) {
-            return c.json(prepareError('Failed to get booking form with fields'));
+            return c.json(prepareError('Failed to get booking form with fields'), 500);
         }
     },
 );

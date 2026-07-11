@@ -24,7 +24,7 @@ export const deleteBookingFormFieldHandler = factory(
                 .where(eq(bookingFormFields.id, id));
 
             if (!existingField) {
-                return c.json(prepareError('Field already deleted'));
+                return c.json(prepareError('Field already deleted'), 404);
             }
             
             await db.delete(bookingFormFields).where(eq(bookingFormFields.id, id));
@@ -32,7 +32,7 @@ export const deleteBookingFormFieldHandler = factory(
             return c.json(prepareSuccess('Booking form field deleted'));
 
         } catch (error) {
-            return c.json(prepareError('Failed to delete booking form field'));
+            return c.json(prepareError('Failed to delete booking form field'), 500);
         }
     },
 );

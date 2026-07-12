@@ -32,7 +32,7 @@ const createBookingFormRequest = async (requestData: CreateBookingFormRequest) =
         throw new Error(parseError(body));
     }
 
-    return body;
+    return body.data;
 };
 
 export const useCreateBookingForm = () => {

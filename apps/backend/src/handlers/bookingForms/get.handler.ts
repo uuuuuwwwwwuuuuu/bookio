@@ -20,10 +20,6 @@ export const getBookingFormsHandler = factory(
                 where: (bookingForms, { eq }) => eq(bookingForms.organizationId, organizationId),
             });
 
-            if (!forms || forms.length === 0) {
-                return c.json(prepareError('No booking forms found'), 404);
-            }
-
             return c.json(prepareSuccess(forms));
         } catch (error) {
             return c.json(prepareError('Failed to get booking forms'), 500);
@@ -44,10 +40,6 @@ export const getBookingFormHandler = factory(
             const form = await db.query.bookingForms.findFirst({
                 where: (bookingForms, { eq }) => eq(bookingForms.id, bookingFormId),
             });
-
-            if (!form) {
-                return c.json(prepareError('Booking form not found'), 404);
-            }
 
             return c.json(prepareSuccess(form));
         } catch (error) {
@@ -73,10 +65,6 @@ export const getBookingFormWithFieldsHandler = factory(
                     },
                 },
             });
-
-            if (!form) {
-                return c.json(prepareError('Booking form not found'), 404);
-            }
 
             return c.json(prepareSuccess(form));
         } catch (error) {

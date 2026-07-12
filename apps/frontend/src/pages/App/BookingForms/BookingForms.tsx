@@ -14,21 +14,42 @@ export const BookingForms: FC = () => {
     }, [refetch]);
 
     if (isPending) {
-        return <div className={styles.loadingContainer}>
-            <Spinner size={6} />
-        </div>
+        return (
+            <div className={styles.loadingContainer}>
+                <Spinner size={6} />
+            </div>
+        );
     }
 
     if (error) {
         return (
             <div className={styles.errorContainer}>
                 <h2>{error.message}</h2>
-                <Button variant="primary-outlined" onClick={handleRetry}>Retry</Button>
+                <Button variant="primary-outlined" onClick={handleRetry}>
+                    Retry
+                </Button>
             </div>
         );
     }
 
-    if (bookingForms)
+    if (bookingForms.length === 0) {
+        return (
+            <div className={styles.emptyContainer}>
+                <div className={styles.emptyContainerContent}>
+                    <h2>You haven't any booking forms yet</h2>
+                    <p>Create your first booking form to get started</p>
+                </div>
+                <Button
+                    variant="primary-filled"
+                    type="link"
+                    className={styles.createButton}
+                    to="create"
+                >
+                    Create your first booking form
+                </Button>
+            </div>
+        );
+    }
 
     return <div className={styles.bookingForms}></div>;
 };

@@ -40,16 +40,18 @@ export const bookingStatusEnum = pgEnum('booking_status', [
     'pending',
     'confirmed',
     'cancelled_by_user',
-    'cancelled_by_admin'
+    'cancelled_by_admin',
 ]);
 
 export const bookingForms = pgTable('booking_forms', {
     id: uuid('id')
         .primaryKey()
         .$default(() => uuidv7()),
-    organizationId: uuid('organization_id').references(() => organizations.id, {
-        onDelete: 'cascade',
-    }).notNull(),
+    organizationId: uuid('organization_id')
+        .references(() => organizations.id, {
+            onDelete: 'cascade',
+        })
+        .notNull(),
     isActive: boolean('is_active').notNull().default(true),
     name: text('name').notNull(),
     totalBookings: integer('total_bookings').notNull().default(0),
@@ -63,10 +65,14 @@ export const bookingForms = pgTable('booking_forms', {
 export const bookingFormFields = pgTable('booking_form_fields', {
     id: uuid('id')
         .primaryKey()
-        .$default(() => uuidv7()),
-    bookingFormId: uuid('booking_form_id').references(() => bookingForms.id, {
-        onDelete: 'cascade',
-    }),
+        .$default(() => uuidv7())
+        .notNull()
+        .unique(),
+    bookingFormId: uuid('booking_form_id')
+        .references(() => bookingForms.id, {
+            onDelete: 'cascade',
+        })
+        .notNull(),
     name: text('name').notNull(),
     type: fieldTypeEnum('type').notNull(),
     key: text('key').notNull(),
@@ -116,13 +122,12 @@ export const formFieldsRelations = relations(bookingFormFields, ({ one, many }) 
     }),
 }));
 
-
-export const bookingsRelations = relations(bookings, ({one}) => ({
+export const bookingsRelations = relations(bookings, ({ one }) => ({
     bookingForm: one(bookingForms, {
         fields: [bookings.bookingFormId],
-        references: [bookingForms.id]
-    })
-}))
+        references: [bookingForms.id],
+    }),
+}));
 
 export type BookingFormSelect = typeof bookingForms.$inferSelect;
 export type BookingFormFieldSelect = typeof bookingFormFields.$inferSelect;
@@ -133,6 +138,4 @@ export type BookingFormFieldInsert = typeof bookingFormFields.$inferInsert;
 export type BookingInsert = typeof bookings.$inferInsert;
 
 export type BookingFormFieldCreate = Omit<BookingFormFieldInsert, 'id' | 'order'>;
-export type BookingFormFieldUpdate = Partial<
-    Omit<BookingFormFieldInsert, 'id'>
->;
+export type BookingFormFieldUpdate = Partial<Omit<BookingFormFieldInsert, 'id'>>;

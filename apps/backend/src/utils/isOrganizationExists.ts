@@ -1,8 +1,9 @@
 import { db } from '@/db.js';
-import { organizations } from '@bookio/db';
-import { eq } from 'drizzle-orm';
 
 export const isOrganizationExists = async (slug: string) => {
-    const [organization] = await db.select().from(organizations).where(eq(organizations.slug, slug));
+    const organization = await db.query.organizations.findFirst({
+        where: (organizations, { eq }) => eq(organizations.slug, slug),
+        columns: { id: true },
+    });
     return !!organization;
 };

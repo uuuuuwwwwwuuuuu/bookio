@@ -4,6 +4,7 @@ import { zValidator } from '@hono/zod-validator';
 import { db } from '@/db.js';
 import { bookingForms } from '@bookio/db';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
+import { isBookingFormExists } from '@/utils/isBookingFormExists.js';
 
 const factory = createFactory().createHandlers;
 
@@ -19,12 +20,7 @@ export const createBookingFormHandler = factory(
         try {
             const { name, description, organizationId } = c.req.valid('json');
 
-            const existingBookingForm = await db.query.bookingForms.findFirst({
-                where: (bookingForms, { eq }) => eq(bookingForms.name, name),
-                columns: {
-                    id: true
-                }
-            })
+            const existingBookingForm = await isBookingFormExists(name, organizationId);
 
             if (existingBookingForm) {
                 return c.json(prepareError('Booking form with this name already exists'), 400);

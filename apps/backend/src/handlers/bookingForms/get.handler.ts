@@ -66,6 +66,7 @@ export const getBookingFormWithFieldsHandler = factory(
                 where: (bookingForms, { eq }) => eq(bookingForms.id, bookingFormId),
                 with: {
                     fields: {
+                        where: (field, { isNull }) => isNull(field.parentId),
                         with: {
                             childFields: true,
                         },

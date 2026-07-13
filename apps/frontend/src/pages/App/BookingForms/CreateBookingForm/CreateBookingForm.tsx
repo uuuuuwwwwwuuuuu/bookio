@@ -34,12 +34,9 @@ export const CreateBookingForm: FC = () => {
         formState: { isSubmitting },
     } = useForm<FormData>({
         resolver: zodResolver(createBookingFormSchema),
-
         defaultValues: {
             name: '',
-
             description: '',
-
             organizationId: id ?? '',
         },
     });
@@ -65,7 +62,6 @@ export const CreateBookingForm: FC = () => {
         toast.error(getFirstFieldError(errors) ?? 'Invalid form data');
     };
 
-    const isDisabled = isPending || isSubmitting || nameExists === true;
 
     if (isSuccess) {
         navigate(`/${id}/booking-forms`);
@@ -91,21 +87,18 @@ export const CreateBookingForm: FC = () => {
                             {...field}
                             placeholder="Enter the name of the booking form"
                             isValid={nameIsValid}
-                            disabled={isDisabled}
                         />
                     )}
                 />
 
                 <Input
                     placeholder="Enter the description of the booking form"
-                    disabled={isDisabled}
                     {...register('description')}
                 />
 
                 <Button
                     type="submit"
                     variant="primary-filled"
-                    disabled={isDisabled}
                     className={styles.submitButton}
                 >
                     Create booking form

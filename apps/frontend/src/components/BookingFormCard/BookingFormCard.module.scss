@@ -1,12 +1,24 @@
 .bookingFormCard {
     background-color: var(--color-bg-ui);
     padding: 3rem 2rem;
+    max-height: 55rem;
     width: 100%;
-    height: fit-content;
     border-radius: 1rem;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    gap: 5rem;
+    gap: 3rem;
+    border: 1px solid var(--color-border);
+
+    .contentGroup {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .bookingFormCardGroupName {
+        height: 12rem;
+    }
 
     .bookingFormCardGroup {
         display: flex;

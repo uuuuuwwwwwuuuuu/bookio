@@ -139,3 +139,4 @@ export type BookingInsert = typeof bookings.$inferInsert;
 
 export type BookingFormFieldCreate = Omit<BookingFormFieldInsert, 'id' | 'order'>;
 export type BookingFormFieldUpdate = Partial<Omit<BookingFormFieldInsert, 'id'>>;
+export type BookingFormUpdate = Partial<Omit<BookingFormInsert, 'id'>>;

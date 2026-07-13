@@ -178,3 +178,50 @@ p {
     --color-system-green: #1ecc0e;
     --color-system-blue: #0e6ecc;
 }
+
+/* Scrollbar Styles */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.1s ease;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+*:hover {
+    scrollbar-color: var(--color-border) var(--color-bg-main);
+}
+
+*:hover {
+    scrollbar-color: var(--color-border) var(--color-bg-main);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 20px;
+    border: 2px solid transparent;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border: 2px solid var(--color-bg-main);
+}
+
+*:hover::-webkit-scrollbar-track {
+    background: var(--color-bg-main);
+}

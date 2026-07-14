@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import organizations from './organizations.routes.js';
-import bookings from './bookings.routes.js';
+import bookings from './bookingForms.routes.js';
 import fields from './fields.routes.js';
 import test from '@/handlers/test.js';
 

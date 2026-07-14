@@ -4,7 +4,7 @@
 	"references": [
 		{ "path": "./apps/backend" },
 		{ "path": "./apps/frontend" },
-		{ "path": "./apps/booking" },
+		{ "path": "./apps/booking-form" },
 		{ "path": "./packages/db" },
 		{ "path": "./packages/ui" }
 	]

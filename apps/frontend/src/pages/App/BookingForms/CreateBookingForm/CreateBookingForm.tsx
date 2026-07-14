@@ -41,7 +41,7 @@ export const CreateBookingForm: FC = () => {
     });
 
     const name = useWatch({ control, name: 'name', defaultValue: '' });
-    const { exists: nameExists } = useIsBookingFormExists(name, id ?? '');
+    const { exists: nameExists } = useIsBookingFormExists(name.trim(), id ?? '');
     const nameIsValid = nameExists === undefined ? undefined : !nameExists;
 
     const onSubmit = async (data: FormData) => {

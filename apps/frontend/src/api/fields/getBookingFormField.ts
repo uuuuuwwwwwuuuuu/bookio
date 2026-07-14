@@ -1,5 +1,5 @@
 import hono from '@lib/hono-client';
-import { parseError } from '@utils/parseError';
+import { validateError } from '@utils/validateError';
 import type { InferResponseType } from 'hono/client';
 import { useQuery, type UseQueryResult } from '@tanstack/react-query';
 
@@ -22,16 +22,7 @@ export const fetchBookingFormField = async (
 
     const body = await response.json();
 
-    if (!response.ok) {
-        if ('success' in body && !body.success) {
-            throw new Error(parseError(body));
-        }
-        throw new Error('Failed to get booking form field');
-    }
-
-    if (!body.success) {
-        throw new Error(parseError(body));
-    }
+    validateError(response, body, 'Failed to get booking form field');
 
     return body.data;
 };

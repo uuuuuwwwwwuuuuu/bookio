@@ -1,7 +1,8 @@
 import hono from '@lib/hono-client';
 import { queryClient } from '@lib/query-client';
 import { useMutation } from '@tanstack/react-query';
-import { parseError } from '@utils/parseError';
+import { validateError } from '@utils/validateError';
+import { trimObj } from '@utils/trimObj';
 import type { InferRequestType, InferResponseType } from 'hono/client';
 
 export type CreateBookingFormFieldRequest = InferRequestType<
@@ -14,21 +15,12 @@ export type CreateBookingFormFieldResponse = InferResponseType<
 
 const createBookingFormFieldRequest = async (requestData: CreateBookingFormFieldRequest) => {
     const response = await hono.fields.create.$post({
-        json: requestData,
+        json: trimObj(requestData),
     });
 
     const body = await response.json();
 
-    if (!response.ok) {
-        if (!body.success) {
-            throw new Error(parseError(body));
-        }
-        throw new Error('Failed to create booking form field');
-    }
-
-    if (!body.success) {
-        throw new Error(parseError(body));
-    }
+    validateError(response, body, 'Failed to create booking form field');
 
     return body.data;
 };

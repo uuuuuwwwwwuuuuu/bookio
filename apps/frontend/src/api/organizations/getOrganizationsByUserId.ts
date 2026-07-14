@@ -1,7 +1,7 @@
 import { useSession } from '@api/auth';
 import hono from '@lib/hono-client';
 import { useQuery, type UseQueryResult } from '@tanstack/react-query';
-import { parseError } from '@utils/parseError';
+import { validateError } from '@utils/validateError';
 import type { InferResponseType } from 'hono/client';
 
 export type OrganizationsResponse200 = InferResponseType<typeof hono.organizations.$get, 200>;
@@ -15,16 +15,7 @@ const fetchOrganizationsByUserId = async (userId: string) => {
 
     const body = await response.json();
 
-    if (!response.ok) {
-        if (!body.success) {
-            throw new Error(parseError(body));
-        }
-        throw new Error('Failed to fetch organizations');
-    }
-
-    if (!body.success) {
-        throw new Error(parseError(body));
-    }
+    validateError(response, body, 'Failed to fetch organizations');
 
     return body.data;
 };

@@ -1,5 +1,5 @@
 import hono from '@lib/hono-client';
-import { parseError } from '@utils/parseError';
+import { validateError } from '@utils/validateError';
 import type { InferResponseType, InferRequestType } from 'hono/client';
 import { useQuery, type UseQueryResult } from '@tanstack/react-query';
 import { useSession } from '@api/auth';
@@ -24,16 +24,7 @@ const getOrganizationData = async (
 
     const body = await response.json();
 
-    if (!response.ok) {
-        if (!body.success) {
-            throw new Error(parseError(body));
-        }
-        throw new Error('Failed to get organization data');
-    }
-
-    if (!body.success) {
-        throw new Error(parseError(body));
-    }
+    validateError(response, body, 'Failed to get organization data');
 
     return body.data;
 };

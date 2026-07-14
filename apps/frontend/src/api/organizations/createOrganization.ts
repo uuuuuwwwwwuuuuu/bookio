@@ -1,7 +1,8 @@
 import hono from '@lib/hono-client';
 import { queryClient } from '@lib/query-client';
 import { useMutation } from '@tanstack/react-query';
-import { parseError } from '@utils/parseError';
+import { validateError } from '@utils/validateError';
+import { trimObj } from '@utils/trimObj';
 import type { InferRequestType, InferResponseType } from 'hono/client';
 
 export type CreateOrganizationRequest = InferRequestType<
@@ -14,21 +15,12 @@ export type CreateOrganizationResponse = InferResponseType<
 
 const createOrganizationRequest = async (requestData: CreateOrganizationRequest) => {
     const response = await hono.organizations.create.$post({
-        json: requestData,
+        json: trimObj(requestData),
     });
 
     const body = await response.json();
 
-    if (!response.ok) {
-        if (!body.success) {
-            throw new Error(parseError(body));
-        }
-        throw new Error('Failed to create organization');
-    }
-
-    if (!body.success) {
-        throw new Error(parseError(body));
-    }
+    validateError(response, body, 'Failed to create organization');
 
     return body.data;
 };

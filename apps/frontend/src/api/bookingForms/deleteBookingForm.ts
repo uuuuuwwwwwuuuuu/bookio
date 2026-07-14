@@ -1,7 +1,7 @@
 import hono from '@lib/hono-client';
 import { queryClient } from '@lib/query-client';
 import { useMutation } from '@tanstack/react-query';
-import { parseError } from '@utils/parseError';
+import { validateError } from '@utils/validateError';
 import type { InferRequestType, InferResponseType } from 'hono/client';
 
 const deleteBookingFormClient = hono['booking-forms']['delete'];
@@ -22,16 +22,7 @@ const deleteBookingFormRequest = async (requestData: DeleteBookingFormRequest) =
 
     const body = await response.json();
 
-    if (!response.ok) {
-        if (!body.success) {
-            throw new Error(parseError(body));
-        }
-        throw new Error('Failed to delete booking form');
-    }
-
-    if (!body.success) {
-        throw new Error(parseError(body));
-    }
+    validateError(response, body, 'Failed to delete booking form');
 
     return body.data;
 };

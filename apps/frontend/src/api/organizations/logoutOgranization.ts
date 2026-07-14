@@ -3,7 +3,7 @@ import hono from '@lib/hono-client';
 import { useMutation } from '@tanstack/react-query';
 import { queryClient } from '@lib/query-client';
 import type { InferRequestType, InferResponseType } from 'hono/client';
-import { parseError } from '@utils/parseError';
+import { validateError } from '@utils/validateError';
 
 export type LogoutOrganizationRequest = InferRequestType<
     typeof hono.organizations.logout.$post
@@ -28,16 +28,7 @@ const logoutOrganization = async ({
 
     const body = await response.json();
 
-    if (!response.ok) {
-        if (body.success === false) {
-            throw new Error(parseError(body));
-        }
-        throw new Error('Failed to logout organization');
-    }
-
-    if (!body.success) {
-        throw new Error(parseError(body));
-    }
+    validateError(response, body, 'Failed to logout organization');
 
     return body.data;
 };

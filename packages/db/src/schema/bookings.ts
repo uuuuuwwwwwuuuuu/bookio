@@ -1,5 +1,6 @@
 import { pgTable, uuid, timestamp, jsonb, pgEnum } from 'drizzle-orm/pg-core';
 import { v7 as uuidv7 } from 'uuid';
+import { relations } from 'drizzle-orm';
 import { bookingForms } from './booking-forms.js';
 
 export const bookingStatusEnum = pgEnum('booking_status', [
@@ -23,3 +24,10 @@ export const bookings = pgTable('bookings', {
     status: bookingStatusEnum('status').notNull().default('pending'),
     data: jsonb('data').notNull(),
 });
+
+export const bookingsRelations = relations(bookings, ({ one }) => ({
+    bookingForm: one(bookingForms, {
+        fields: [bookings.bookingFormId],
+        references: [bookingForms.id],
+    }),
+}));

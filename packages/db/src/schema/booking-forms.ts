@@ -72,7 +72,26 @@ export const bookingFormMetaData = pgTable('booking_form_meta_data', {
         .$onUpdateFn(() => new Date()),
 });
 
+export const bookingFormStyles = pgTable('booking_form_styles', {
+    id: uuid('id').primaryKey().$default(() => uuidv7()),
+    bookingFormId: uuid('booking_form_id').references(() => bookingForms.id, {
+        onDelete: 'cascade',
+    }).notNull(),
+    primary: text('primary_color'),
 
+    bgMain: text('bg_main'),
+    bgSecondary: text('bg_secondary'),
+
+    borderColor: text('border_color'),
+
+    textMain: text('text_main'),
+    textSecondary: text('text_secondary'),
+
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp('updated_at', { withTimezone: true })
+        .notNull()
+        .$onUpdateFn(() => new Date()),
+})
 
 export const bookingFormFields = pgTable('booking_form_fields', {
     id: uuid('id')
@@ -120,13 +139,6 @@ export const formFieldsRelations = relations(bookingFormFields, ({ one, many }) 
     }),
     childFields: many(bookingFormFields, {
         relationName: 'nested_fields',
-    }),
-}));
-
-export const bookingsRelations = relations(bookings, ({ one }) => ({
-    bookingForm: one(bookingForms, {
-        fields: [bookings.bookingFormId],
-        references: [bookingForms.id],
     }),
 }));
 

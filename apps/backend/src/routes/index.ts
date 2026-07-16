@@ -2,13 +2,15 @@ import { Hono } from 'hono';
 import organizations from './organizations.routes.js';
 import bookings from './bookingForms.routes.js';
 import fields from './fields.routes.js';
-import test from '@/handlers/test.js';
+import metaData from './bookingFormMeta.routes.js';
 
+import test from '@/handlers/test.js';
 
 const routes = new Hono()
     .route('/organizations', organizations)
     .route('/booking-forms', bookings)
     .route('/fields', fields)
+    .route('/booking-form-meta', metaData)
     .route('/test', test)
 
 export default routes;

@@ -22,6 +22,13 @@
       "when": 1784098301774,
       "tag": "0002_sticky_mimic",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1784133826845,
+      "tag": "0003_low_vivisector",
+      "breakpoints": true
     }
   ]
 }

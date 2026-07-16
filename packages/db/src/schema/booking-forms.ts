@@ -64,8 +64,6 @@ export const bookingFormMetaData = pgTable('booking_form_meta_data', {
     }).notNull(),
     title: text('title').notNull(),
     description: text('description').notNull(),
-    ogImage: text('og_image'),
-    themeColor: text('theme_color'),
     additionalMetaData: jsonb('additional_meta_data').notNull().default({}),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true })
@@ -78,15 +76,15 @@ export const bookingFormStyles = pgTable('booking_form_styles', {
     bookingFormId: uuid('booking_form_id').references(() => bookingForms.id, {
         onDelete: 'cascade',
     }).notNull(),
-    primary: text('primary_color'),
+    primary: text('primary_color').notNull(),
 
-    bgMain: text('bg_main'),
-    bgSecondary: text('bg_secondary'),
+    bgMain: text('bg_main').notNull(),
+    bgSecondary: text('bg_secondary').notNull(),
 
-    borderColor: text('border_color'),
+    borderColor: text('border_color').notNull(),
 
-    textMain: text('text_main'),
-    textSecondary: text('text_secondary'),
+    textMain: text('text_main').notNull(),
+    textSecondary: text('text_secondary').notNull(),
 
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true })

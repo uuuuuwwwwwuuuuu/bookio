@@ -124,6 +124,10 @@ export const bookingFormsRelations = relations(bookingForms, ({ one, many }) => 
         fields: [bookingForms.id],
         references: [bookingFormMetaData.bookingFormId],
     }),
+    styles: one(bookingFormStyles, {
+        fields: [bookingForms.id],
+        references: [bookingFormStyles.bookingFormId],
+    }),
 }));
 
 export const formFieldsRelations = relations(bookingFormFields, ({ one, many }) => ({

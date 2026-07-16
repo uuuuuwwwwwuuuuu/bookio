@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { db } from '@/db.js';
 import { zValidator } from '@hono/zod-validator';
 import { bookingFormMetaData } from '@bookio/db';
+import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
 
 const createBookingFormMetaSchema = z.object({
     title: z.string().min(1),
@@ -13,14 +14,17 @@ const createBookingFormMetaSchema = z.object({
 
 const factory = createFactory().createHandlers;
 
-export const createBookingFormMetaHandler = factory(zValidator('json', createBookingFormMetaSchema), async (c) => {
-    try {
-        const body = c.req.valid('json');
-        
-        const bookingFormMeta = await db.insert(bookingFormMetaData).values(body).returning();
+export const createBookingFormMetaHandler = factory(
+    zValidator('json', createBookingFormMetaSchema),
+    async (c) => {
+        try {
+            const body = c.req.valid('json');
 
-        return c.json(bookingFormMeta);
-    } catch (error) {
-        return c.json({ error: 'Failed to create booking form meta' }, 500);
-    }
-});
+            const bookingFormMeta = await db.insert(bookingFormMetaData).values(body).returning();
+
+            return c.json(prepareSuccess(bookingFormMeta));
+        } catch (error) {
+            return c.json(prepareError('Failed to create booking form meta'), 500);
+        }
+    },
+);

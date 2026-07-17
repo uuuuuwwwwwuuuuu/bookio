@@ -6,8 +6,8 @@ import { useIsBookingFormExists } from '@api/bookingForms/isBookingFormExists';
 import { useGetOrganization } from '@api/organizations/getOrganizationData';
 import { useCreateBookingFormStore } from '@store/useCreateBookingFormStore';
 import { BOOKING_FORM_URL } from '@utils/constants';
-import { BookingFormConfiguratorLayout } from '../BookingFormConfiguratorLayout/BookingFormConfiguratorLayout';
-import { step2Schema } from '../schemas/createBookingFormDraft.schema';
+import { BookingFormConfiguratorLayout } from '../../BookingFormConfiguratorLayout/BookingFormConfiguratorLayout';
+import { step2Schema } from '../../schemas/createBookingFormDraft.schema';
 import toast from 'react-hot-toast';
 import styles from './Step2UrlSlug.module.scss';
 
@@ -47,10 +47,10 @@ export const Step2UrlSlug: FC = () => {
     const slugErrorMessage =
         slugIsValid !== false
             ? undefined
-            : (formatResult && !formatResult.success
+            : ((formatResult && !formatResult.success
                   ? formatResult.error.issues[0]?.message
                   : undefined) ??
-              (slugExists === true ? 'Booking form with this slug already exists' : undefined);
+              (slugExists === true ? 'Booking form with this slug already exists' : undefined));
 
     const organizationSlug = organization?.slug ?? 'your-org';
     const previewSlug = trimmedSlug || 'your-form';

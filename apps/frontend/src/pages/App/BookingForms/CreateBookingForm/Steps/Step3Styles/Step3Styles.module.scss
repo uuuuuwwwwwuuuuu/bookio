@@ -1,0 +1,36 @@
+.footerActions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.fieldLabel {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.colorField {
+    display: flex;
+    align-items: stretch;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+.colorFieldInput {
+    flex: 1;
+    min-width: 0;
+}
+
+.colorPicker {
+    flex: 0 0 auto;
+    align-self: stretch;
+}

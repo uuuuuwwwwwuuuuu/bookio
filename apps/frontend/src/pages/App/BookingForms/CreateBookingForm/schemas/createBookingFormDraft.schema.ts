@@ -16,3 +16,16 @@ export const step2Schema = z.object({
                 'Slug must use only lowercase English letters, numbers, hyphens, and underscores (no spaces)',
         }),
 });
+
+const hexColorSchema = z.string().regex(/^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/, {
+    message: 'Color must be a hex value (#RGB or #RRGGBB)',
+});
+
+export const step3Schema = z.object({
+    primary: hexColorSchema,
+    bgMain: hexColorSchema,
+    bgSecondary: hexColorSchema,
+    borderColor: hexColorSchema,
+    textMain: hexColorSchema,
+    textSecondary: hexColorSchema,
+});

@@ -32,3 +32,6 @@ export type {
 
 export { default as Checkbox } from './Checkbox/Checkbox.js';
 export type { CheckboxProps } from './Checkbox/Checkbox.js';
+
+export { default as ColorPicker } from './ColorPicker/ColorPicker.js';
+export type { ColorPickerProps } from './ColorPicker/ColorPicker.js';

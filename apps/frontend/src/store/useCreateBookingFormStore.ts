@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import { DEFAULT_BOOKING_FORM_STYLES } from '@utils/defaultBookingFormStyles';
 
 export type CreateBookingFormStep = number;
 
@@ -8,6 +9,12 @@ export type CreateBookingFormDraft = {
     name: string;
     description: string;
     slug: string;
+    primary: string;
+    bgMain: string;
+    bgSecondary: string;
+    borderColor: string;
+    textMain: string;
+    textSecondary: string;
 };
 
 const INITIAL_DRAFT: CreateBookingFormDraft = {
@@ -15,6 +22,7 @@ const INITIAL_DRAFT: CreateBookingFormDraft = {
     name: '',
     description: '',
     slug: '',
+    ...DEFAULT_BOOKING_FORM_STYLES,
 };
 
 interface CreateBookingFormStore {

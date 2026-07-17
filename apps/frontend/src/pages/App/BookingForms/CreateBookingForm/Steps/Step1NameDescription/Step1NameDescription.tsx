@@ -4,20 +4,21 @@ import { Button, Input } from '@bookio/ui';
 import { ValidatableInput } from '@components/ValidatableInput/ValidatableInput';
 import { useIsBookingFormExists } from '@api/bookingForms/isBookingFormExists';
 import { useCreateBookingFormStore } from '@store/useCreateBookingFormStore';
-import { BookingFormConfiguratorLayout } from '../BookingFormConfiguratorLayout/BookingFormConfiguratorLayout';
+import { BookingFormConfiguratorLayout } from '../../BookingFormConfiguratorLayout/BookingFormConfiguratorLayout';
 import toast from 'react-hot-toast';
 
 export const Step1NameDescription: FC = () => {
-    const { data, name, description, organizationId, setField, goToNextStep } = useCreateBookingFormStore(
-        useShallow((s) => ({
-            data: s.data,
-            name: s.data.name,
-            description: s.data.description,
-            organizationId: s.data.organizationId,
-            setField: s.setField,
-            goToNextStep: s.goToNextStep,
-        })),
-    );
+    const { data, name, description, organizationId, setField, goToNextStep } =
+        useCreateBookingFormStore(
+            useShallow((s) => ({
+                data: s.data,
+                name: s.data.name,
+                description: s.data.description,
+                organizationId: s.data.organizationId,
+                setField: s.setField,
+                goToNextStep: s.goToNextStep,
+            })),
+        );
 
     const { exists: nameExists } = useIsBookingFormExists({
         organizationId,
@@ -56,9 +57,7 @@ export const Step1NameDescription: FC = () => {
                 placeholder="Name*"
                 isValid={nameIsValid}
                 errorMessage={
-                    nameExists === true
-                        ? 'Booking form with this name already exists'
-                        : undefined
+                    nameExists === true ? 'Booking form with this name already exists' : undefined
                 }
             />
             <Input

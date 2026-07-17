@@ -1,0 +1,24 @@
+.footerActions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.metaRow {
+    display: flex;
+    align-items: stretch;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+.metaRowInput {
+    flex: 1;
+    min-width: 0;
+}
+
+.removeButton {
+    flex: 0 0 auto;
+    align-self: stretch;
+    padding-inline: 1rem;
+}

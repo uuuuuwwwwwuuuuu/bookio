@@ -8,11 +8,13 @@ import {
 import { Step1NameDescription } from './Steps/Step1NameDescription/Step1NameDescription';
 import { Step2UrlSlug } from './Steps/Step2UrlSlug/Step2UrlSlug';
 import { Step3Styles } from './Steps/Step3Styles/Step3Styles';
+import { Step4Metadata } from './Steps/Step4Metadata/Step4Metadata';
 
 const STEPS: Record<CreateBookingFormStep, FC> = {
     1: Step1NameDescription,
     2: Step2UrlSlug,
     3: Step3Styles,
+    4: Step4Metadata,
 };
 
 export const CreateBookingForm: FC = () => {

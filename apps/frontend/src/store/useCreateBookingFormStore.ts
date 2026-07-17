@@ -4,6 +4,11 @@ import { DEFAULT_BOOKING_FORM_STYLES } from '@utils/defaultBookingFormStyles';
 
 export type CreateBookingFormStep = number;
 
+export type CreateBookingFormAdditionalMetaItem = {
+    key: string;
+    value: string;
+};
+
 export type CreateBookingFormDraft = {
     organizationId: string;
     name: string;
@@ -15,6 +20,9 @@ export type CreateBookingFormDraft = {
     borderColor: string;
     textMain: string;
     textSecondary: string;
+    metaTitle: string;
+    metaDescription: string;
+    additionalMeta: CreateBookingFormAdditionalMetaItem[];
 };
 
 const INITIAL_DRAFT: CreateBookingFormDraft = {
@@ -23,6 +31,9 @@ const INITIAL_DRAFT: CreateBookingFormDraft = {
     description: '',
     slug: '',
     ...DEFAULT_BOOKING_FORM_STYLES,
+    metaTitle: '',
+    metaDescription: '',
+    additionalMeta: [],
 };
 
 interface CreateBookingFormStore {

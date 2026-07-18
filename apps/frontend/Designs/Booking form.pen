@@ -1,0 +1,814 @@
+{
+  "version": "2.14",
+  "children": [
+    {
+      "type": "frame",
+      "id": "oQgmj",
+      "x": 0,
+      "y": -420,
+      "name": "Component / BookingFormCard",
+      "reusable": true,
+      "width": 420,
+      "fill": "$bgUi",
+      "cornerRadius": "$radiusCard",
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "layout": "vertical",
+      "gap": 20,
+      "padding": 24,
+      "justifyContent": "space_between",
+      "children": [
+        {
+          "type": "frame",
+          "id": "vigfQ",
+          "name": "CardHeader",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "type": "frame",
+              "id": "OKMZ7",
+              "name": "TitleRow",
+              "width": "fill_container",
+              "gap": 12,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GeCuW",
+                  "name": "FormName",
+                  "fill": "$textMain",
+                  "content": "Sales",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 22,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "njSUi",
+                  "name": "StatusBadge",
+                  "fill": "#1ECC0E22",
+                  "cornerRadius": 999,
+                  "gap": 6,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "zNh1t",
+                      "name": "StatusDot",
+                      "fill": "$systemGreen",
+                      "width": 6,
+                      "height": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "wYu6k",
+                      "name": "StatusLabel",
+                      "fill": "$systemGreen",
+                      "content": "Active",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "yUqlh",
+              "name": "FormDescription",
+              "fill": "$textSecondary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Public booking form for sales consultations and demos.",
+              "lineHeight": 1.4,
+              "fontFamily": "$fontFamily",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wo6sR",
+          "name": "CardMeta",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "frame",
+              "id": "EXh55",
+              "name": "MetricRow",
+              "width": "fill_container",
+              "fill": "#101010",
+              "cornerRadius": 8,
+              "gap": 8,
+              "padding": [
+                12,
+                14
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "PtjFC",
+                  "name": "MetricLeft",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "hdifO",
+                      "name": "CalendarIcon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "calendar",
+                      "library": "lucide",
+                      "fill": "$textSecondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "HpMxY",
+                      "name": "BookingsLabel",
+                      "fill": "$textSecondary",
+                      "content": "Bookings this month",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "Yf9Ac",
+                  "name": "BookingsCount",
+                  "fill": "$textMain",
+                  "content": "24",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 20,
+                  "fontWeight": "800"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "o1w8wE",
+              "name": "UrlBlock",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "b0ZvJb",
+                  "name": "UrlLabel",
+                  "fill": "$textSecondary",
+                  "content": "Booking form URL",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "ZWUmC",
+                  "name": "UrlRow",
+                  "width": "fill_container",
+                  "fill": "#101010",
+                  "cornerRadius": 8,
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aJ5FT",
+                      "name": "UrlText",
+                      "fill": "$textMain",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "form.bookio.pro/Bookio/sales",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "DZavk",
+                      "name": "CopyButton",
+                      "width": 28,
+                      "height": 28,
+                      "fill": "#FFFFFF12",
+                      "cornerRadius": 6,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "Zbu3S",
+                          "name": "CopyIcon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "copy",
+                          "library": "lucide",
+                          "fill": "$textSecondary"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Y0ywP",
+          "name": "CardActions",
+          "width": "fill_container",
+          "gap": 8,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "H0xD6",
+              "name": "DeleteButton",
+              "width": 40,
+              "height": 40,
+              "fill": "#CC2B0E1A",
+              "cornerRadius": "$radiusButton",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "jmCAz",
+                  "name": "TrashIcon",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "trash-2",
+                  "library": "lucide",
+                  "fill": "$systemRed"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "K2z08",
+              "name": "EditButton",
+              "width": 40,
+              "height": 40,
+              "fill": "#0E6ECC1A",
+              "cornerRadius": "$radiusButton",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "TJRLI",
+                  "name": "EditIcon",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "pencil",
+                  "library": "lucide",
+                  "fill": "$systemBlue"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "uygTk",
+              "name": "ConfiguratorButton",
+              "width": "fill_container",
+              "height": 40,
+              "fill": "$bgMain",
+              "cornerRadius": "$radiusButton",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "gap": 8,
+              "padding": [
+                0,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "n9yRdf",
+                  "name": "ConfiguratorLabel",
+                  "fill": "$textMain",
+                  "content": "Open configurator",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Rooco",
+      "x": 0,
+      "y": 0,
+      "name": "Booking Forms — Redesign",
+      "clip": true,
+      "width": 1440,
+      "height": 960,
+      "fill": "$bgMain",
+      "layout": "vertical",
+      "gap": 16,
+      "padding": 16,
+      "children": [
+        {
+          "type": "frame",
+          "id": "fvRt5",
+          "name": "AppHeader",
+          "width": "fill_container",
+          "height": 56,
+          "padding": [
+            0,
+            8
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "hOl2Q",
+              "name": "Logo",
+              "fill": "$textMain",
+              "textGrowth": "fixed-width",
+              "width": 120,
+              "content": "BOOKIO",
+              "fontFamily": "$fontFamily",
+              "fontSize": 28,
+              "fontWeight": "800",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "S4c8Nt",
+              "name": "OrgMenu",
+              "fill": "$bgUi",
+              "cornerRadius": 8,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "gap": 10,
+              "padding": [
+                8,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "rTMMZ",
+                  "name": "OrgAvatar",
+                  "fill": "$primary",
+                  "width": 24,
+                  "height": 24
+                },
+                {
+                  "type": "text",
+                  "id": "FIvdz",
+                  "name": "OrgName",
+                  "fill": "$textMain",
+                  "content": "Bookio",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "icon",
+                  "id": "IsuOc",
+                  "name": "OrgChevron",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "chevron-down",
+                  "library": "lucide",
+                  "fill": "$textSecondary"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "XyeyS",
+          "name": "PageContent",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 8,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Mu0cE",
+              "name": "PageHeader",
+              "width": "fill_container",
+              "gap": 16,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "q8L7u5",
+                  "name": "HeaderLeft",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "UvAc8",
+                      "name": "PageTitle",
+                      "fill": "$textMain",
+                      "content": "Booking Forms",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "V2RVKV",
+                      "name": "MetaChips",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "qSMBd",
+                          "name": "ChipForms",
+                          "fill": "$bgUi",
+                          "cornerRadius": 6,
+                          "stroke": "$border",
+                          "strokeWidth": 1,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "qjKPW",
+                              "name": "ChipFormsLabel",
+                              "fill": "$textSecondary",
+                              "content": "4 forms",
+                              "fontFamily": "$fontFamily",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "O2BVL",
+                          "name": "ChipActive",
+                          "fill": "$bgUi",
+                          "cornerRadius": 6,
+                          "stroke": "$border",
+                          "strokeWidth": 1,
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "NcnLH",
+                              "name": "ActiveDot",
+                              "fill": "$systemGreen",
+                              "width": 6,
+                              "height": 6
+                            },
+                            {
+                              "type": "text",
+                              "id": "xuGbl",
+                              "name": "ChipActiveLabel",
+                              "fill": "$textSecondary",
+                              "content": "3 active",
+                              "fontFamily": "$fontFamily",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Y1lBj",
+                  "name": "HeaderToolbar",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "SJxBy",
+                      "name": "SearchField",
+                      "width": 280,
+                      "fill": "$bgUi",
+                      "cornerRadius": "$radiusButton",
+                      "stroke": "$border",
+                      "strokeWidth": 1,
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "Ae23K",
+                          "name": "SearchIcon",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "search",
+                          "library": "lucide",
+                          "fill": "$textSecondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "WPLCb",
+                          "name": "SearchPlaceholder",
+                          "fill": "$textSecondary",
+                          "content": "Search forms…",
+                          "fontFamily": "$fontFamily",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XOGUs",
+                      "name": "CreateButton",
+                      "fill": "$primary",
+                      "cornerRadius": "$radiusButton",
+                      "gap": 6,
+                      "padding": [
+                        8,
+                        14
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "QBUFi",
+                          "name": "PlusIcon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "plus",
+                          "library": "lucide",
+                          "fill": "$textMain"
+                        },
+                        {
+                          "type": "text",
+                          "id": "hat6L",
+                          "name": "CreateLabel",
+                          "fill": "$textMain",
+                          "content": "Create",
+                          "fontFamily": "$fontFamily",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "eywD1",
+              "name": "CardsGrid",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "WWWdM",
+                  "name": "CardsRow1",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "id": "ZA47R",
+                      "type": "ref",
+                      "ref": "oQgmj",
+                      "name": "Card — Sales",
+                      "width": "fill_container",
+                      "descendants": {
+                        "GeCuW": {
+                          "content": "Sales"
+                        },
+                        "njSUi": {
+                          "fill": "#1ECC0E22"
+                        },
+                        "zNh1t": {
+                          "fill": "$systemGreen"
+                        },
+                        "wYu6k": {
+                          "content": "Active",
+                          "fill": "$systemGreen"
+                        },
+                        "yUqlh": {
+                          "content": "Public booking form for sales consultations and demos."
+                        },
+                        "Yf9Ac": {
+                          "content": "24"
+                        },
+                        "aJ5FT": {
+                          "content": "form.bookio.pro/Bookio/sales"
+                        }
+                      }
+                    },
+                    {
+                      "id": "f9CRuI",
+                      "type": "ref",
+                      "ref": "oQgmj",
+                      "name": "Card — Support",
+                      "width": "fill_container",
+                      "descendants": {
+                        "GeCuW": {
+                          "content": "Support"
+                        },
+                        "njSUi": {
+                          "fill": "#1ECC0E22"
+                        },
+                        "zNh1t": {
+                          "fill": "$systemGreen"
+                        },
+                        "wYu6k": {
+                          "content": "Active",
+                          "fill": "$systemGreen"
+                        },
+                        "yUqlh": {
+                          "content": "Schedule support sessions with your customers."
+                        },
+                        "Yf9Ac": {
+                          "content": "11"
+                        },
+                        "aJ5FT": {
+                          "content": "form.bookio.pro/Bookio/support"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "H8Go6",
+                  "name": "CardsRow2",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "id": "cVeV0",
+                      "type": "ref",
+                      "ref": "oQgmj",
+                      "name": "Card — Onboarding",
+                      "width": "fill_container",
+                      "descendants": {
+                        "GeCuW": {
+                          "content": "Onboarding"
+                        },
+                        "njSUi": {
+                          "fill": "#544D4D33"
+                        },
+                        "zNh1t": {
+                          "fill": "$border"
+                        },
+                        "wYu6k": {
+                          "content": "Inactive",
+                          "fill": "$textSecondary"
+                        },
+                        "yUqlh": {
+                          "content": "Welcome calls for new clients after signup."
+                        },
+                        "Yf9Ac": {
+                          "content": "7"
+                        },
+                        "aJ5FT": {
+                          "content": "form.bookio.pro/Bookio/onboarding"
+                        }
+                      }
+                    },
+                    {
+                      "id": "n41ops",
+                      "type": "ref",
+                      "ref": "oQgmj",
+                      "name": "Card — Partners",
+                      "width": "fill_container",
+                      "descendants": {
+                        "GeCuW": {
+                          "content": "Partners"
+                        },
+                        "njSUi": {
+                          "fill": "#1ECC0E22"
+                        },
+                        "zNh1t": {
+                          "fill": "$systemGreen"
+                        },
+                        "wYu6k": {
+                          "content": "Active",
+                          "fill": "$systemGreen"
+                        },
+                        "yUqlh": {
+                          "content": "Discovery calls for partner and affiliate outreach."
+                        },
+                        "Yf9Ac": {
+                          "content": "3"
+                        },
+                        "aJ5FT": {
+                          "content": "form.bookio.pro/Bookio/partners"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "primary": {
+      "type": "color",
+      "value": "#8510F2"
+    },
+    "bgMain": {
+      "type": "color",
+      "value": "#101010"
+    },
+    "bgUi": {
+      "type": "color",
+      "value": "#191918"
+    },
+    "textMain": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "textSecondary": {
+      "type": "color",
+      "value": "#D9D2D2"
+    },
+    "border": {
+      "type": "color",
+      "value": "#544D4D"
+    },
+    "systemRed": {
+      "type": "color",
+      "value": "#CC2B0E"
+    },
+    "systemBlue": {
+      "type": "color",
+      "value": "#0E6ECC"
+    },
+    "systemGreen": {
+      "type": "color",
+      "value": "#1ECC0E"
+    },
+    "radiusCard": {
+      "type": "number",
+      "value": 10
+    },
+    "radiusButton": {
+      "type": "number",
+      "value": 8
+    },
+    "fontFamily": {
+      "type": "string",
+      "value": "Nunito"
+    }
+  },
+  "fileToken": "fd001085-7a4c-4fad-8446-dc8479aab6ca"
+}

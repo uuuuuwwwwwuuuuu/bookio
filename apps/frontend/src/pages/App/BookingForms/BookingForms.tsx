@@ -2,12 +2,12 @@ import { useCallback, type FC } from 'react';
 import styles from './BookingForms.module.scss';
 import { useGetBookingForms } from '@api/bookingForms/getBookingForms';
 import { useParams } from 'react-router-dom';
-import { Button } from '@bookio/ui';
+import { Button, Input } from '@bookio/ui';
 import { Spinner } from '@components/Spinner/Spinner';
 import { BookingFormCard } from '@components/BookingFormCard/BookingFormCard';
 
 import PlusIcon from '@assets/icons/plus.svg?react';
-import { clsx } from 'clsx';
+import SearchIcon from '@assets/icons/search.svg?react';
 
 export const BookingForms: FC = () => {
     const { id } = useParams();
@@ -55,27 +55,67 @@ export const BookingForms: FC = () => {
         );
     }
 
+    const activeFormsCount = bookingForms.filter((form) => form.isActive).length;
+
     return (
         <>
-            <div className={styles.bookingHeader}>
-                <h2>Booking Forms</h2>
-                <div className={styles.bookingHeaderActions}>
-                    <Button
-                        variant="primary-filled"
-                        type="link"
-                        to="create"
-                        className={clsx(styles.button, styles.createButton)}
-                    >
-                        <PlusIcon />
-                        Create Booking Form
-                    </Button>
-                </div>
-            </div>
+            <BookingFormHeader
+                formsCount={bookingForms.length}
+                activeFormsCount={activeFormsCount}
+            />
             <div className={styles.bookingForms}>
                 {bookingForms.map((bookingForm) => (
                     <BookingFormCard key={bookingForm.id} bookingForm={bookingForm} />
                 ))}
             </div>
         </>
+    );
+};
+
+type BookingFormHeaderProps = {
+    formsCount: number;
+    activeFormsCount: number;
+};
+
+const BookingFormHeader: FC<BookingFormHeaderProps> = ({ formsCount, activeFormsCount }) => {
+    return (
+        <div className={styles.bookingHeader}>
+            <div className={styles.headerLeft}>
+                <h2 className={styles.pageTitle}>Booking Forms</h2>
+                <div className={styles.metaChips}>
+                    <Button variant="simple-filled" className={styles.chipButton}>
+                        {formsCount} forms
+                    </Button>
+                    <Button variant="simple-filled" className={styles.chipButton}>
+                        <span className={styles.activeDot} aria-hidden />
+                        {activeFormsCount} active
+                    </Button>
+                </div>
+            </div>
+
+            <div className={styles.headerToolbar}>
+                <Input.Root className={styles.searchInput}>
+                    <Input.Icon>
+                        <SearchIcon />
+                    </Input.Icon>
+                    <Input
+                        type="search"
+                        placeholder="Search forms…"
+                        aria-label="Search forms"
+                        readOnly
+                    />
+                </Input.Root>
+
+                <Button
+                    variant="primary-filled"
+                    type="link"
+                    to="create"
+                    className={styles.headerCreateButton}
+                >
+                    <PlusIcon />
+                    Create
+                </Button>
+            </div>
+        </div>
     );
 };

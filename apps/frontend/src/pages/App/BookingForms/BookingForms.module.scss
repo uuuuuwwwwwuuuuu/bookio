@@ -80,33 +80,86 @@
 .bookingHeader {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+    align-items: stretch;
+    gap: 1.6rem;
+    width: 100%;
+    height: 3.8rem;
+}
 
-    h2 {
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    min-width: 0;
+    flex: 1;
+
+    .pageTitle {
         font-size: 2.8rem;
         font-weight: 700;
+        line-height: 1.2;
+        white-space: nowrap;
     }
 
-    .bookingHeaderActions {
+    .metaChips {
         display: flex;
-        gap: 1rem;
+        align-items: stretch;
+        align-self: stretch;
+        gap: 0.8rem;
+        flex-shrink: 0;
+    }
 
-        .button {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
+    .chipButton {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0 1.5rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1;
+        white-space: nowrap;
+        color: var(--color-text-secondary);
+    }
 
-            svg {
-                width: 1.6rem;
-                height: 1.6rem;
-            }
+    .activeDot {
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 50%;
+        background-color: var(--color-system-green);
+        flex-shrink: 0;
+    }
+}
+
+.headerToolbar {
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
+    flex-shrink: 0;
+
+    .searchInput {
+        width: 28rem;
+
+        input {
+            height: 100%;
+            padding-block: 0;
+            padding-right: 1.2rem;
+            font-size: 1.4rem;
         }
+    }
 
-        .createButton {
-            
+    .headerCreateButton {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 0 1.4rem;
+        font-size: 1.3rem;
+        font-weight: 700;
+        white-space: nowrap;
+
+        svg {
+            width: 1.4rem;
+            height: 1.4rem;
         }
     }
 }
+

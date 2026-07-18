@@ -14,6 +14,7 @@ import {
 import { OrganizationItem } from '@components/OrganizationItem/OrganizationItem';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import SearchIcon from '@assets/icons/search.svg?react';
 
 const createTrigrams = (value: string) => {
     return value
@@ -108,14 +109,18 @@ export const OrganizationSearch: FC = () => {
             className={clsx(styles.organizationSearch, { [styles.closing]: isClosing })}
             onAnimationEnd={handleAnimationEnd}
         >
-            <Input
-                type="search"
-                placeholder="Search"
-                ref={searchInputRef}
-                className={styles.searchInput}
-                onChange={handleSearchChange}
-                autoFocus
-            />
+            <Input.Root className={styles.searchInput}>
+                <Input.Icon>
+                    <SearchIcon />
+                </Input.Icon>
+                <Input
+                    type="search"
+                    placeholder="Search"
+                    ref={searchInputRef}
+                    onChange={handleSearchChange}
+                    autoFocus
+                />
+            </Input.Root>
             <OrganizationSearchWrapper data={filteredOrganizations} ref={searchWrapperRef} />
         </div>
     );

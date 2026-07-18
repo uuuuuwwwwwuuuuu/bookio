@@ -33,6 +33,17 @@ export type InputFieldProps = {
     children: ReactNode;
 };
 
+export type InputRootProps = {
+    className?: string;
+    children: ReactNode;
+};
+
+export type InputIconProps = {
+    children: ReactNode;
+    className?: string;
+    position?: 'start' | 'end';
+};
+
 function getReadOnlyHandlers<T extends HTMLInputElement | HTMLTextAreaElement>(
     readOnly: boolean | undefined,
     onFocus?: (event: FocusEvent<T>) => void,
@@ -71,9 +82,31 @@ function InputField({ label, htmlFor, className, children }: InputFieldProps) {
     );
 }
 
-function Input(props: TextareaProps): React.JSX.Element;
-function Input(props: NativeInputProps): React.JSX.Element;
-function Input(props: InputProps): React.JSX.Element {
+function InputRoot({ className, children }: InputRootProps) {
+    const classes = [styles.root, className].filter(Boolean).join(' ');
+
+    return <div className={classes}>{children}</div>;
+}
+
+function InputIcon({ children, className, position = 'start' }: InputIconProps) {
+    const classes = [
+        styles.icon,
+        position === 'end' ? styles.iconEnd : styles.iconStart,
+        className,
+    ]
+        .filter(Boolean)
+        .join(' ');
+
+    return (
+        <span className={classes} aria-hidden>
+            {children}
+        </span>
+    );
+}
+
+function InputControl(props: TextareaProps): React.JSX.Element;
+function InputControl(props: NativeInputProps): React.JSX.Element;
+function InputControl(props: InputProps): React.JSX.Element {
     const generatedId = useId();
 
     if (props.type === 'textarea') {
@@ -136,6 +169,17 @@ function Input(props: InputProps): React.JSX.Element {
     );
 }
 
-export { Input, InputField };
+type InputComponent = typeof InputControl & {
+    Root: typeof InputRoot;
+    Icon: typeof InputIcon;
+    Field: typeof InputField;
+};
 
-export default memo(Input);
+const Input = memo(InputControl) as unknown as InputComponent;
+Input.Root = InputRoot;
+Input.Icon = InputIcon;
+Input.Field = InputField;
+
+export { Input, InputField, InputRoot, InputIcon };
+
+export default Input;

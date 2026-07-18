@@ -9,7 +9,12 @@ export type {
 } from './Button/Button.js';
 
 export { default as Input, Input as BaseInput, InputField } from './Input/Input.js';
-export type { InputFieldProps, InputProps } from './Input/Input.js';
+export type {
+    InputFieldProps,
+    InputIconProps,
+    InputProps,
+    InputRootProps,
+} from './Input/Input.js';
 
 export { default as HiddenField } from './HiddenField/HiddenField.js';
 export type { HiddenFieldProps } from './HiddenField/HiddenField.js';

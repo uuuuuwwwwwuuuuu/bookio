@@ -12,6 +12,55 @@
     color: var(--color-text-secondary);
 }
 
+.root {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-width: 0;
+
+    &:has(.iconStart) .input {
+        padding-left: 4rem;
+    }
+
+    &:has(.iconEnd) .input {
+        padding-right: 4rem;
+    }
+
+    &:has(.input:disabled) .icon {
+        opacity: 0.5;
+    }
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    pointer-events: none;
+    z-index: 1;
+
+    svg {
+        width: 1.6rem;
+        height: 1.6rem;
+        display: block;
+
+        path {
+            fill: currentColor;
+        }
+    }
+}
+
+.iconStart {
+    left: 1.2rem;
+}
+
+.iconEnd {
+    right: 1.2rem;
+}
+
 .input {
     width: 100%;
     padding: 1.2rem 1.6rem;

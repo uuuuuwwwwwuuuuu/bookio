@@ -6,6 +6,7 @@ import { clsx } from 'clsx';
 
 import ConnectIcon from '@assets/icons/connect.svg?react';
 import PlusIcon from '@assets/icons/plus.svg?react';
+import SearchIcon from '@assets/icons/search.svg?react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useOrganizationListStore } from '@store/useOrganizationListStore';
 
@@ -30,13 +31,17 @@ export const OrganizationHeader: FC = memo(() => {
                     <Logo className={styles.logo} />
                 </button>
                 <div className={styles.headerFilterGroup}>
-                    <Input
-                        type="search"
-                        placeholder="Search"
-                        className={styles.searchInput}
-                        onClick={onClickSearch}
-                        readOnly
-                    />
+                    <Input.Root className={styles.searchInput}>
+                        <Input.Icon>
+                            <SearchIcon />
+                        </Input.Icon>
+                        <Input
+                            type="search"
+                            placeholder="Search"
+                            onClick={onClickSearch}
+                            readOnly
+                        />
+                    </Input.Root>
                 </div>
                 <div className={styles.buttonsWrapper}>
                     <Button

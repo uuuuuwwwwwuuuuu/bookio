@@ -565,6 +565,44 @@
                     },
                     {
                       "type": "frame",
+                      "id": "d3aa5",
+                      "name": "FilterButton",
+                      "fill": "$bgMain",
+                      "cornerRadius": "$radiusButton",
+                      "stroke": "$border",
+                      "strokeWidth": 1,
+                      "gap": 6,
+                      "padding": [
+                        8,
+                        14
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "AxhSE",
+                          "name": "FilterIcon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "list-filter",
+                          "library": "lucide",
+                          "fill": "$textMain"
+                        },
+                        {
+                          "type": "text",
+                          "id": "L4veoF",
+                          "name": "FilterLabel",
+                          "fill": "$textMain",
+                          "content": "Filter",
+                          "fontFamily": "$fontFamily",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
                       "id": "XOGUs",
                       "name": "CreateButton",
                       "fill": "$primary",
@@ -752,6 +790,1547 @@
                       }
                     }
                   ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "zj6CW",
+      "x": 1520,
+      "y": 0,
+      "name": "Booking Forms — Filter Open",
+      "clip": true,
+      "width": 1440,
+      "height": 960,
+      "fill": "$bgMain",
+      "layout": "vertical",
+      "gap": 16,
+      "padding": 16,
+      "children": [
+        {
+          "type": "frame",
+          "id": "X7Mmx",
+          "name": "AppHeader",
+          "width": "fill_container",
+          "height": 56,
+          "padding": [
+            0,
+            8
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "EQEzx",
+              "name": "Logo",
+              "fill": "$textMain",
+              "textGrowth": "fixed-width",
+              "width": 120,
+              "content": "BOOKIO",
+              "fontFamily": "$fontFamily",
+              "fontSize": 28,
+              "fontWeight": "800",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "oIyEf",
+              "name": "OrgMenu",
+              "fill": "$bgUi",
+              "cornerRadius": 8,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "gap": 10,
+              "padding": [
+                8,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "u5SJu5",
+                  "name": "OrgAvatar",
+                  "fill": "$primary",
+                  "width": 24,
+                  "height": 24
+                },
+                {
+                  "type": "text",
+                  "id": "H1n1k",
+                  "name": "OrgName",
+                  "fill": "$textMain",
+                  "content": "Bookio",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "icon",
+                  "id": "N8s4S",
+                  "name": "OrgChevron",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "chevron-down",
+                  "library": "lucide",
+                  "fill": "$textSecondary"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "gFD5d",
+          "name": "PageContent",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 8,
+          "children": [
+            {
+              "type": "frame",
+              "id": "S8q8oH",
+              "name": "PageHeader",
+              "width": "fill_container",
+              "gap": 16,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "u7yPxI",
+                  "name": "HeaderLeft",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "N3OjI",
+                      "name": "PageTitle",
+                      "fill": "$textMain",
+                      "content": "Booking Forms",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Ghwkq",
+                      "name": "MetaChips",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "DE3EP",
+                          "name": "ChipForms",
+                          "fill": "$bgUi",
+                          "cornerRadius": 6,
+                          "stroke": "$border",
+                          "strokeWidth": 1,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "XYay3",
+                              "name": "ChipFormsLabel",
+                              "fill": "$textSecondary",
+                              "content": "4 forms",
+                              "fontFamily": "$fontFamily",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "q3sl8",
+                          "name": "ChipActive",
+                          "fill": "$bgUi",
+                          "cornerRadius": 6,
+                          "stroke": "$border",
+                          "strokeWidth": 1,
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "xaHjk",
+                              "name": "ActiveDot",
+                              "fill": "$systemGreen",
+                              "width": 6,
+                              "height": 6
+                            },
+                            {
+                              "type": "text",
+                              "id": "n23RWL",
+                              "name": "ChipActiveLabel",
+                              "fill": "$textSecondary",
+                              "content": "3 active",
+                              "fontFamily": "$fontFamily",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "OFGso",
+                  "name": "HeaderToolbar",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sXydb",
+                      "name": "SearchField",
+                      "width": 280,
+                      "fill": "$bgUi",
+                      "cornerRadius": "$radiusButton",
+                      "stroke": "$border",
+                      "strokeWidth": 1,
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "EHoVx",
+                          "name": "SearchIcon",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "search",
+                          "library": "lucide",
+                          "fill": "$textSecondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "LU9VM",
+                          "name": "SearchPlaceholder",
+                          "fill": "$textSecondary",
+                          "content": "Search forms…",
+                          "fontFamily": "$fontFamily",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sQTQo",
+                      "name": "FilterWrap",
+                      "width": 101,
+                      "height": 34,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "oD8nF",
+                          "x": 0,
+                          "y": 0,
+                          "name": "FilterButton",
+                          "fill": "$bgUi",
+                          "cornerRadius": "$radiusButton",
+                          "stroke": "$primary",
+                          "strokeWidth": 1,
+                          "gap": 6,
+                          "padding": [
+                            8,
+                            14
+                          ],
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "usu8B",
+                              "name": "FilterIcon",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "list-filter",
+                              "library": "lucide",
+                              "fill": "$textMain"
+                            },
+                            {
+                              "type": "text",
+                              "id": "h6cIws",
+                              "name": "FilterLabel",
+                              "fill": "$textMain",
+                              "content": "Filter",
+                              "fontFamily": "$fontFamily",
+                              "fontSize": 13,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "g9sDo",
+                              "name": "FilterChevron",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-up",
+                              "library": "lucide",
+                              "fill": "$textMain"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "jGCHM",
+                      "name": "CreateButton",
+                      "fill": "$primary",
+                      "cornerRadius": "$radiusButton",
+                      "gap": 6,
+                      "padding": [
+                        8,
+                        14
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "i7EuT",
+                          "name": "PlusIcon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "plus",
+                          "library": "lucide",
+                          "fill": "$textMain"
+                        },
+                        {
+                          "type": "text",
+                          "id": "A4OhN",
+                          "name": "CreateLabel",
+                          "fill": "$textMain",
+                          "content": "Create",
+                          "fontFamily": "$fontFamily",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Kk0nr",
+              "name": "CardsGrid",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "f0ICh5",
+                  "name": "CardsRow1",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "id": "CVkgF",
+                      "type": "ref",
+                      "ref": "oQgmj",
+                      "name": "Card — Sales",
+                      "width": "fill_container",
+                      "descendants": {
+                        "GeCuW": {
+                          "content": "Sales"
+                        },
+                        "njSUi": {
+                          "fill": "#1ECC0E22"
+                        },
+                        "zNh1t": {
+                          "fill": "$systemGreen"
+                        },
+                        "wYu6k": {
+                          "content": "Active",
+                          "fill": "$systemGreen"
+                        },
+                        "yUqlh": {
+                          "content": "Public booking form for sales consultations and demos."
+                        },
+                        "Yf9Ac": {
+                          "content": "24"
+                        },
+                        "aJ5FT": {
+                          "content": "form.bookio.pro/Bookio/sales"
+                        }
+                      }
+                    },
+                    {
+                      "id": "kMIv6",
+                      "type": "ref",
+                      "ref": "oQgmj",
+                      "name": "Card — Support",
+                      "width": "fill_container",
+                      "descendants": {
+                        "GeCuW": {
+                          "content": "Support"
+                        },
+                        "njSUi": {
+                          "fill": "#1ECC0E22"
+                        },
+                        "zNh1t": {
+                          "fill": "$systemGreen"
+                        },
+                        "wYu6k": {
+                          "content": "Active",
+                          "fill": "$systemGreen"
+                        },
+                        "yUqlh": {
+                          "content": "Schedule support sessions with your customers."
+                        },
+                        "Yf9Ac": {
+                          "content": "11"
+                        },
+                        "aJ5FT": {
+                          "content": "form.bookio.pro/Bookio/support"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "OVipX",
+                  "name": "CardsRow2",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "id": "PGPPB",
+                      "type": "ref",
+                      "ref": "oQgmj",
+                      "name": "Card — Onboarding",
+                      "width": "fill_container",
+                      "descendants": {
+                        "GeCuW": {
+                          "content": "Onboarding"
+                        },
+                        "njSUi": {
+                          "fill": "#544D4D33"
+                        },
+                        "zNh1t": {
+                          "fill": "$border"
+                        },
+                        "wYu6k": {
+                          "content": "Inactive",
+                          "fill": "$textSecondary"
+                        },
+                        "yUqlh": {
+                          "content": "Welcome calls for new clients after signup."
+                        },
+                        "Yf9Ac": {
+                          "content": "7"
+                        },
+                        "aJ5FT": {
+                          "content": "form.bookio.pro/Bookio/onboarding"
+                        }
+                      }
+                    },
+                    {
+                      "id": "LiOAW",
+                      "type": "ref",
+                      "ref": "oQgmj",
+                      "name": "Card — Partners",
+                      "width": "fill_container",
+                      "descendants": {
+                        "GeCuW": {
+                          "content": "Partners"
+                        },
+                        "njSUi": {
+                          "fill": "#1ECC0E22"
+                        },
+                        "zNh1t": {
+                          "fill": "$systemGreen"
+                        },
+                        "wYu6k": {
+                          "content": "Active",
+                          "fill": "$systemGreen"
+                        },
+                        "yUqlh": {
+                          "content": "Discovery calls for partner and affiliate outreach."
+                        },
+                        "Yf9Ac": {
+                          "content": "3"
+                        },
+                        "aJ5FT": {
+                          "content": "form.bookio.pro/Bookio/partners"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "t0GkI",
+          "layoutPosition": "absolute",
+          "x": 1185,
+          "y": 138,
+          "name": "FilterDropdown",
+          "width": 230,
+          "fill": "$bgUi",
+          "cornerRadius": "$radiusButton",
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#00000080",
+            "offset": {
+              "x": 0,
+              "y": 8
+            },
+            "blur": 24
+          },
+          "layout": "vertical",
+          "gap": 4,
+          "padding": 8,
+          "children": [
+            {
+              "type": "frame",
+              "id": "I3rO5",
+              "name": "StatusSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Fz7S4",
+                  "name": "StatusHeading",
+                  "fill": "$textSecondary",
+                  "content": "STATUS",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.4
+                },
+                {
+                  "type": "frame",
+                  "id": "s2Fw8",
+                  "name": "FilterItemAll",
+                  "width": "fill_container",
+                  "fill": "#8510F233",
+                  "cornerRadius": 6,
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    10
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "dgFin",
+                      "name": "ItemAllLabel",
+                      "fill": "$textMain",
+                      "content": "All forms",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "m8AWuV",
+                      "name": "ItemAllCheck",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "check",
+                      "library": "lucide",
+                      "fill": "$primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LNeoS",
+                  "name": "FilterItemActive",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    10
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GAhs1",
+                      "name": "ItemActiveLabel",
+                      "fill": "$textMain",
+                      "content": "Active",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "M6l9Wi",
+                  "name": "FilterItemInactive",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    10
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "N4xnba",
+                      "name": "ItemInactiveLabel",
+                      "fill": "$textMain",
+                      "content": "Inactive",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "HN2T7",
+              "name": "StatusDivider",
+              "fill": "$border",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "e5KKtB",
+              "name": "SortSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GSLpg",
+                  "name": "SortHeading",
+                  "fill": "$textSecondary",
+                  "content": "SORT",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.4
+                },
+                {
+                  "type": "frame",
+                  "id": "H4Z6mf",
+                  "name": "FilterItemNewest",
+                  "width": "fill_container",
+                  "fill": "#8510F233",
+                  "cornerRadius": 6,
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    10
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zbrL8",
+                      "name": "ItemNewestLabel",
+                      "fill": "$textMain",
+                      "content": "Newest first",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "XRoM3",
+                      "name": "ItemNewestCheck",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "check",
+                      "library": "lucide",
+                      "fill": "$primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "z1PJM",
+                  "name": "FilterItemOldest",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    10
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "T7FXN",
+                      "name": "ItemOldestLabel",
+                      "fill": "$textMain",
+                      "content": "Oldest first",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sdHOb",
+                  "name": "FilterItemNameAZ",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    10
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "CKaeb",
+                      "name": "ItemNameAZLabel",
+                      "fill": "$textMain",
+                      "content": "Name A–Z",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "txunZ",
+              "name": "SortDivider",
+              "fill": "$border",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "aP46B",
+              "name": "CreatedSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "G5s2m0",
+                  "name": "CreatedHeading",
+                  "fill": "$textSecondary",
+                  "content": "CREATED",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.4
+                },
+                {
+                  "type": "frame",
+                  "id": "T0UHe",
+                  "name": "FilterItemAnyTime",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    10
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "X9boNH",
+                      "name": "ItemAnyTimeLabel",
+                      "fill": "$textMain",
+                      "content": "Any time",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zMmq1",
+                  "name": "FilterItemLast7",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    10
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "j4ebtO",
+                      "name": "ItemLast7Label",
+                      "fill": "$textMain",
+                      "content": "Last 7 days",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mnsgz",
+                  "name": "FilterItemLast30",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    10
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SwDby",
+                      "name": "ItemLast30Label",
+                      "fill": "$textMain",
+                      "content": "Last 30 days",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "R81LOd",
+              "name": "ClearDivider",
+              "fill": "$border",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "f9ehmx",
+              "name": "FilterItemClear",
+              "width": "fill_container",
+              "cornerRadius": 6,
+              "gap": 8,
+              "padding": [
+                8,
+                10
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "ft5o5",
+                  "name": "ClearIcon",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "x",
+                  "library": "lucide",
+                  "fill": "$textSecondary"
+                },
+                {
+                  "type": "text",
+                  "id": "f59Td7",
+                  "name": "ClearLabel",
+                  "fill": "$textSecondary",
+                  "content": "Clear filters",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Rv6Wm",
+      "x": 3040,
+      "y": 0,
+      "name": "Booking Forms — Search Typing",
+      "clip": true,
+      "width": 1440,
+      "height": 960,
+      "fill": "$bgMain",
+      "layout": "vertical",
+      "gap": 16,
+      "padding": 16,
+      "children": [
+        {
+          "type": "frame",
+          "id": "STKXd",
+          "name": "AppHeader",
+          "width": "fill_container",
+          "height": 56,
+          "padding": [
+            0,
+            8
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Cu57k",
+              "name": "Logo",
+              "fill": "$textMain",
+              "textGrowth": "fixed-width",
+              "width": 120,
+              "content": "BOOKIO",
+              "fontFamily": "$fontFamily",
+              "fontSize": 28,
+              "fontWeight": "800",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "UJYtF",
+              "name": "OrgMenu",
+              "fill": "$bgUi",
+              "cornerRadius": 8,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "gap": 10,
+              "padding": [
+                8,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "e6zf6",
+                  "name": "OrgAvatar",
+                  "fill": "$primary",
+                  "width": 24,
+                  "height": 24
+                },
+                {
+                  "type": "text",
+                  "id": "ezFms",
+                  "name": "OrgName",
+                  "fill": "$textMain",
+                  "content": "Bookio",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "icon",
+                  "id": "MZnYg",
+                  "name": "OrgChevron",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "chevron-down",
+                  "library": "lucide",
+                  "fill": "$textSecondary"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NVBVD",
+          "name": "PageContent",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 8,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Rdrkh",
+              "name": "PageHeader",
+              "width": "fill_container",
+              "gap": 16,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "xTTbk",
+                  "name": "HeaderLeft",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xBu1a",
+                      "name": "PageTitle",
+                      "fill": "$textMain",
+                      "content": "Booking Forms",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "BD2Ef",
+                      "name": "MetaChips",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "RPhHW",
+                          "name": "ChipForms",
+                          "fill": "$bgUi",
+                          "cornerRadius": 6,
+                          "stroke": "$border",
+                          "strokeWidth": 1,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "apYFy",
+                              "name": "ChipFormsLabel",
+                              "fill": "$textSecondary",
+                              "content": "2 forms",
+                              "fontFamily": "$fontFamily",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "o6V0q",
+                          "name": "ChipActive",
+                          "fill": "$bgUi",
+                          "cornerRadius": 6,
+                          "stroke": "$border",
+                          "strokeWidth": 1,
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "Y7FeC",
+                              "name": "ActiveDot",
+                              "fill": "$systemGreen",
+                              "width": 6,
+                              "height": 6
+                            },
+                            {
+                              "type": "text",
+                              "id": "xTJ1n",
+                              "name": "ChipActiveLabel",
+                              "fill": "$textSecondary",
+                              "content": "3 active",
+                              "fontFamily": "$fontFamily",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "OrB6o",
+                  "name": "HeaderToolbar",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "x2rep",
+                      "name": "SearchField",
+                      "width": 280,
+                      "fill": "$bgUi",
+                      "cornerRadius": "$radiusButton",
+                      "stroke": "$primary",
+                      "strokeWidth": 1.5,
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "I4pee",
+                          "name": "SearchIcon",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "search",
+                          "library": "lucide",
+                          "fill": "$primary"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "RY97e",
+                          "name": "QueryGroup",
+                          "gap": 1,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "vwEpK",
+                              "name": "SearchQuery",
+                              "fill": "$textMain",
+                              "content": "Sa",
+                              "fontFamily": "$fontFamily",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "rectangle",
+                              "cornerRadius": 1,
+                              "id": "vz5tj",
+                              "name": "SearchCaret",
+                              "fill": "$primary",
+                              "width": 1.5,
+                              "height": 16
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "NDpxc",
+                      "name": "FilterButton",
+                      "fill": "$bgMain",
+                      "cornerRadius": "$radiusButton",
+                      "stroke": "$border",
+                      "strokeWidth": 1,
+                      "gap": 6,
+                      "padding": [
+                        8,
+                        14
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "vCB93",
+                          "name": "FilterIcon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "list-filter",
+                          "library": "lucide",
+                          "fill": "$textMain"
+                        },
+                        {
+                          "type": "text",
+                          "id": "yUylR",
+                          "name": "FilterLabel",
+                          "fill": "$textMain",
+                          "content": "Filter",
+                          "fontFamily": "$fontFamily",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "qn9c1",
+                      "name": "CreateButton",
+                      "fill": "$primary",
+                      "cornerRadius": "$radiusButton",
+                      "gap": 6,
+                      "padding": [
+                        8,
+                        14
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "T6rgd",
+                          "name": "PlusIcon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "plus",
+                          "library": "lucide",
+                          "fill": "$textMain"
+                        },
+                        {
+                          "type": "text",
+                          "id": "HFqW4",
+                          "name": "CreateLabel",
+                          "fill": "$textMain",
+                          "content": "Create",
+                          "fontFamily": "$fontFamily",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "DYgC9",
+              "name": "CardsGrid",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "z9gn10",
+                  "name": "CardsRow1",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "id": "woguQ",
+                      "type": "ref",
+                      "ref": "oQgmj",
+                      "name": "Card — Sales",
+                      "width": "fill_container",
+                      "descendants": {
+                        "GeCuW": {
+                          "content": "Sales"
+                        },
+                        "njSUi": {
+                          "fill": "#1ECC0E22"
+                        },
+                        "zNh1t": {
+                          "fill": "$systemGreen"
+                        },
+                        "wYu6k": {
+                          "content": "Active",
+                          "fill": "$systemGreen"
+                        },
+                        "yUqlh": {
+                          "content": "Public booking form for sales consultations and demos."
+                        },
+                        "Yf9Ac": {
+                          "content": "24"
+                        },
+                        "aJ5FT": {
+                          "content": "form.bookio.pro/Bookio/sales"
+                        }
+                      }
+                    },
+                    {
+                      "id": "e7Onv",
+                      "type": "ref",
+                      "ref": "oQgmj",
+                      "name": "Card — Support",
+                      "width": "fill_container",
+                      "descendants": {
+                        "GeCuW": {
+                          "content": "Support"
+                        },
+                        "njSUi": {
+                          "fill": "#1ECC0E22"
+                        },
+                        "zNh1t": {
+                          "fill": "$systemGreen"
+                        },
+                        "wYu6k": {
+                          "content": "Active",
+                          "fill": "$systemGreen"
+                        },
+                        "yUqlh": {
+                          "content": "Schedule support sessions with your customers."
+                        },
+                        "Yf9Ac": {
+                          "content": "11"
+                        },
+                        "aJ5FT": {
+                          "content": "form.bookio.pro/Bookio/support"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n7qVXF",
+                  "name": "CardsRow2",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "id": "EmXv5",
+                      "type": "ref",
+                      "ref": "oQgmj",
+                      "opacity": 0.28,
+                      "name": "Card — Onboarding",
+                      "width": "fill_container",
+                      "descendants": {
+                        "GeCuW": {
+                          "content": "Onboarding"
+                        },
+                        "njSUi": {
+                          "fill": "#544D4D33"
+                        },
+                        "zNh1t": {
+                          "fill": "$border"
+                        },
+                        "wYu6k": {
+                          "content": "Inactive",
+                          "fill": "$textSecondary"
+                        },
+                        "yUqlh": {
+                          "content": "Welcome calls for new clients after signup."
+                        },
+                        "Yf9Ac": {
+                          "content": "7"
+                        },
+                        "aJ5FT": {
+                          "content": "form.bookio.pro/Bookio/onboarding"
+                        }
+                      }
+                    },
+                    {
+                      "id": "Kzi0Q",
+                      "type": "ref",
+                      "ref": "oQgmj",
+                      "opacity": 0.28,
+                      "name": "Card — Partners",
+                      "width": "fill_container",
+                      "descendants": {
+                        "GeCuW": {
+                          "content": "Partners"
+                        },
+                        "njSUi": {
+                          "fill": "#1ECC0E22"
+                        },
+                        "zNh1t": {
+                          "fill": "$systemGreen"
+                        },
+                        "wYu6k": {
+                          "content": "Active",
+                          "fill": "$systemGreen"
+                        },
+                        "yUqlh": {
+                          "content": "Discovery calls for partner and affiliate outreach."
+                        },
+                        "Yf9Ac": {
+                          "content": "3"
+                        },
+                        "aJ5FT": {
+                          "content": "form.bookio.pro/Bookio/partners"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "x8stjc",
+          "layoutPosition": "absolute",
+          "x": 947,
+          "y": 136,
+          "name": "SearchSuggestions",
+          "width": 280,
+          "fill": "$bgUi",
+          "cornerRadius": "$radiusButton",
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#00000080",
+            "offset": {
+              "x": 0,
+              "y": 8
+            },
+            "blur": 24
+          },
+          "layout": "vertical",
+          "gap": 4,
+          "padding": 8,
+          "children": [
+            {
+              "type": "frame",
+              "id": "U5ro4v",
+              "name": "SuggestionsCountRow",
+              "width": "fill_container",
+              "padding": [
+                6,
+                10
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "a6xJMt",
+                  "name": "SuggestionsCount",
+                  "fill": "$textSecondary",
+                  "content": "2 of 4 forms",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "krMic",
+                  "name": "QueryHint",
+                  "fill": "$textSecondary",
+                  "content": "matching \"Sa\"",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "Xi5L2",
+              "name": "SuggestionsDivider",
+              "fill": "$border",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "EmyF8",
+              "name": "Suggestion — Sales",
+              "width": "fill_container",
+              "fill": "#8510F233",
+              "cornerRadius": 6,
+              "gap": 8,
+              "padding": [
+                8,
+                10
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZCpME",
+                  "name": "SuggestionSalesName",
+                  "fill": "$textMain",
+                  "content": "Sales",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "c10l1",
+                  "name": "SuggestionSalesMatch",
+                  "fill": "$primary",
+                  "content": "Sa…",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "zmU1h",
+              "name": "Suggestion — Support",
+              "width": "fill_container",
+              "cornerRadius": 6,
+              "gap": 8,
+              "padding": [
+                8,
+                10
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "uMn8z",
+                  "name": "SuggestionSupportName",
+                  "fill": "$textMain",
+                  "content": "Support",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "Zl3rr",
+                  "name": "SuggestionSupportMatch",
+                  "fill": "$textSecondary",
+                  "content": "Sa…",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 12,
+                  "fontWeight": "500"
                 }
               ]
             }

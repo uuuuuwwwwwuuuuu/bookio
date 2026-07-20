@@ -30,12 +30,16 @@ app.get('/', (c) => {
 
 app.route('/api', routes);
 
-serve(
-    {
-        fetch: app.fetch,
-        port: +PORT!,
-    },
-    (info) => {
-        console.log(`Server is running on http://localhost:${info.port}`);
-    },
-);
+export default app;
+
+if (!process.env.VERCEL) {
+    serve(
+        {
+            fetch: app.fetch,
+            port: +PORT!,
+        },
+        (info) => {
+            console.log(`Server is running on http://localhost:${info.port}`);
+        },
+    );
+}

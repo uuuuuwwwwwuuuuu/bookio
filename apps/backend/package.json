@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "tsx watch src/index.ts",
-        "build": "tsc",
+        "build": "tsc && tsc-alias",
+        "typecheck": "tsc --noEmit",
         "start": "node dist/index.js"
     },
     "types": "./src/routes/index.ts",
@@ -28,6 +29,7 @@
     },
     "devDependencies": {
         "@types/node": "^20.11.17",
+        "tsc-alias": "^1.9.1",
         "tsx": "^4.7.1",
         "typescript": "^5.8.3"
     }

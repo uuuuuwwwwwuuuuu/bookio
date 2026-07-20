@@ -1,18 +1,93 @@
+@font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-}
-
-* {
     margin: 0;
     padding: 0;
 }
 
+svg {
+    path {
+        fill: currentColor;
+    }
+}
+
+html {
+    font-size: 10px;
+    -webkit-text-size-adjust: 100%;
+    background-color: var(--color-bg-main);
+}
+
 body {
-    min-height: 100vh;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
+    min-height: 100%;
+    line-height: inherit;
+    font-family: var(--font-family);
+    color: var(--color-text-main);
+    background-color: var(--color-bg-main);
 }
 
 img,
@@ -32,27 +107,47 @@ select {
     color: inherit;
     background: none;
     border: none;
-    padding: 0;
-    margin: 0;
     outline: none;
     appearance: none;
     -webkit-appearance: none;
-    -moz-appearance: none;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-button {
+input:focus,
+button:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+    display: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button,
+input[type='button'],
+input[type='submit'],
+input[type='reset'] {
     cursor: pointer;
-    text-align: left;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    overflow-wrap: break-word;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 ul,
@@ -60,7 +155,71 @@ ol {
     list-style: none;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+p {
+    margin: 0;
+}
+
+:root {
+    --font-family: 'Nunito', sans-serif;
+
+    --color-primary: #8510f2;
+    --color-text-accent-button: #ffffff;
+    --color-bg-main: #101010;
+    --color-bg-ui: #191918;
+
+    --color-text-main: #ffffff;
+    --color-text-secondary: #d9d2d2;
+
+    --color-border: #544d4d;
+    --color-system-red: #cc2b0e;
+    --color-system-green: #1ecc0e;
+    --color-system-blue: #0e6ecc;
+}
+
+/* Scrollbar Styles */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.1s ease;
+}
+
+*:hover {
+    scrollbar-color: var(--color-border) var(--color-bg-main);
+}
+
+*:hover {
+    scrollbar-color: var(--color-border) var(--color-bg-main);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 20px;
+    border: 2px solid transparent;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border: 2px solid var(--color-bg-main);
+}
+
+*:hover::-webkit-scrollbar-track {
+    background: var(--color-bg-main);
 }

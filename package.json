@@ -9,7 +9,7 @@
         "back": "pnpm --filter @bookio/backend",
         "db": "pnpm --filter @bookio/db",
         "typecheck": "tsc -b --pretty",
-        "dev": "pnpm -r --parallel --filter @bookio/backend --filter @bookio/frontend run dev"
+        "dev": "pnpm -r --parallel --filter @bookio/backend --filter @bookio/frontend --filter @bookio/booking-form run dev"
     },
     "keywords": [],
     "author": "",

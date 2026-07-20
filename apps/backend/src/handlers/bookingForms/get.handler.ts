@@ -72,3 +72,51 @@ export const getBookingFormWithFieldsHandler = factory(
         }
     },
 );
+
+const getActiveBookingFormsByOrganizationSlugSchema = z.object({
+    organizationSlug: z.string().min(1),
+});
+
+export const getActiveBookingFormsByOrganizationSlugHandler = factory(
+    zValidator('query', getActiveBookingFormsByOrganizationSlugSchema),
+    async (c) => {
+        try {
+            const { organizationSlug } = c.req.valid('query');
+
+            const organization = await db.query.organizations.findFirst({
+                where: (organizations, { eq }) => eq(organizations.slug, organizationSlug),
+                columns: { id: true },
+            });
+
+            if (!organization) {
+                return c.json(prepareError('Organization not found'), 404);
+            }
+
+            const forms = await db.query.bookingForms.findMany({
+                where: (bookingForms, { eq, and }) =>
+                    and(
+                        eq(bookingForms.organizationId, organization.id),
+                        eq(bookingForms.isActive, true),
+                    ),
+                with: {
+                    fields: {
+                        where: (field, { isNull }) => isNull(field.parentId),
+                        with: {
+                            childFields: true,
+                        },
+                        orderBy: (field, { asc }) => [asc(field.order)],
+                    },
+                    metaData: true,
+                    styles: true,
+                },
+            });
+
+            return c.json(prepareSuccess(forms));
+        } catch (error) {
+            return c.json(
+                prepareError('Failed to get active booking forms by organization slug'),
+                500,
+            );
+        }
+    },
+);

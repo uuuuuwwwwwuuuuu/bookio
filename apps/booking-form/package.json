@@ -1,5 +1,5 @@
 {
-  "name": "booking-form",
+  "name": "@bookio/booking-form",
   "private": true,
   "type": "module",
   "imports": {
@@ -16,7 +16,9 @@
     "check": "prettier --check ."
   },
   "dependencies": {
+    "@bookio/backend": "workspace:*",
     "@tailwindcss/vite": "^4.1.18",
+    "hono": "^4.12.27",
     "@tanstack/react-devtools": "latest",
     "@tanstack/react-router": "latest",
     "@tanstack/react-router-devtools": "latest",

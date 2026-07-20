@@ -7,7 +7,10 @@
         "module": "ESNext",
         "paths": {
             "#/*": ["./src/*"],
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*"],
+            "@bookio/backend": ["../backend/src/routes/index.ts"],
+            "@lib/*": ["./src/lib/*"],
+            "@utils/*": ["./src/utils/*"]
         },
         "lib": ["ES2022", "DOM", "DOM.Iterable"],
         "types": ["vite/client", "vite-plugin-svgr/client"],

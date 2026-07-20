@@ -4,6 +4,15 @@
     "installCommand": "cd ../.. && pnpm install",
     "buildCommand": "pnpm run build",
     "ignoreCommand": "git diff --quiet HEAD^ HEAD -- ./ ../../packages/ui ../../apps/backend",
-    "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+    "rewrites": [
+        {
+            "source": "/api/:path*",
+            "destination": "https://bookio-backend.vercel.app/api/:path*"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
 }
 

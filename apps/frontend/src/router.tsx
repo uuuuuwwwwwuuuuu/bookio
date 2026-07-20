@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { lazyRoute } from '@lib/lazy-route';
 import { MainLayout } from '@layouts/MainLayout/MainLayout';
 import { PageLoader } from '@components/PageLoader/PageLoader';
@@ -72,24 +72,16 @@ export const router = createBrowserRouter([
                         children: [
                             {
                                 path: 'booking-forms',
-                                element: <Outlet />,
                                 children: [
                                     {
-                                        index: true,
                                         lazy: lazyRoute(
-                                            () => import('@pages/App/BookingForms/BookingForms'),
-                                            'BookingForms',
+                                            () => import('@pages/App/BookingForms'),
+                                            'BookingFormsLayout',
                                         ),
-                                    },
-                                    {
-                                        path: 'create',
-                                        lazy: lazyRoute(
-                                            () =>
-                                                import(
-                                                    '@pages/App/BookingForms/CreateBookingForm/CreateBookingForm'
-                                                ),
-                                            'CreateBookingForm',
-                                        ),
+                                        children: [
+                                            { index: true },
+                                            { path: 'create' },
+                                        ],
                                     },
                                     {
                                         path: ':bookingFormId/configurator',

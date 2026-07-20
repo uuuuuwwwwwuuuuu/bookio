@@ -48,9 +48,6 @@ export const Step1NameDescription: FC = () => {
     }, [navigate]);
     return (
         <BookingFormConfiguratorLayout
-            stepNumber={1}
-            title="Enter name and description of booking form"
-            description="The name must be unique within your organization. The description should explain the purpose of this booking form."
             footer={
                 <div className={styles.footerActions}>
                     <Button type="button" variant="primary-filled" onClick={handleClickNext}>

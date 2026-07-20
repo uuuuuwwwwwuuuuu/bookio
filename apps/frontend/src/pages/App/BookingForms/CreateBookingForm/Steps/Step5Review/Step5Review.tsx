@@ -121,9 +121,6 @@ export const Step5Review: FC = () => {
 
     return (
         <BookingFormConfiguratorLayout
-            stepNumber={5}
-            title="Review your booking form"
-            description="Please confirm that all information is correct. You can go back to edit any step, or create the booking form."
             footer={
                 <div className={styles.footerActions}>
                     <Button

@@ -9,7 +9,7 @@
     padding: 2rem;
 }
 
-.configurator {
+.panel {
     max-width: 110rem;
     max-height: 60rem;
     width: 100%;
@@ -19,7 +19,10 @@
     border: 1px solid var(--color-border);
     border-radius: 1rem;
     overflow: hidden;
-    animation: panelIn 0.45s ease-out;
+}
+
+.panelAnimate {
+    animation: panelIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .rail {
@@ -28,7 +31,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1.6rem;
     padding: 4rem 3.2rem;
     border-right: 1px solid var(--color-border);
     background:
@@ -38,10 +40,15 @@
             transparent 55%
         ),
         var(--color-bg-ui);
-    animation: railIn 0.5s ease-out;
 }
 
-.stepBadge {
+.railContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.badge {
     display: inline-flex;
     align-self: flex-start;
     align-items: center;
@@ -54,10 +61,9 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-primary);
-    animation: badgeIn 0.55s ease-out both;
 }
 
-.stepBadge::before {
+.badge::before {
     content: '';
     width: 0.6rem;
     height: 0.6rem;
@@ -88,12 +94,19 @@
     display: flex;
     flex-direction: column;
     justify-content: safe center;
-    gap: 2.4rem;
     padding: 4rem 4.8rem;
     min-width: 0;
     min-height: 0;
     overflow-y: auto;
-    animation: stageIn 0.55s ease-out both;
+    overflow-x: hidden;
+}
+
+.stageContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: safe center;
+    gap: 2.4rem;
+    width: 100%;
 }
 
 .fields {
@@ -101,6 +114,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1.2rem;
+}
+
+.fields > form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     gap: 1.2rem;
 }
 
@@ -112,10 +132,67 @@
     padding-top: 0.8rem;
 }
 
-@keyframes panelIn {
+/* —— enter choreography —— */
+
+.riseItem {
+    opacity: 0;
+}
+
+.isEntering .riseItem {
+    animation: riseIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(0.12s + var(--i, 0) * 140ms);
+}
+
+.isEntering .fields > *:not(form),
+.isEntering .fields > form > * {
+    opacity: 0;
+    animation: slideFromRight 1.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@for $i from 1 through 12 {
+    .isEntering .fields > *:not(form):nth-child(#{$i}),
+    .isEntering .fields > form > *:nth-child(#{$i}) {
+        animation-delay: #{0.36 + ($i - 1) * 0.12}s;
+    }
+}
+
+.isEntering .footer > * > * {
+    opacity: 0;
+    animation: slideFromRight 1.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@for $i from 1 through 6 {
+    .isEntering .footer > * > *:nth-child(#{$i}) {
+        animation-delay: #{0.72 + ($i - 1) * 0.12}s;
+    }
+}
+
+.isEntering .footer > * {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+/* —— exit —— */
+
+.isExiting {
+    animation: fadeOut 0.35s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.isExiting .riseItem,
+.isExiting .fields > *,
+.isExiting .fields > form > *,
+.isExiting .footer > * > * {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+}
+
+@keyframes riseIn {
     from {
         opacity: 0;
-        transform: translateY(1.2rem);
+        transform: translateY(0.7rem);
     }
 
     to {
@@ -124,10 +201,10 @@
     }
 }
 
-@keyframes railIn {
+@keyframes slideFromRight {
     from {
         opacity: 0;
-        transform: translateX(-1rem);
+        transform: translateX(1.4rem);
     }
 
     to {
@@ -136,27 +213,25 @@
     }
 }
 
-@keyframes stageIn {
+@keyframes fadeOut {
     from {
-        opacity: 0;
-        transform: translateX(1rem);
+        opacity: 1;
     }
 
     to {
-        opacity: 1;
-        transform: translateX(0);
+        opacity: 0;
     }
 }
 
-@keyframes badgeIn {
+@keyframes panelIn {
     from {
         opacity: 0;
-        transform: scale(0.92);
+        transform: translateY(0.8rem) scale(0.985);
     }
 
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -174,6 +249,19 @@
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .isEntering .riseItem,
+    .isEntering .fields > *:not(form),
+    .isEntering .fields > form > *,
+    .isEntering .footer > * > *,
+    .panelAnimate,
+    .isExiting {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+    }
+}
+
 @media (max-width: 768px) {
     .wrapper {
         padding: 1.2rem;
@@ -182,7 +270,7 @@
         overflow: hidden;
     }
 
-    .configurator {
+    .panel {
         flex-direction: column;
         max-height: 100%;
         height: 100%;
@@ -224,7 +312,7 @@
 }
 
 @media screen and (max-width: 440px) {
-    .configurator {
+    .panel {
         border-radius: 0;
     }
 

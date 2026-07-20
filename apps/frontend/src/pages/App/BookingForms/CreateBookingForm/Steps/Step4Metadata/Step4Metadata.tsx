@@ -82,9 +82,6 @@ export const Step4Metadata: FC = () => {
 
     return (
         <BookingFormConfiguratorLayout
-            stepNumber={4}
-            title="Set page metadata"
-            description="Title and description are required for SEO and social previews. Use Add more to define extra meta properties as name/value pairs."
             footer={
                 <div className={styles.footerActions}>
                     <Button type="button" variant="primary-filled" onClick={handleClickNext}>

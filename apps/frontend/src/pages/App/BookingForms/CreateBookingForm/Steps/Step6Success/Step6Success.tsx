@@ -31,9 +31,6 @@ export const Step6Success: FC = () => {
 
     return (
         <BookingFormConfiguratorLayout
-            stepNumber={6}
-            title="Booking form created"
-            description="Your booking form is ready. Continue to the configurator to set it up, or finish and return to the list."
             footer={
                 <div className={styles.footerActions}>
                     <Button

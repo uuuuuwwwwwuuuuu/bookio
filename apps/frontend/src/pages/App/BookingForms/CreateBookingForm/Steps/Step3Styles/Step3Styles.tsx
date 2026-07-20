@@ -119,9 +119,6 @@ export const Step3Styles: FC = () => {
 
     return (
         <BookingFormConfiguratorLayout
-            stepNumber={3}
-            title="Choose booking form colors"
-            description="Set the color palette for the public booking form. Use hex values like #RGB or #RRGGBB for primary, backgrounds, border, and text."
             footer={
                 <div className={styles.footerActions}>
                     <Button type="button" variant="primary-filled" onClick={handleClickNext}>

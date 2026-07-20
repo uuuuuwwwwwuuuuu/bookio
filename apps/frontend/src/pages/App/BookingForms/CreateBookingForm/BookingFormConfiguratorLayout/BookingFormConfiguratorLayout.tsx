@@ -1,37 +1,20 @@
 import type { FC, ReactNode } from 'react';
-import styles from './BookingFormConfiguratorLayout.module.scss';
+import panelStyles from '@components/PanelFormLayout/PanelFormLayout.module.scss';
 
 type BookingFormConfiguratorLayoutProps = {
-    stepNumber: number;
-    title: string;
-    description: string;
     children: ReactNode;
     footer?: ReactNode;
 };
 
+/** Stage content for a wizard step. Panel chrome lives in CreateBookingForm. */
 export const BookingFormConfiguratorLayout: FC<BookingFormConfiguratorLayoutProps> = ({
-    stepNumber,
-    title,
-    description,
     children,
     footer,
 }) => {
-    const stepLabel = String(stepNumber).padStart(2, '0');
-
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.configurator}>
-                <aside className={styles.rail}>
-                    <span className={styles.stepBadge}>Step {stepLabel}</span>
-                    <h2 className={styles.title}>{title}</h2>
-                    <p className={styles.description}>{description}</p>
-                </aside>
-
-                <div className={styles.stage}>
-                    <div className={styles.fields}>{children}</div>
-                    {footer ? <div className={styles.footer}>{footer}</div> : null}
-                </div>
-            </div>
-        </div>
+        <>
+            <div className={panelStyles.fields}>{children}</div>
+            {footer ? <div className={panelStyles.footer}>{footer}</div> : null}
+        </>
     );
 };

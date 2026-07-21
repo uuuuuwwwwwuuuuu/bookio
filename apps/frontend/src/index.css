@@ -74,6 +74,10 @@ svg {
     path {
         fill: currentColor;
     }
+
+    path[fill='none'] {
+        fill: none;
+    }
 }
 
 html {

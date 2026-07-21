@@ -1,16 +1,10 @@
-import { z } from 'zod';
 import { createFactory } from 'hono/factory';
 import { zValidator } from '@hono/zod-validator';
 import { db } from '@/db.js';
 import { members, organizations } from '@bookio/db';
 import { and, eq } from 'drizzle-orm';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
-
-const connectOrganizationSchema = z.object({
-    slug: z.string(),
-    password: z.string(),
-    userId: z.string(),
-});
+import { connectOrganizationSchema } from '@schemas/organization/connect.schema.js';
 
 const factory = createFactory().createHandlers;
 

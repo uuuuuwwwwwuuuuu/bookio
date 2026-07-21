@@ -1,15 +1,10 @@
-import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { db } from '@/db.js';
 import { bookingForms } from '@bookio/db';
 import { createFactory } from 'hono/factory';
 import { eq } from 'drizzle-orm';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
-
-const deleteBookingFormSchema = z.object({
-    bookingFormId: z.uuid(),
-    name: z.string(),
-});
+import { deleteBookingFormSchema } from '@schemas/bookingForms/delete.schema.js';
 
 const factory = createFactory().createHandlers;
 

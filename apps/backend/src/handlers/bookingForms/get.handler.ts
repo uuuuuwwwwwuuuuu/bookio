@@ -1,14 +1,15 @@
 import { createFactory } from 'hono/factory';
-import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { db } from '@/db.js';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
+import {
+    getActiveBookingFormsByOrganizationSlugSchema,
+    getBookingFormBySlugsSchema,
+    getBookingFormSchema,
+    getBookingFormsSchema,
+} from '@schemas/bookingForms/get.schema.js';
 
 const factory = createFactory().createHandlers;
-
-const getBookingFormsSchema = z.object({
-    organizationId: z.uuid(),
-});
 
 export const getBookingFormsHandler = factory(
     zValidator('query', getBookingFormsSchema),
@@ -26,10 +27,6 @@ export const getBookingFormsHandler = factory(
         }
     },
 );
-
-const getBookingFormSchema = z.object({
-    bookingFormId: z.uuid(),
-});
 
 export const getBookingFormHandler = factory(
     zValidator('query', getBookingFormSchema),
@@ -72,10 +69,6 @@ export const getBookingFormWithFieldsHandler = factory(
         }
     },
 );
-
-const getActiveBookingFormsByOrganizationSlugSchema = z.object({
-    organizationSlug: z.string().min(1),
-});
 
 export const getActiveBookingFormsByOrganizationSlugHandler = factory(
     zValidator('query', getActiveBookingFormsByOrganizationSlugSchema),
@@ -120,11 +113,6 @@ export const getActiveBookingFormsByOrganizationSlugHandler = factory(
         }
     },
 );
-
-const getBookingFormBySlugsSchema = z.object({
-    organizationSlug: z.string().min(1),
-    bookingFormSlug: z.string().min(1),
-});
 
 export const getBookingFormBySlugsHandler = factory(
     zValidator('query', getBookingFormBySlugsSchema),

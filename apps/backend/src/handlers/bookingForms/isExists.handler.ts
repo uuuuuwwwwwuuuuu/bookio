@@ -1,21 +1,8 @@
 import { createFactory } from 'hono/factory';
 import { zValidator } from '@hono/zod-validator';
-import { z } from 'zod';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
 import { isBookingFormExists } from '@/utils/isBookingFormExists.js';
-
-const isBookingFormExistsSchema = z
-    .object({
-        organizationId: z.uuid(),
-        name: z.string().min(1).max(255).optional(),
-        slug: z.string().min(1).max(60).optional(),
-    })
-    .refine(
-        (data) => data.name !== undefined || data.slug !== undefined,
-        {
-            message: 'Either name or slug must be provided',
-        },
-    );
+import { isBookingFormExistsSchema } from '@schemas/bookingForms/isExists.schema.js';
 
 const factory = createFactory().createHandlers;
 

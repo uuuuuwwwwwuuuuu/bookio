@@ -21,6 +21,7 @@
         "paths": {
             "@bookio/backend": ["../backend/src/routes/index.ts"],
             "@handlers/*": ["../backend/src/handlers/*"],
+            "@schemas/*": ["../backend/src/schemas/*"],
             "@/*": ["../backend/src/*"],
             "@assets/*": ["./src/assets/*"],
             "@hooks/*": ["./src/hooks/*"],

@@ -1,12 +1,8 @@
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
-import { z } from "zod";
 import { createFactory } from "hono/factory";
 import { db } from "@/db.js";
-
-const testSchema = z.object({
-    bookingFormId: z.uuid(),
-});
+import { testSchema } from "@schemas/test.schema.js";
 
 const factory = createFactory().createHandlers;
 

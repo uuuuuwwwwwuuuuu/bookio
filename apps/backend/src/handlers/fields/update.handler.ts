@@ -1,34 +1,12 @@
 import { createFactory } from 'hono/factory';
-import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { db } from '@/db.js';
-import { bookingFormFields, fieldTypeValues, type BookingFormFieldUpdate } from '@bookio/db';
+import { bookingFormFields } from '@bookio/db';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
 import { eq } from 'drizzle-orm';
+import { updateBookingFormFieldSchema } from '@schemas/fields/update.schema.js';
 
 const factory = createFactory().createHandlers;
-
-const updateBookingFormFieldSchema = z
-    .object({
-        bookingFormId: z.uuid(),
-        name: z.string().min(1).max(255).optional(),
-        type: z.enum(fieldTypeValues).optional(),
-        required: z.boolean().optional(),
-        key: z.string().min(1).max(255).regex(/^\S+$/, 'Key must not contain spaces').optional(),
-        parentId: z.uuid().optional().nullable(),
-        order: z.number().int().min(0).optional(),
-    })
-    .refine(
-        (data) =>
-            Object.entries(data).some(([key, value]) => {
-                if (key === 'bookingFormId') return false;
-
-                return value !== undefined;
-            }),
-        {
-            message: 'At least one field must be provided',
-        },
-    ) satisfies z.ZodType<BookingFormFieldUpdate>;
 
 export const updateBookingFormFieldHandler = factory(
     zValidator('json', updateBookingFormFieldSchema),
@@ -62,4 +40,3 @@ export const updateBookingFormFieldHandler = factory(
         }
     },
 );
-

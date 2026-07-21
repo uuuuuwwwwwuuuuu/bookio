@@ -1,14 +1,10 @@
 import { createFactory } from 'hono/factory';
-import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { db } from '@/db.js';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
+import { getBookingFormMetaSchema } from '@schemas/bookingFormMeta/get.schema.js';
 
 const factory = createFactory().createHandlers;
-
-const getBookingFormMetaSchema = z.object({
-    bookingFormId: z.uuid(),
-});
 
 export const getBookingFormMetaHandler = factory(
     zValidator('query', getBookingFormMetaSchema),

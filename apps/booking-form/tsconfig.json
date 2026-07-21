@@ -8,6 +8,7 @@
         "paths": {
             "#/*": ["./src/*"],
             "@bookio/backend": ["../backend/src/routes/index.ts"],
+            "@schemas/*": ["../backend/src/schemas/*"],
             "@/*": ["../backend/src/*"],
             "@lib/*": ["./src/lib/*"],
             "@utils/*": ["./src/utils/*"],

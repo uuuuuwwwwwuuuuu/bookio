@@ -1,14 +1,13 @@
 import { createFactory } from 'hono/factory';
-import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { db } from '@/db.js';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
+import {
+    getBookingFormFieldSchema,
+    getBookingFormFieldsSchema,
+} from '@schemas/fields/get.schema.js';
 
 const factory = createFactory().createHandlers;
-
-const getBookingFormFieldSchema = z.object({
-    bookingFormFieldId: z.uuid(),
-});
 
 export const getBookingFormFieldHandler = factory(
     zValidator('query', getBookingFormFieldSchema),
@@ -33,10 +32,6 @@ export const getBookingFormFieldHandler = factory(
         }
     },
 );
-
-const getBookingFormFieldsSchema = z.object({
-    bookingFormId: z.uuid(),
-});
 
 export const getBookingFormFieldsHandler = factory(
     zValidator('query', getBookingFormFieldsSchema),

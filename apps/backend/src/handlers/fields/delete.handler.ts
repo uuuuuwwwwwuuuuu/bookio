@@ -1,16 +1,12 @@
 import { createFactory } from 'hono/factory';
-import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { db } from '@/db.js';
 import { bookingFormFields } from '@bookio/db';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
 import { eq } from 'drizzle-orm';
+import { deleteBookingFormFieldSchema } from '@schemas/fields/delete.schema.js';
 
 const factory = createFactory().createHandlers;
-
-const deleteBookingFormFieldSchema = z.object({
-    id: z.uuid(),
-});
 
 export const deleteBookingFormFieldHandler = factory(
     zValidator('json', deleteBookingFormFieldSchema),

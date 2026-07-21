@@ -1,18 +1,12 @@
 import { createFactory } from 'hono/factory';
 import { zValidator } from '@hono/zod-validator';
-import { z } from 'zod';
 import { db } from '@/db.js';
 import { and, eq } from 'drizzle-orm';
 import { members, organizations } from '@bookio/db';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
+import { logoutOrganizationSchema } from '@schemas/organization/logout.schema.js';
 
 const factory = createFactory().createHandlers;
-
-const logoutOrganizationSchema = z.object({
-    userId: z.string(),
-    organizationId: z.string(),
-    organizationPassword: z.string().optional()
-});
 
 export const logoutOrganizationHandler = factory(
     zValidator('json', logoutOrganizationSchema),

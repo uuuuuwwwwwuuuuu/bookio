@@ -17,6 +17,13 @@ apps/backend/src/handlers/<domain>/
   delete.handler.ts
   isExists.handler.ts # optional
 
+apps/backend/src/schemas/<domain>/
+  create.schema.ts
+  get.schema.ts
+  update.schema.ts
+  delete.schema.ts
+  isExists.schema.ts  # optional
+
 apps/backend/src/routes/
   <domain>.routes.ts
   index.ts            # register new route group here
@@ -24,15 +31,16 @@ apps/backend/src/routes/
 
 - Domain folder name: camelCase plural/resource (`bookingForms`, `fields`, `bookingFormMeta`).
 - Handler file: `<action>.handler.ts`.
+- Schema file: `<action>.schema.ts` under `schemas/<domain>/`.
 - Route file: `<domain>.routes.ts`.
-- Imports always use `@/` alias and **`.js` extension** (even for `.ts` files).
+- Imports always use `@/` / `@schemas/` aliases and **`.js` extension** (even for `.ts` files).
 
 ## Checklist
 
 Copy and track:
 
 ```
-- [ ] Zod schema + zValidator ('json' for mutations, 'query' for GET)
+- [ ] Zod schema in `schemas/<domain>/<action>.schema.ts` + zValidator ('json' for mutations, 'query' for GET)
 - [ ] factory = createFactory().createHandlers
 - [ ] try/catch around entire handler body
 - [ ] Business errors via prepareError + status (400/401/403/404)
@@ -47,16 +55,12 @@ Copy and track:
 
 ```ts
 import { createFactory } from 'hono/factory';
-import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { db } from '@/db.js';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
+import { exampleSchema } from '@schemas/<domain>/example.schema.js';
 
 const factory = createFactory().createHandlers;
-
-const exampleSchema = z.object({
-    // fields
-});
 
 export const exampleHandler = factory(
     zValidator('json', exampleSchema), // or 'query' for GET
@@ -111,6 +115,8 @@ Do not pass HTTP status on success unless an existing similar handler already do
 
 ## Zod schemas
 
+- Live in `apps/backend/src/schemas/<domain>/<action>.schema.ts`.
+- Import into handlers via `@schemas/<domain>/<action>.schema.js`.
 - Name: `<action><Resource>Schema` (e.g. `createBookingFormSchema`, `getBookingFormsSchema`).
 - IDs: `z.uuid()` when the column is UUID.
 - Create: align with insert type via `satisfies z.ZodType<SomeInsert>` when a type exists in `@bookio/db`.
@@ -359,7 +365,8 @@ Avoid matching these when generating new endpoints:
 ## Workflow
 
 1. If schema/types needed — use / add from `@bookio/db`.
-2. Add or extend handler file under `handlers/<domain>/`.
-3. Wire path in `routes/<domain>.routes.ts` with `...handler`.
-4. If new resource group — create routes file and `.route(...)` in `routes/index.ts`.
-5. Re-read a sibling handler in the same domain and match naming, spacing, and response phrases.
+2. Add schema under `schemas/<domain>/<action>.schema.ts`.
+3. Add or extend handler file under `handlers/<domain>/` importing from `@schemas/...`.
+4. Wire path in `routes/<domain>.routes.ts` with `...handler`.
+5. If new resource group — create routes file and `.route(...)` in `routes/index.ts`.
+6. Re-read a sibling handler in the same domain and match naming, spacing, and response phrases.

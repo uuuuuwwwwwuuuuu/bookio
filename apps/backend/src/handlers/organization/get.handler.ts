@@ -1,17 +1,16 @@
 import { createFactory } from 'hono/factory';
 import { db } from '@/db.js';
-import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { members, organizations } from '@bookio/db';
 import { eq } from 'drizzle-orm';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
 import { getMemberByOrgAndUserId } from '@/utils/getMemberByOrgAndUserId.js';
+import {
+    getOrganizationDataSchema,
+    organizationSchema,
+} from '@schemas/organization/get.schema.js';
 
 const factory = createFactory().createHandlers;
-
-const organizationSchema = z.object({
-    userId: z.string(),
-});
 
 export const getUserOrganizationsHandler = factory(
     zValidator('query', organizationSchema),
@@ -43,11 +42,6 @@ export const getUserOrganizationsHandler = factory(
         }
     },
 );
-
-const getOrganizationDataSchema = z.object({
-    userId: z.string(),
-    organizationId: z.string(),
-});
 
 export const getOrganizationDataHandler = factory(
     zValidator('query', getOrganizationDataSchema),

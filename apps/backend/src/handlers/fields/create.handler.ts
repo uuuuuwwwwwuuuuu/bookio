@@ -1,31 +1,23 @@
 import { createFactory } from 'hono/factory';
-import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { db } from '@/db.js';
-import { bookingFormFields, fieldTypeValues, type BookingFormFieldInsert } from '@bookio/db';
+import { bookingFormFields } from '@bookio/db';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
 import { and, desc, eq, isNull } from 'drizzle-orm';
+import { createBookingFormFieldSchema } from '@schemas/fields/create.schema.js';
 
 const factory = createFactory().createHandlers;
-
-const createBookingFormFieldSchema = z.object({
-    bookingFormId: z.uuid(),
-    name: z.string().min(1).max(255),
-    type: z.enum(fieldTypeValues),
-    required: z.boolean().default(true),
-    key: z.string().min(1).max(255).regex(/^\S+$/, 'Key must not contain spaces'),
-    parentId: z.uuid().optional().nullable(),
-}) satisfies z.ZodType<BookingFormFieldInsert>;
 
 export const createBookingFormFieldHandler = factory(
     zValidator('json', createBookingFormFieldSchema),
     async (c) => {
         try {
-            const { bookingFormId, name, type, required, key, parentId } = c.req.valid('json');
+            const { bookingFormId, name, type, required, key, parentId, params } =
+                c.req.valid('json');
 
             if (parentId) {
                 const parentField = await db.query.bookingFormFields.findFirst({
-                    where: (fields, { eq }) => eq(fields.parentId, parentId),
+                    where: (fields, { eq }) => eq(fields.id, parentId),
                 });
 
                 if (!parentField) {
@@ -93,10 +85,11 @@ export const createBookingFormFieldHandler = factory(
                     bookingFormId,
                     name,
                     type,
-                    required,
+                    required: type === 'group' ? false : required,
                     key,
                     order: newOrder,
-                    parentId,
+                    parentId: parentId ?? null,
+                    params,
                 })
                 .returning();
 

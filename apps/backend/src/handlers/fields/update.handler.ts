@@ -12,13 +12,11 @@ export const updateBookingFormFieldHandler = factory(
     zValidator('json', updateBookingFormFieldSchema),
     async (c) => {
         try {
-            const { name, type, required, key, parentId, order, bookingFormId } =
-                c.req.valid('json');
+            const { id, name, type, required, key, parentId, order, params } = c.req.valid('json');
 
-            const [existingField] = await db
-                .select()
-                .from(bookingFormFields)
-                .where(eq(bookingFormFields.bookingFormId, bookingFormId));
+            const existingField = await db.query.bookingFormFields.findFirst({
+                where: (fields, { eq }) => eq(fields.id, id),
+            });
 
             if (!existingField) {
                 return c.json(prepareError('Field not found'), 404);
@@ -26,8 +24,16 @@ export const updateBookingFormFieldHandler = factory(
 
             const [updatedField] = await db
                 .update(bookingFormFields)
-                .set({ name, type, required, key, parentId, order })
-                .where(eq(bookingFormFields.id, existingField.id))
+                .set({
+                    name,
+                    type,
+                    required: type === 'group' ? false : required,
+                    key,
+                    parentId,
+                    order,
+                    params,
+                })
+                .where(eq(bookingFormFields.id, id))
                 .returning();
 
             if (!updatedField) {

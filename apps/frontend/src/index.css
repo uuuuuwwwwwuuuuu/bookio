@@ -81,6 +81,7 @@ svg {
 }
 
 html {
+    overflow: hidden;
     font-size: 10px;
     -webkit-text-size-adjust: 100%;
     background-color: var(--color-bg-main);

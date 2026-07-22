@@ -4,7 +4,7 @@ import { isBookingFormExistsHandler } from '@/handlers/bookingForms/isExists.han
 import {
     getBookingFormsHandler,
     getBookingFormHandler,
-    getBookingFormWithFieldsHandler,
+    getEntireBookingFormByIdHandler,
     getActiveBookingFormsByOrganizationSlugHandler,
     getBookingFormBySlugsHandler,
 } from '@/handlers/bookingForms/get.handler.js';
@@ -18,7 +18,7 @@ const bookings = new Hono()
     .post('/is-exists', ...isBookingFormExistsHandler)
     .get('/get-all', ...getBookingFormsHandler)
     .get('/get-one', ...getBookingFormHandler)
-    .get('/get-one-with-fields', ...getBookingFormWithFieldsHandler)
+    .get('/get-entire-by-id', ...getEntireBookingFormByIdHandler)
     .get(
         '/get-active-by-organization-slug',
         ...getActiveBookingFormsByOrganizationSlugHandler,

@@ -2,7 +2,8 @@
     display: flex;
     gap: 3rem;
     justify-content: space-between;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
 }
 
 .configuratorPreview {

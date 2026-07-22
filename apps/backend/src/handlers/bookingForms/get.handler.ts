@@ -45,7 +45,7 @@ export const getBookingFormHandler = factory(
     },
 );
 
-export const getBookingFormWithFieldsHandler = factory(
+export const getEntireBookingFormByIdHandler = factory(
     zValidator('query', getBookingFormSchema),
     async (c) => {
         try {
@@ -59,13 +59,16 @@ export const getBookingFormWithFieldsHandler = factory(
                         with: {
                             childFields: true,
                         },
+                        orderBy: (field, { asc }) => [asc(field.order)],
                     },
+                    metaData: true,
+                    styles: true,
                 },
             });
 
             return c.json(prepareSuccess(form));
         } catch (error) {
-            return c.json(prepareError('Failed to get booking form with fields'), 500);
+            return c.json(prepareError('Failed to get entire booking form by id'), 500);
         }
     },
 );

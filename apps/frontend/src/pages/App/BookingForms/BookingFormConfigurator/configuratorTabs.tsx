@@ -4,7 +4,7 @@ import SettingsIcon from '@assets/icons/settings.svg?react';
 import FieldsIcon from '@assets/icons/fields.svg?react';
 import StylesIcon from '@assets/icons/styles.svg?react';
 
-import { SettingsTab, SettingsTabFooter } from './ConfiguratorTabs/SettingsTab';
+import { SettingsTab } from './ConfiguratorTabs/SettingsTab/SettingsTab';
 
 export const CONFIGURATOR_TAB_VALUES = ['settings', 'fields', 'styles'] as const;
 
@@ -15,7 +15,6 @@ type ConfiguratorTabConfig = {
     content: string;
     icon: ReactNode;
     Panel?: ComponentType;
-    Footer?: ComponentType;
 };
 
 export const configuratorTabs: ConfiguratorTabConfig[] = [
@@ -24,7 +23,6 @@ export const configuratorTabs: ConfiguratorTabConfig[] = [
         content: 'Basic settings',
         icon: <SettingsIcon />,
         Panel: SettingsTab,
-        Footer: SettingsTabFooter,
     },
     {
         value: 'fields',

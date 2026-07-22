@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import type { UpdateBookingFormRequest } from '@api/bookingForms/updateBookingForm';
-import type { UpdateBookingFormStylesRequest } from '@api/bookingFormStyles/updateBookingFormStyles';
-import type { UpdateBookingFormMetaRequest } from '@api/bookingFormMeta/updateBookingFormMeta';
+import type { UpdateBookingFormStylesRequest } from '@api/bookingForms/bookingFormStyles/updateBookingFormStyles';
+import type { UpdateBookingFormMetaRequest } from '@api/bookingForms/bookingFormMeta/updateBookingFormMeta';
 
 import {
     DEFAULT_CONFIGURATOR_TAB,

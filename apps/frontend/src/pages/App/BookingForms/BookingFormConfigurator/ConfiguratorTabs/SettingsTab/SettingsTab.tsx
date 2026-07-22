@@ -1,7 +1,7 @@
 import { useEffect, type FC } from 'react';
 import type { BookingFormType } from '@api/bookingForms/getBookingForms';
 import type { UpdateBookingFormRequest } from '@api/bookingForms/updateBookingForm';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Checkbox, Input } from '@bookio/ui';
 import { ValidatableInput } from '@components/ValidatableInput/ValidatableInput';
 import { useIsBookingFormExists } from '@api/bookingForms/isBookingFormExists';
@@ -14,6 +14,7 @@ import { useForm, useWatch } from 'react-hook-form';
 
 import { useBookingFormConfiguratorStore } from '@store/useBookingFormConfiguratorStore';
 import { useGetEntireBookingFormById } from '@api/bookingForms/getEntireBookingFormById';
+import { Spinner } from '@components/Spinner/Spinner';
 
 type SettingsTabFormData = Omit<UpdateBookingFormRequest, 'bookingFormId'>;
 
@@ -115,11 +116,30 @@ const SettingsTabForm: FC<SettingsTabFormProps> = ({ bookingForm, organization }
 
 export const SettingsTab: FC = () => {
     const { bookingFormId, id } = useParams();
+    const navigate = useNavigate();
 
-    const { data: organization } = useGetOrganization(id);
-    const { data: bookingForm } = useGetEntireBookingFormById(bookingFormId);
+    const { data: organization, isLoading: isOrganizationLoading } = useGetOrganization(id);
+    const { data: bookingForm, isLoading: isBookingFormLoading } =
+        useGetEntireBookingFormById(bookingFormId);
 
-    if (!bookingFormId || !id || !bookingForm || !organization) return null;
+    if (!id) {
+        return navigate('/organizations/list');
+    }
+
+    if (!bookingFormId) {
+        return navigate(`/${id}/booking-forms`);
+    }
+
+    if (isOrganizationLoading || isBookingFormLoading)
+        return (
+            <div className={styles.settingsTab}>
+                <Spinner />
+            </div>
+        );
+
+    if (!bookingForm || !organization) {
+        return navigate(`/${id}/booking-forms`);
+    };
 
     return <SettingsTabForm bookingForm={bookingForm} organization={organization} />;
 };

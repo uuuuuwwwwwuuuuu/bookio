@@ -84,7 +84,15 @@ const ConfiguratorFooter: FC = memo(() => {
     const isDirtyBookingForm = useMemo(() => {
         if (!baseLine || !bookingForm) return false;
 
-        return !isEqual(baseLine, bookingForm);
+        const baseBookingFormData = {
+            bookingFormId: baseLine.id,
+            name: baseLine.name,
+            description: baseLine.description,
+            isActive: baseLine.isActive,
+            slug: baseLine.slug,
+        };
+
+        return !isEqual(baseBookingFormData, bookingForm);
     }, [baseLine, bookingForm]);
 
     const isDirtyBookingFormFields = useMemo(() => {
@@ -93,48 +101,67 @@ const ConfiguratorFooter: FC = memo(() => {
         return !isEqual(baseLine.fields, bookingFormFields);
     }, [baseLine, bookingFormFields]);
 
-    const requests = useMemo(() => {
-        const requestsArray: Promise<unknown>[] = [];
+    const saveRequestThunks = useMemo(() => {
+        const thunks: Array<() => Promise<unknown>> = [];
 
-        if (isDirtyBookingForm && bookingForm) requestsArray.push(updateBookingForm(bookingForm));
+        if (isDirtyBookingForm && bookingForm) {
+            thunks.push(() => updateBookingForm(bookingForm));
+        }
         if (isDirtyBookingFormFields && bookingFormFields) {
-            requestsArray.push(
-                ...bookingFormFields.map((bookingFormField) => {
-                    const existingField = baseLine?.fields.find(
-                        (field) => field.id === bookingFormField.id,
+            for (const bookingFormField of bookingFormFields) {
+                const existingField = baseLine?.fields.find(
+                    (field) => field.id === bookingFormField.id,
+                );
+                if (existingField) {
+                    thunks.push(() =>
+                        updateBookingFormField(toUpdateBookingFormFieldRequest(bookingFormField)),
                     );
-                    if (existingField) {
-                        return updateBookingFormField(
-                            toUpdateBookingFormFieldRequest(bookingFormField),
-                        );
-                    }
-                    if (!bookingFormId) {
-                        return Promise.reject(new Error('Booking form ID is required'));
-                    }
-                    return createBookingFormField(
+                    continue;
+                }
+                if (!bookingFormId) {
+                    thunks.push(() => Promise.reject(new Error('Booking form ID is required')));
+                    continue;
+                }
+                thunks.push(() =>
+                    createBookingFormField(
                         toCreateBookingFormFieldRequest(bookingFormId, bookingFormField),
-                    );
-                }),
-            );
+                    ),
+                );
+            }
         }
 
-        return requestsArray;
-    }, [isDirtyBookingForm, bookingForm, updateBookingForm]);
+        return thunks;
+    }, [
+        isDirtyBookingForm,
+        isDirtyBookingFormFields,
+        bookingForm,
+        bookingFormFields,
+        baseLine?.fields,
+        updateBookingForm,
+        updateBookingFormField,
+        createBookingFormField,
+        bookingFormId,
+    ]);
 
     const handleSave = useCallback(() => {
-        toast.promise(Promise.all(requests), {
+        toast.promise(Promise.all(saveRequestThunks.map((request) => request())), {
             loading: 'Saving booking form...',
             success: 'Booking form saved successfully',
             error: 'Failed to save booking form',
         });
-    }, [requests]);
+    }, [saveRequestThunks]);
 
     return (
         <div className={styles.footer}>
             <Button type="button" variant="simple-clean">
                 Back
             </Button>
-            <Button variant="green-filled" className={styles.saveButton} onClick={handleSave}>
+            <Button
+                variant="green-filled"
+                className={styles.saveButton}
+                onClick={handleSave}
+                disabled={!(isDirtyBookingForm || isDirtyBookingFormFields)}
+            >
                 Save booking form
             </Button>
         </div>

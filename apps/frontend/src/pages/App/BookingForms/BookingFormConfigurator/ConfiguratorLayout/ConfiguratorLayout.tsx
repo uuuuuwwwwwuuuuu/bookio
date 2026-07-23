@@ -8,7 +8,7 @@ import { useBookingFormConfiguratorStore } from '@store/useBookingFormConfigurat
 import { configuratorTabs } from '../configuratorTabs';
 import styles from './ConfiguratorLayout.module.scss';
 import { ConfiguratorTabs } from './ConfiguratorTabs';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useGetEntireBookingFormById } from '@api/bookingForms/getEntireBookingFormById';
 import isEqual from 'fast-deep-equal';
 import { useUpdateBookingForm } from '@api/bookingForms/updateBookingForm';
@@ -75,6 +75,8 @@ const ConfiguratorFooter: FC = memo(() => {
             bookingFormFields,
         })),
     );
+
+    const navigate = useNavigate();
 
     const { mutateAsync: updateBookingForm } = useUpdateBookingForm(bookingFormId);
     const { mutateAsync: updateBookingFormField } = useUpdateBookingFormField(bookingFormId);
@@ -143,17 +145,24 @@ const ConfiguratorFooter: FC = memo(() => {
         bookingFormId,
     ]);
 
+    const handleBack = useCallback(() => {
+        navigate(-1);
+    }, [navigate]);
+
     const handleSave = useCallback(() => {
         toast.promise(Promise.all(saveRequestThunks.map((request) => request())), {
             loading: 'Saving booking form...',
-            success: 'Booking form saved successfully',
+            success: () => {
+                navigate(-1);
+                return 'Booking form saved successfully';
+            },
             error: 'Failed to save booking form',
         });
-    }, [saveRequestThunks]);
+    }, [saveRequestThunks, navigate]);
 
     return (
         <div className={styles.footer}>
-            <Button type="button" variant="simple-clean">
+            <Button type="button" variant="simple-clean" onClick={handleBack}>
                 Back
             </Button>
             <Button

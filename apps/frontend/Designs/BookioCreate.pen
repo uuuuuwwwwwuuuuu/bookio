@@ -1,0 +1,1248 @@
+{
+  "version": "2.14",
+  "children": [
+    {
+      "type": "frame",
+      "id": "iNnA8",
+      "x": 0,
+      "y": -300,
+      "name": "Component / FormInput",
+      "reusable": true,
+      "width": 400,
+      "layout": "vertical",
+      "gap": 6,
+      "children": [
+        {
+          "type": "text",
+          "id": "zjFpm",
+          "name": "Label",
+          "fill": "$textSecondary",
+          "content": "Label",
+          "fontFamily": "$fontFamily",
+          "fontSize": 13,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "o5FjjG",
+          "name": "InputBox",
+          "width": "fill_container",
+          "height": 44,
+          "fill": "$bgMain",
+          "cornerRadius": "$radiusButton",
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "padding": [
+            0,
+            14
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "l8mi5",
+              "name": "Placeholder",
+              "fill": "$textSecondary",
+              "content": "Placeholder text",
+              "fontFamily": "$fontFamily",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "CBHav",
+      "x": 0,
+      "y": -220,
+      "name": "Component / PrimaryButton",
+      "reusable": true,
+      "width": 400,
+      "height": 48,
+      "fill": "$primary",
+      "cornerRadius": "$radiusButton",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "kUlm1",
+          "name": "Label",
+          "fill": "$textMain",
+          "content": "Button",
+          "fontFamily": "$fontFamily",
+          "fontSize": 15,
+          "fontWeight": "700"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "g6HjG",
+      "x": 0,
+      "y": -150,
+      "name": "Component / GhostButton",
+      "reusable": true,
+      "width": 120,
+      "height": 48,
+      "fill": "$bgMain",
+      "cornerRadius": "$radiusButton",
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "b4oMBD",
+          "name": "Label",
+          "fill": "$textMain",
+          "content": "Back",
+          "fontFamily": "$fontFamily",
+          "fontSize": 15,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "g8FIV",
+      "x": 0,
+      "y": 0,
+      "name": "Variant 1 — Centered Card",
+      "clip": true,
+      "width": 1440,
+      "height": 960,
+      "fill": "$bgMain",
+      "layout": "vertical",
+      "padding": 48,
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "TdGpp",
+          "name": "FormCard",
+          "width": 480,
+          "fill": "$bgUi",
+          "cornerRadius": "$radiusCard",
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "layout": "vertical",
+          "gap": 28,
+          "padding": 40,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "JCnOK",
+              "name": "Logo",
+              "fill": "$textMain",
+              "content": "BOOKIO",
+              "fontFamily": "$fontFamily",
+              "fontSize": 28,
+              "fontWeight": "800",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "x5fOf5",
+              "name": "HeaderBlock",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "cdEcw",
+                  "name": "Title",
+                  "fill": "$textMain",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Lets create your organization",
+                  "lineHeight": 1.3,
+                  "textAlign": "center",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "V1yqw",
+                  "name": "Subtitle",
+                  "fill": "$textSecondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "An organization is your team's workspace where you manage booking forms, members, and settings.",
+                  "lineHeight": 1.5,
+                  "textAlign": "center",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "WRhel",
+              "name": "StepIndicator",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "E7xSo",
+                  "name": "Dot1",
+                  "fill": "$primary",
+                  "width": 8,
+                  "height": 8
+                },
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 1,
+                  "id": "S5w18",
+                  "name": "Line1",
+                  "fill": "$border",
+                  "width": 32,
+                  "height": 2
+                },
+                {
+                  "type": "ellipse",
+                  "id": "Fdiue",
+                  "name": "Dot2",
+                  "fill": "$border",
+                  "width": 8,
+                  "height": 8
+                },
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 1,
+                  "id": "B8AybC",
+                  "name": "Line2",
+                  "fill": "$border",
+                  "width": 32,
+                  "height": 2
+                },
+                {
+                  "type": "ellipse",
+                  "id": "wXLvX",
+                  "name": "Dot3",
+                  "fill": "$border",
+                  "width": 8,
+                  "height": 8
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Bv12W",
+              "name": "FormFields",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "id": "sBWPe",
+                  "type": "ref",
+                  "ref": "iNnA8",
+                  "width": "fill_container",
+                  "descendants": {
+                    "zjFpm": {
+                      "content": "Organization name"
+                    },
+                    "l8mi5": {
+                      "content": "Organization name"
+                    }
+                  }
+                },
+                {
+                  "id": "tAxz3",
+                  "type": "ref",
+                  "ref": "iNnA8",
+                  "width": "fill_container",
+                  "descendants": {
+                    "zjFpm": {
+                      "content": "Unique organization slug"
+                    },
+                    "o5FjjG": {
+                      "stroke": "$systemRed"
+                    },
+                    "l8mi5": {
+                      "content": "my-organization",
+                      "fill": "$textMain"
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "Meljr",
+                  "name": "SlugError",
+                  "fill": "$systemRed",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "This slug is already taken",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "id": "PSJ6z",
+                  "type": "ref",
+                  "ref": "iNnA8",
+                  "width": "fill_container",
+                  "descendants": {
+                    "zjFpm": {
+                      "content": "Organization password"
+                    },
+                    "l8mi5": {
+                      "content": "••••••••"
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "kcA91",
+                  "name": "PasswordHint",
+                  "fill": "$textSecondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "At least 8 characters, 1 uppercase, 1 number, 1 special character",
+                  "lineHeight": 1.4,
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "id": "SUs23",
+              "type": "ref",
+              "ref": "CBHav",
+              "width": "fill_container",
+              "descendants": {
+                "kUlm1": {
+                  "content": "Create Organization"
+                }
+              }
+            },
+            {
+              "type": "text",
+              "id": "lC2JT",
+              "name": "FooterNote",
+              "fill": "$textSecondary",
+              "content": "Already have an organization? Go to list",
+              "textAlign": "center",
+              "fontFamily": "$fontFamily",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "A785a",
+      "x": 1520,
+      "y": 0,
+      "name": "Variant 2 — Split Layout",
+      "clip": true,
+      "width": 1440,
+      "height": 960,
+      "fill": "$bgMain",
+      "children": [
+        {
+          "type": "frame",
+          "id": "u2wis",
+          "name": "BrandPanel",
+          "width": 720,
+          "height": "fill_container",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 160,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#8510F2",
+                "position": 0
+              },
+              {
+                "color": "#4A0A8A",
+                "position": 1
+              }
+            ]
+          },
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            64,
+            72
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "v6hgif",
+              "name": "Logo",
+              "fill": "#FFFFFF",
+              "content": "BOOKIO",
+              "fontFamily": "$fontFamily",
+              "fontSize": 32,
+              "fontWeight": "800",
+              "letterSpacing": 1
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 2,
+              "id": "g6xFR4",
+              "name": "Accent Line",
+              "fill": "#FFFFFF55",
+              "width": 40,
+              "height": 3
+            },
+            {
+              "type": "text",
+              "id": "BuC6D",
+              "name": "Headline",
+              "fill": "#FFFFFF",
+              "textGrowth": "fixed-width",
+              "width": 500,
+              "content": "Start your booking journey",
+              "lineHeight": 1.15,
+              "fontFamily": "$fontFamily",
+              "fontSize": 40,
+              "fontWeight": "800"
+            },
+            {
+              "type": "text",
+              "id": "ZfmZt",
+              "name": "Description",
+              "fill": "#FFFFFFCC",
+              "textGrowth": "fixed-width",
+              "width": 480,
+              "content": "Create your organization and unlock powerful tools to manage appointments, forms, and your team.",
+              "lineHeight": 1.5,
+              "fontFamily": "$fontFamily",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "uZdgt",
+              "name": "FeatureList",
+              "width": 480,
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "v0vbpn",
+                  "name": "FeatureItem",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "rXxov",
+                      "name": "CheckCircle",
+                      "width": 24,
+                      "height": 24,
+                      "fill": "#FFFFFF33",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "S0qjL",
+                          "name": "CheckIcon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "check",
+                          "library": "lucide",
+                          "fill": "#FFFFFF"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "y9Ieg",
+                      "name": "FeatureText",
+                      "fill": "#FFFFFF",
+                      "content": "Booking forms for your clients",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "JeWIT",
+                  "name": "FeatureItem",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "tChMU",
+                      "name": "CheckCircle",
+                      "width": 24,
+                      "height": 24,
+                      "fill": "#FFFFFF33",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "TdN1h",
+                          "name": "CheckIcon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "check",
+                          "library": "lucide",
+                          "fill": "#FFFFFF"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "T63j1N",
+                      "name": "FeatureText",
+                      "fill": "#FFFFFF",
+                      "content": "Team management & access control",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "UfBIk",
+                  "name": "FeatureItem",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "M0mn4e",
+                      "name": "CheckCircle",
+                      "width": 24,
+                      "height": 24,
+                      "fill": "#FFFFFF33",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "JssoC",
+                          "name": "CheckIcon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "check",
+                          "library": "lucide",
+                          "fill": "#FFFFFF"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "C4042",
+                      "name": "FeatureText",
+                      "fill": "#FFFFFF",
+                      "content": "Analytics and conversion tracking",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "ellipse",
+              "id": "D4YIVe",
+              "layoutPosition": "absolute",
+              "x": 420,
+              "y": 600,
+              "name": "Decor Orb",
+              "fill": "#FFFFFF12",
+              "width": 360,
+              "height": 360
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "ZbsXL",
+          "name": "Panel Divider",
+          "fill": "$border",
+          "width": 1,
+          "height": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "TBRkt",
+          "name": "FormPanel",
+          "width": 720,
+          "height": "fill_container",
+          "fill": "$bgMain",
+          "layout": "vertical",
+          "padding": [
+            64,
+            80
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "e1qkh",
+              "name": "FormWrapper",
+              "width": 440,
+              "layout": "vertical",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "v2jeRU",
+                  "name": "FormHeader",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YVtnP",
+                      "name": "Title",
+                      "fill": "$textMain",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Lets create your organization",
+                      "lineHeight": 1.2,
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "chprN",
+                      "name": "Subtitle",
+                      "fill": "$textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Fill in the details below to get started.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Ots7q",
+                  "name": "FormFields",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "id": "kmVht",
+                      "type": "ref",
+                      "ref": "iNnA8",
+                      "width": "fill_container",
+                      "descendants": {
+                        "zjFpm": {
+                          "content": "Organization name"
+                        },
+                        "l8mi5": {
+                          "content": "Acme Inc."
+                        }
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "baCys",
+                      "name": "Slug Field Validated",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "NX8Ef",
+                          "name": "Slug Label Row",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "agXXz",
+                              "name": "Slug Label",
+                              "fill": "$textSecondary",
+                              "content": "Slug",
+                              "fontFamily": "$fontFamily",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "AO3rK",
+                              "name": "Slug Status",
+                              "fill": "$systemGreen",
+                              "content": "Available",
+                              "fontFamily": "$fontFamily",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ysBjy",
+                          "name": "Slug Input",
+                          "width": "fill_container",
+                          "height": 44,
+                          "fill": "$bgUi",
+                          "cornerRadius": "$radiusButton",
+                          "stroke": "$systemGreen",
+                          "strokeWidth": 1,
+                          "padding": [
+                            0,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "FQHZM",
+                              "name": "Slug Prefix",
+                              "fill": "$textSecondary",
+                              "content": "bookio.pro/",
+                              "fontFamily": "$fontFamily",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "mt3hR",
+                              "name": "Slug Value",
+                              "fill": "$textMain",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "acme-inc",
+                              "fontFamily": "$fontFamily",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "OjKbV",
+                              "name": "Slug Valid Icon",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "circle-check",
+                              "library": "lucide",
+                              "fill": "$systemGreen"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "dlYjk",
+                      "type": "ref",
+                      "ref": "iNnA8",
+                      "width": "fill_container",
+                      "descendants": {
+                        "zjFpm": {
+                          "content": "Password"
+                        },
+                        "l8mi5": {
+                          "content": "••••••••"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "hrn4A",
+                  "type": "ref",
+                  "ref": "CBHav",
+                  "width": "fill_container",
+                  "descendants": {
+                    "kUlm1": {
+                      "content": "Create Organization"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Q6AEZC",
+      "x": 3040,
+      "y": 0,
+      "name": "Variant 3 — Minimal Wizard",
+      "clip": true,
+      "width": 1440,
+      "height": 960,
+      "fill": "$bgMain",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "p97KL",
+          "name": "WizardHeader",
+          "width": "fill_container",
+          "height": 72,
+          "padding": [
+            0,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "J52wL",
+              "name": "Logo",
+              "fill": "$textMain",
+              "content": "BOOKIO",
+              "fontFamily": "$fontFamily",
+              "fontSize": 24,
+              "fontWeight": "800",
+              "letterSpacing": 1
+            },
+            {
+              "type": "text",
+              "id": "mqRZp",
+              "name": "StepLabel",
+              "fill": "$textSecondary",
+              "content": "Step 1 of 3",
+              "fontFamily": "$fontFamily",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "S3RtX",
+          "name": "HeaderDivider",
+          "fill": "$border",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "DFJp3",
+          "name": "ProgressBar",
+          "width": "fill_container",
+          "height": 4,
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "WyLym",
+              "name": "Progress1",
+              "fill": "$primary",
+              "width": "fill_container",
+              "height": 4
+            },
+            {
+              "type": "rectangle",
+              "id": "G8pfH",
+              "name": "Progress2",
+              "fill": "$border",
+              "width": "fill_container",
+              "height": 4
+            },
+            {
+              "type": "rectangle",
+              "id": "FVT4i",
+              "name": "Progress3",
+              "fill": "$border",
+              "width": "fill_container",
+              "height": 4
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Fznx8",
+          "name": "WizardCenter",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": [
+            0,
+            48
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "a2RQX",
+              "name": "ActiveStep",
+              "width": 520,
+              "layout": "vertical",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "eRg3a",
+                  "name": "Page Title",
+                  "fill": "$textSecondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Lets create your organization",
+                  "textAlign": "center",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "s063gm",
+                  "name": "Question",
+                  "fill": "$textMain",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "What's your organization called?",
+                  "lineHeight": 1.2,
+                  "textAlign": "center",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 36,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "cdMhk",
+                  "name": "Helper",
+                  "fill": "$textSecondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "This name will be visible to your team and clients.",
+                  "lineHeight": 1.4,
+                  "textAlign": "center",
+                  "fontFamily": "$fontFamily",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "id": "DhtF2",
+                  "type": "ref",
+                  "ref": "iNnA8",
+                  "width": "fill_container",
+                  "descendants": {
+                    "zjFpm": {
+                      "content": "Organization name"
+                    },
+                    "l8mi5": {
+                      "content": "Acme Inc."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "gPwCc",
+              "name": "PreviewSteps",
+              "opacity": 0.35,
+              "width": 520,
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ERcd8",
+                  "name": "PreviewStep",
+                  "width": "fill_container",
+                  "fill": "$bgUi",
+                  "cornerRadius": "$radiusButton",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    16,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "OL2fI",
+                      "name": "PreviewQ",
+                      "fill": "$textMain",
+                      "content": "Choose a unique slug",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "uvOEo",
+                      "name": "PreviewP",
+                      "fill": "$textSecondary",
+                      "content": "your-org-slug",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "DntLO",
+                  "name": "PreviewStep",
+                  "width": "fill_container",
+                  "fill": "$bgUi",
+                  "cornerRadius": "$radiusButton",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    16,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "r7Xbbv",
+                      "name": "PreviewQ",
+                      "fill": "$textMain",
+                      "content": "Set a secure password",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QiyNv",
+                      "name": "PreviewP",
+                      "fill": "$textSecondary",
+                      "content": "••••••••",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "elUHh",
+          "name": "FooterDivider",
+          "fill": "$border",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "MZmXE",
+          "name": "WizardFooter",
+          "width": "fill_container",
+          "padding": [
+            24,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "OY3e5",
+              "type": "ref",
+              "ref": "g6HjG",
+              "strokeWidth": 0,
+              "fill": "#00000000",
+              "descendants": {
+                "b4oMBD": {
+                  "content": "Back"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "n937q",
+              "name": "Progress Dots Wrap",
+              "layout": "vertical",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "GrSpk",
+                  "name": "ProgressDots",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "WaZvn",
+                      "name": "Dot1",
+                      "fill": "$primary",
+                      "width": 10,
+                      "height": 10
+                    },
+                    {
+                      "type": "ellipse",
+                      "id": "WNu3h",
+                      "name": "Dot2",
+                      "fill": "$border",
+                      "width": 10,
+                      "height": 10
+                    },
+                    {
+                      "type": "ellipse",
+                      "id": "Z7z3Z",
+                      "name": "Dot3",
+                      "fill": "$border",
+                      "width": 10,
+                      "height": 10
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "c59SIM",
+                  "name": "Dot Labels",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gMyrg",
+                      "name": "Label 1",
+                      "fill": "$accent",
+                      "content": "1/3",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FRVBk",
+                      "name": "Label 2",
+                      "fill": "$textSecondary",
+                      "content": "2/3",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ywLbM",
+                      "name": "Label 3",
+                      "fill": "$textSecondary",
+                      "content": "3/3",
+                      "fontFamily": "$fontFamily",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "X92Vrr",
+              "type": "ref",
+              "ref": "CBHav",
+              "width": 160,
+              "descendants": {
+                "kUlm1": {
+                  "content": "Continue"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bgMain": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "bgUi": {
+      "type": "color",
+      "value": "#141414"
+    },
+    "border": {
+      "type": "color",
+      "value": "#262626"
+    },
+    "fontFamily": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "primary": {
+      "type": "color",
+      "value": "#8510F2"
+    },
+    "radiusButton": {
+      "type": "number",
+      "value": 8
+    },
+    "radiusCard": {
+      "type": "number",
+      "value": 12
+    },
+    "systemBlue": {
+      "type": "color",
+      "value": "#0E6ECC"
+    },
+    "systemGreen": {
+      "type": "color",
+      "value": "#22C55E"
+    },
+    "systemRed": {
+      "type": "color",
+      "value": "#CC2B0E"
+    },
+    "textMain": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "textSecondary": {
+      "type": "color",
+      "value": "#A3A3A3"
+    },
+    "accent": {
+      "type": "color",
+      "value": "#8510F2"
+    },
+    "accentDark": {
+      "type": "color",
+      "value": "#4A0A8A"
+    }
+  },
+  "fileToken": "f1871fb0-659f-4ad3-9cff-0b2b565cfd40"
+}

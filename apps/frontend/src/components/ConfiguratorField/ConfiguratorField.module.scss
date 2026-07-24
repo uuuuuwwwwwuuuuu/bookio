@@ -1,0 +1,128 @@
+.configuratorField {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0.6rem;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-ui);
+}
+
+.dragHandle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 3.6rem;
+    height: 100%;
+    min-height: 5rem;
+    color: var(--color-text-secondary);
+    pointer-events: none;
+
+    svg {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    padding-left: 0;
+}
+
+.typeBadge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.6rem;
+    background-color: color-mix(
+        in srgb,
+        var(--type-badge-color, var(--color-primary)) 9%,
+        transparent
+    );
+    color: var(--type-badge-color, var(--color-primary));
+
+    svg {
+        width: 1.4rem;
+        height: 1.4rem;
+
+        path {
+            fill: none;
+            stroke: currentColor;
+        }
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    gap: 0.2rem;
+}
+
+.nameRow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+}
+
+.name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-main);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.requiredDot {
+    flex-shrink: 0;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background-color: var(--color-system-red);
+}
+
+.fieldKey {
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 0.6rem;
+}
+
+.actions button {
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+
+    svg {
+        width: 1.4rem;
+        height: 1.4rem;
+
+        path {
+            fill: none;
+            stroke: currentColor;
+        }
+    }
+}

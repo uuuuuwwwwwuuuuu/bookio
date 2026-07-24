@@ -3848,30 +3848,6 @@
                           "fontWeight": "500"
                         }
                       ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "hqWpt",
-                      "name": "Close Button",
-                      "width": 32,
-                      "height": 32,
-                      "cornerRadius": "$radius-sm",
-                      "stroke": "$border",
-                      "strokeWidth": 1,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "H6XTv9",
-                          "name": "Close Icon",
-                          "width": 16,
-                          "height": 16,
-                          "icon": "x",
-                          "library": "lucide",
-                          "fill": "$text-secondary"
-                        }
-                      ]
                     }
                   ]
                 },

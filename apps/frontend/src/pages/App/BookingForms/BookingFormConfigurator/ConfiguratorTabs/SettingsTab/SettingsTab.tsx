@@ -1,8 +1,8 @@
 import { useEffect, type FC } from 'react';
-import type { BookingFormType } from '@api/bookingForms/getBookingForms';
+import type { EntireBookingFormType } from '@api/bookingForms/getEntireBookingFormById';
 import type { UpdateBookingFormRequest } from '@api/bookingForms/updateBookingForm';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Checkbox, Input } from '@bookio/ui';
+import { Button, Checkbox, Input } from '@bookio/ui';
 import { ValidatableInput } from '@components/ValidatableInput/ValidatableInput';
 import { useIsBookingFormExists } from '@api/bookingForms/isBookingFormExists';
 
@@ -19,7 +19,7 @@ import { Spinner } from '@components/Spinner/Spinner';
 type SettingsTabFormData = Omit<UpdateBookingFormRequest, 'bookingFormId'>;
 
 type SettingsTabFormProps = {
-    bookingForm: BookingFormType;
+    bookingForm: EntireBookingFormType;
     organization: OrganizationData;
 };
 
@@ -122,30 +122,64 @@ export const SettingsTab = () => {
         data: organization,
         isLoading: isOrganizationLoading,
         isError: isOrganizationError,
+        error: organizationError,
+        refetch: refetchOrganization,
     } = useGetOrganization(id);
     const {
         data: bookingForm,
         isLoading: isBookingFormLoading,
         isError: isBookingFormError,
+        error: bookingFormError,
+        refetch: refetchBookingForm,
     } = useGetEntireBookingFormById(bookingFormId);
 
     if (!id) {
-        return navigate('/organizations/list');
+        navigate('/organizations/list');
+        return null;
     }
 
     if (!bookingFormId) {
-        return navigate(`/${id}/booking-forms`);
+        navigate(`/${id}/booking-forms`);
+        return null;
     }
 
-    if (isOrganizationLoading || isBookingFormLoading || !organization || !bookingForm)
+    if (isOrganizationLoading || isBookingFormLoading)
         return (
-            <div className={styles.settingsTab}>
+            <div className={styles.loadingContainer}>
                 <Spinner />
             </div>
         );
 
-    if (isOrganizationError || isBookingFormError) {
-        return navigate(`/${id}/booking-forms`);
+    if (!organization || !bookingForm) {
+        if (isOrganizationError || isBookingFormError) {
+            console.error({ organizationError }, { bookingFormError });
+            const refetchData = () => {
+                if (isOrganizationError) {
+                    void refetchOrganization();
+                }
+                if (isBookingFormError) {
+                    void refetchBookingForm();
+                }
+            };
+
+            return (
+                <div className={styles.errorContainer}>
+                    <h2>
+                        {organizationError?.message ||
+                            bookingFormError?.message ||
+                            'An error occurred while fetching the data'}
+                    </h2>
+                    <Button variant="primary-outlined" onClick={refetchData}>
+                        Retry
+                    </Button>
+                </div>
+            );
+        }
+        return (
+            <div className={styles.loadingContainer}>
+                <Spinner />
+            </div>
+        );
     }
 
     return <SettingsTabForm bookingForm={bookingForm} organization={organization} />;

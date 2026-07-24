@@ -52,7 +52,6 @@ export const bookingFormFields = pgTable(
     {
         id: uuid('id')
             .primaryKey()
-            .$default(() => uuidv7())
             .notNull()
             .unique(),
         bookingFormId: uuid('booking_form_id')

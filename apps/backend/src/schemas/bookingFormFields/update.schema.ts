@@ -15,7 +15,7 @@ export const syncBookingFormFieldItemSchema = z.discriminatedUnion(
     'type',
     buildBookingFormFieldVariants({
         base: {
-            id: z.uuid().optional(),
+            id: z.uuid(),
             name: fieldNameSchema,
             key: fieldKeySchema,
             order: z.number().int().min(0),

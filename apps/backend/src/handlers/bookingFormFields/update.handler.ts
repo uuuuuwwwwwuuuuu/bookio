@@ -8,6 +8,7 @@ import {
     type SyncBookingFormFieldItem,
     updateBookingFormFieldsSchema,
 } from '@schemas/bookingFormFields/update.schema.js';
+import type { Context } from 'hono';
 
 const factory = createFactory().createHandlers;
 
@@ -53,6 +54,7 @@ export const updateBookingFormFieldsHandler = factory(
 
             const incomingIds = fields.flatMap((field) => (field.id ? [field.id] : []));
 
+            // check does fields related to the current booking form
             if (incomingIds.length > 0) {
                 const fieldsWithIncomingIds = await db.query.bookingFormFields.findMany({
                     where: (field, { inArray }) => inArray(field.id, incomingIds),
@@ -65,17 +67,6 @@ export const updateBookingFormFieldsHandler = factory(
                             400,
                         );
                     }
-                }
-            }
-
-            for (const field of fields) {
-                const conflictingField = existingFields.find(
-                    (existingField) =>
-                        existingField.key === field.key && existingField.id !== field.id,
-                );
-
-                if (conflictingField) {
-                    return c.json(prepareError(`Field with ${field.key} key already exists`), 400);
                 }
             }
 
@@ -111,6 +102,7 @@ export const updateBookingFormFieldsHandler = factory(
                     const parentId = field.type === 'group' ? null : field.parentId;
                     const fieldValues = {
                         bookingFormId,
+                        id: field.id,
                         name: field.name,
                         type: field.type,
                         required: field.type === 'group' ? false : field.required,
@@ -130,7 +122,9 @@ export const updateBookingFormFieldsHandler = factory(
                             .returning();
 
                         if (!updatedField) {
-                            throw new Error('Failed to update booking form field');
+                            throw new Error(
+                                `Failed to update booking form field with name ${field.name}`,
+                            );
                         }
 
                         continue;
@@ -138,7 +132,7 @@ export const updateBookingFormFieldsHandler = factory(
 
                     const [createdField] = await tx
                         .insert(bookingFormFields)
-                        .values(field.id ? { ...fieldValues, id: field.id } : fieldValues)
+                        .values(fieldValues)
                         .returning();
 
                     if (!createdField) {

@@ -109,7 +109,7 @@ export type BookingFormFieldWithChildren =
     | (BookingFormFieldRow<'group'> & { childFields: BookingFormFieldRowUnion[] })
     | BookingFormFieldRow<NonGroupFieldType>;
 
-/** Flat field item in PUT /fields/update payload (`bookingFormId` is on the request root). */
+/** Flat field item in PUT /fields/sync payload (`bookingFormId` is on the request root). */
 export type BookingFormFieldSyncItem = {
     [T in FieldType]: Omit<BookingFormFieldRow<T>, 'id' | 'bookingFormId'> & { id?: string };
 }[FieldType];

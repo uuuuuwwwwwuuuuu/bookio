@@ -13,8 +13,8 @@ import { useGetEntireBookingFormById } from '@api/bookingForms/getEntireBookingF
 import isEqual from 'fast-deep-equal';
 import { useUpdateBookingForm } from '@api/bookingForms/updateBookingForm';
 import toast from 'react-hot-toast';
-import { useUpdateBookingFormField } from '@api/bookingForms/bookingFormFields/updateBookingFormField';
-import { toUpdateBookingFormFieldRequest } from '@api/bookingForms/bookingFormFields/bookingFormFieldMappers';
+import { useSyncBookingFormField } from '@api/bookingForms/bookingFormFields/syncBookingFormField';
+import { toSyncBookingFormFieldsRequest } from '@api/bookingForms/bookingFormFields/bookingFormFieldMappers';
 
 export const ConfiguratorLayout = memo(function ConfiguratorLayout({
     children,
@@ -75,7 +75,7 @@ const ConfiguratorFooter: FC = memo(() => {
     const navigate = useNavigate();
 
     const { mutateAsync: updateBookingForm } = useUpdateBookingForm(bookingFormId);
-    const { mutateAsync: updateBookingFormField } = useUpdateBookingFormField(bookingFormId);
+    const { mutateAsync: syncBookingFormField } = useSyncBookingFormField(bookingFormId);
 
     const isDirtyBookingForm = useMemo(() => {
         if (!baseLine || !bookingForm) return false;
@@ -103,17 +103,12 @@ const ConfiguratorFooter: FC = memo(() => {
         if (isDirtyBookingForm && bookingForm) {
             thunks.push(() => updateBookingForm(bookingForm));
         }
-        if (isDirtyBookingFormFields && bookingFormFields) {
-            for (const bookingFormField of bookingFormFields) {
-                const existingField = baseLine?.fields.find(
-                    (field) => field.id === bookingFormField.id,
-                );
-                if (existingField) {
-                    thunks.push(() =>
-                        updateBookingFormField(toUpdateBookingFormFieldRequest(bookingFormField)),
-                    );
-                }
-            }
+        if (isDirtyBookingFormFields && bookingFormFields && bookingFormId) {
+            thunks.push(() =>
+                syncBookingFormField(
+                    toSyncBookingFormFieldsRequest(bookingFormId, bookingFormFields),
+                ),
+            );
         }
 
         return thunks;
@@ -122,9 +117,9 @@ const ConfiguratorFooter: FC = memo(() => {
         isDirtyBookingFormFields,
         bookingForm,
         bookingFormFields,
-        baseLine?.fields,
+        bookingFormId,
         updateBookingForm,
-        updateBookingFormField,
+        syncBookingFormField,
     ]);
 
     const handleBack = useCallback(() => {

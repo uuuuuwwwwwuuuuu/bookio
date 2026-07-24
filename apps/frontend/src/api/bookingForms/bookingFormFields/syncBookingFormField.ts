@@ -6,28 +6,24 @@ import { validateError } from '@utils/validateError';
 import { trimObj } from '@utils/trimObj';
 import { invalidateEntireBookingForm } from '../getEntireBookingFormById';
 
-export type UpdateBookingFormFieldRequest = InferRequestType<
-    typeof hono.fields.update.$put
->['json'];
-export type UpdateBookingFormFieldResponse = InferResponseType<
-    typeof hono.fields.update.$put
->;
+export type SyncBookingFormFieldRequest = InferRequestType<typeof hono.fields.sync.$put>['json'];
+export type SyncBookingFormFieldResponse = InferResponseType<typeof hono.fields.sync.$put>;
 
-const updateBookingFormFieldRequest = async (requestData: UpdateBookingFormFieldRequest) => {
-    const response = await hono.fields.update.$put({
+const syncBookingFormFieldRequest = async (requestData: SyncBookingFormFieldRequest) => {
+    const response = await hono.fields.sync.$put({
         json: trimObj(requestData),
     });
 
     const body = await response.json();
 
-    validateError(response, body, 'Failed to update booking form field');
+    validateError(response, body, 'Failed to sync booking form fields');
 
     return body.data;
 };
 
-export const useUpdateBookingFormField = (bookingFormId: string | undefined) => {
+export const useSyncBookingFormField = (bookingFormId: string | undefined) => {
     return useMutation({
-        mutationFn: updateBookingFormFieldRequest,
+        mutationFn: syncBookingFormFieldRequest,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['booking-form-fields'] });
             invalidateEntireBookingForm(bookingFormId);

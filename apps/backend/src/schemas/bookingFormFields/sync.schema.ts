@@ -32,7 +32,7 @@ export const syncBookingFormFieldItemSchema = z.discriminatedUnion(
     }),
 ) satisfies z.ZodType<BookingFormFieldSyncItem>;
 
-export const updateBookingFormFieldsSchema = z
+export const syncBookingFormFieldsSchema = z
     .object({
         bookingFormId: z.uuid(),
         fields: z.array(syncBookingFormFieldItemSchema),
@@ -78,4 +78,4 @@ export const updateBookingFormFieldsSchema = z
     }) satisfies z.ZodType<BookingFormFieldsSyncPayload>;
 
 export type SyncBookingFormFieldItem = z.infer<typeof syncBookingFormFieldItemSchema>;
-export type UpdateBookingFormFieldsInput = z.infer<typeof updateBookingFormFieldsSchema>;
+export type SyncBookingFormFieldsInput = z.infer<typeof syncBookingFormFieldsSchema>;

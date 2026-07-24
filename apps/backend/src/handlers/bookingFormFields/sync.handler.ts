@@ -6,8 +6,8 @@ import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
 import { eq, inArray } from 'drizzle-orm';
 import {
     type SyncBookingFormFieldItem,
-    updateBookingFormFieldsSchema,
-} from '@schemas/bookingFormFields/update.schema.js';
+    syncBookingFormFieldsSchema,
+} from '@schemas/bookingFormFields/sync.schema.js';
 import type { ContentfulStatusCode } from 'hono/utils/http-status';
 
 const factory = createFactory().createHandlers;
@@ -32,8 +32,8 @@ const resolveParentField = (
     return existingById.get(parentId);
 };
 
-export const updateBookingFormFieldsHandler = factory(
-    zValidator('json', updateBookingFormFieldsSchema),
+export const syncBookingFormFieldsHandler = factory(
+    zValidator('json', syncBookingFormFieldsSchema),
     async (c) => {
         try {
             const { bookingFormId, fields } = c.req.valid('json');
@@ -118,7 +118,7 @@ export const updateBookingFormFieldsHandler = factory(
                 return c.json(error.getError(), error.getStatusCode());
             }
 
-            return c.json(prepareError('Failed to update booking form fields'), 500);
+            return c.json(prepareError('Failed to sync booking form fields'), 500);
         }
     },
 );
@@ -126,11 +126,11 @@ export const updateBookingFormFieldsHandler = factory(
 class SyncFieldsError {
     constructor(
         private error: ReturnType<typeof prepareError>,
-        private status: ContentfulStatusCode
+        private status: ContentfulStatusCode,
     ) {}
 
     getErrorMessage() {
-        return this.error
+        return this.error;
     }
 
     getStatusCode() {
@@ -161,7 +161,10 @@ const checkFieldsRelatedToBookingForm = async (incomingIds: string[], bookingFor
 
         for (const field of fieldsWithIncomingIds) {
             if (field.bookingFormId !== bookingFormId) {
-                throw new SyncFieldsError(prepareError('Field belongs to a different booking form'), 400);
+                throw new SyncFieldsError(
+                    prepareError('Field belongs to a different booking form'),
+                    400,
+                );
             }
         }
     }

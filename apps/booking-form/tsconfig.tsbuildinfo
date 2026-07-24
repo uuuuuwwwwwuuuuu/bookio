@@ -1,1 +1,0 @@
-{"root":["./vite.config.ts","./src/routetree.gen.ts","./src/vite-env.d.ts","./src/store/usestore.ts","./src/router.tsx","./src/routes/__root.tsx"],"errors":true,"version":"5.9.3"}

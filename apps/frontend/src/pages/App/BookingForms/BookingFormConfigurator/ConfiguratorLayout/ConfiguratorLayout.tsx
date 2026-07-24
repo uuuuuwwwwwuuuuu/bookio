@@ -13,12 +13,8 @@ import { useGetEntireBookingFormById } from '@api/bookingForms/getEntireBookingF
 import isEqual from 'fast-deep-equal';
 import { useUpdateBookingForm } from '@api/bookingForms/updateBookingForm';
 import toast from 'react-hot-toast';
-import { useCreateBookingFormField } from '@api/bookingForms/bookingFormFields/createBookingFormField';
 import { useUpdateBookingFormField } from '@api/bookingForms/bookingFormFields/updateBookingFormField';
-import {
-    toCreateBookingFormFieldRequest,
-    toUpdateBookingFormFieldRequest,
-} from '@api/bookingForms/bookingFormFields/bookingFormFieldMappers';
+import { toUpdateBookingFormFieldRequest } from '@api/bookingForms/bookingFormFields/bookingFormFieldMappers';
 
 export const ConfiguratorLayout = memo(function ConfiguratorLayout({
     children,
@@ -81,8 +77,6 @@ const ConfiguratorFooter: FC = memo(() => {
     const { mutateAsync: updateBookingForm } = useUpdateBookingForm(bookingFormId);
     const { mutateAsync: updateBookingFormField } = useUpdateBookingFormField(bookingFormId);
 
-    const { mutateAsync: createBookingFormField } = useCreateBookingFormField();
-
     const isDirtyBookingForm = useMemo(() => {
         if (!baseLine || !bookingForm) return false;
 
@@ -118,17 +112,7 @@ const ConfiguratorFooter: FC = memo(() => {
                     thunks.push(() =>
                         updateBookingFormField(toUpdateBookingFormFieldRequest(bookingFormField)),
                     );
-                    continue;
                 }
-                if (!bookingFormId) {
-                    thunks.push(() => Promise.reject(new Error('Booking form ID is required')));
-                    continue;
-                }
-                thunks.push(() =>
-                    createBookingFormField(
-                        toCreateBookingFormFieldRequest(bookingFormId, bookingFormField),
-                    ),
-                );
             }
         }
 
@@ -141,8 +125,6 @@ const ConfiguratorFooter: FC = memo(() => {
         baseLine?.fields,
         updateBookingForm,
         updateBookingFormField,
-        createBookingFormField,
-        bookingFormId,
     ]);
 
     const handleBack = useCallback(() => {

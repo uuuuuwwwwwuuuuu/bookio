@@ -8,7 +8,7 @@ import {
     fileParamsSchema,
     groupParamsSchema,
     inputParamsSchema,
-} from '@schemas/fields/shared.schema.js';
+} from '@schemas/bookingFormFields/shared.schema.js';
 
 const hasUpdatableField = (data: unknown) => {
     if (!data || typeof data !== 'object') return false;

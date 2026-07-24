@@ -4,7 +4,7 @@ import { db } from '@/db.js';
 import { bookingFormFields } from '@bookio/db';
 import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
 import { eq } from 'drizzle-orm';
-import { deleteBookingFormFieldSchema } from '@schemas/fields/delete.schema.js';
+import { deleteBookingFormFieldSchema } from '@schemas/bookingFormFields/delete.schema.js';
 
 const factory = createFactory().createHandlers;
 

@@ -5,7 +5,7 @@ import { prepareError, prepareSuccess } from '@/utils/prepareResponse.js';
 import {
     getBookingFormFieldSchema,
     getBookingFormFieldsSchema,
-} from '@schemas/fields/get.schema.js';
+} from '@schemas/bookingFormFields/get.schema.js';
 
 const factory = createFactory().createHandlers;
 
